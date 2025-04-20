@@ -179,7 +179,8 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jalalidatepicker@0.1.0/dist/jalalidatepicker.min.css">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
-    
+    <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
+<script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
     <style>
         .swal2-persian .select2-container {
             display: none !important;
@@ -707,7 +708,18 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
                 theme: 'bootstrap-5',
                 width: '100%'
             });
-
+$('[data-jdp]').persianDatepicker({
+    format: 'YYYY/MM/DD',
+    autoClose: true,
+    initialValue: false,
+    persianDigit: false,
+    observer: true,
+    calendar: {
+        persian: {
+            locale: 'fa'
+        }
+    }
+});
             // فعال‌سازی تاریخ شمسی
             jalaliDatepicker.startWatch();
 

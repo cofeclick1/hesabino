@@ -1702,3 +1702,15 @@ Stack trace:
 [21-Apr-2025 02:48:23 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
 [21-Apr-2025 02:48:23 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
 [21-Apr-2025 02:48:24 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:54:23 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 7
+[21-Apr-2025 02:54:23 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\init.php on line 14
+[21-Apr-2025 02:54:23 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 7
+[21-Apr-2025 02:54:23 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\init.php on line 14
+[21-Apr-2025 02:54:23 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 7
+[21-Apr-2025 02:54:23 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\init.php on line 14
+[21-Apr-2025 02:54:25 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 7
+[21-Apr-2025 02:54:25 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\init.php on line 14
+[21-Apr-2025 02:54:25 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 7
+[21-Apr-2025 02:54:25 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\init.php on line 14
+[21-Apr-2025 02:54:26 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 7
+[21-Apr-2025 02:54:26 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\init.php on line 14

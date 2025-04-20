@@ -1,22 +1,27 @@
 <?php
+session_start();
 // لود کردن تنظیمات اصلی
 require_once __DIR__ . '/../config/config.php';
 
 // تنظیمات پایه مسیرها
 define('BASE_PATH', '/hesabino');
 define('ASSETS_URL', BASE_PATH . '/assets');
-
+// بررسی و لود کردن فایل کانفیگ اصلی اگر لود نشده
+if (!defined('BASE_PATH')) {
+    define('BASE_PATH', '/hesabino');
+}
 // شروع session
 session_start();
 
 // تنظیم charset به UTF-8
 header('Content-Type: text/html; charset=utf-8');
 
-// لود کردن فایل‌های اصلی
+// لود کردن فایل‌های مورد نیاز
+require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/functions.php';
-require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/jdf.php';
+require_once __DIR__ . '/auth.php';
 
 // ایجاد نمونه از کلاس دیتابیس
 $db = Database::getInstance();
