@@ -15,23 +15,28 @@ class ImageUploader {
 
     public function setAllowedTypes($types) {
         $this->allowedTypes = $types;
+        return $this;
     }
 
     public function setMaxSize($size) {
         $this->maxSize = $size;
+        return $this;
     }
 
     public function setPath($path) {
         $this->path = $path;
+        return $this;
     }
 
     public function setDimensions($width, $height) {
         $this->width = $width;
         $this->height = $height;
+        return $this;
     }
 
     public function setQuality($quality) {
         $this->quality = $quality;
+        return $this;
     }
 
     public function getError() {

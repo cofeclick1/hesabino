@@ -1579,3 +1579,126 @@ Stack trace:
 #2 C:\xampp\htdocs\hesabino\people\new_person.php(136): Database->insert('changes', Array)
 #3 {main}
   thrown in C:\xampp\htdocs\hesabino\config\database.php on line 69
+[21-Apr-2025 02:36:47 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 26
+[21-Apr-2025 02:36:47 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10
+[21-Apr-2025 02:36:47 Asia/Tehran] PHP Fatal error:  Uncaught Error: Object of class PDOStatement could not be converted to string in C:\xampp\htdocs\hesabino\config\database.php:69
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\config\database.php(69): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\hesabino\config\database.php(82): Database->query('INSERT INTO cha...', Array)
+#2 C:\xampp\htdocs\hesabino\people\new_person.php(135): Database->insert('changes', Array)
+#3 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 69
+[21-Apr-2025 02:37:17 Asia/Tehran] PHP Warning:  Undefined variable $city in C:\xampp\htdocs\hesabino\people\new_person.php on line 112
+[21-Apr-2025 02:37:17 Asia/Tehran] PHP Fatal error:  Uncaught Error: Object of class PDOStatement could not be converted to string in C:\xampp\htdocs\hesabino\config\database.php:69
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\config\database.php(69): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\hesabino\config\database.php(82): Database->query('INSERT INTO cha...', Array)
+#2 C:\xampp\htdocs\hesabino\people\new_person.php(134): Database->insert('changes', Array)
+#3 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 69
+[21-Apr-2025 02:37:24 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 26
+[21-Apr-2025 02:37:24 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10
+[21-Apr-2025 02:37:24 Asia/Tehran] PHP Fatal error:  Uncaught Error: Object of class PDOStatement could not be converted to string in C:\xampp\htdocs\hesabino\config\database.php:69
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\config\database.php(69): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\hesabino\config\database.php(82): Database->query('INSERT INTO cha...', Array)
+#2 C:\xampp\htdocs\hesabino\people\new_person.php(135): Database->insert('changes', Array)
+#3 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 69
+[21-Apr-2025 02:39:22 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:39:22 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 26
+[21-Apr-2025 02:39:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10
+[21-Apr-2025 02:39:22 Asia/Tehran] PHP Fatal error:  Uncaught Error: Object of class PDOStatement could not be converted to string in C:\xampp\htdocs\hesabino\config\database.php:69
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\config\database.php(69): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\hesabino\config\database.php(82): Database->query('INSERT INTO cha...', Array)
+#2 C:\xampp\htdocs\hesabino\people\new_person.php(135): Database->insert('changes', Array)
+#3 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 69
+[21-Apr-2025 02:40:54 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:40:54 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 26
+[21-Apr-2025 02:40:54 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10
+[21-Apr-2025 02:40:54 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:40:55 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:41:55 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:41:55 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 26
+[21-Apr-2025 02:41:55 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:41:55 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:42:03 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:42:04 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:42:04 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:42:08 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:42:08 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:42:09 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:42:51 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "APP_VERSION" in C:\xampp\htdocs\hesabino\includes\sidebar.php:271
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\new_person.php(314): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 271
+[21-Apr-2025 02:42:59 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:42:59 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:42:59 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:43:02 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:43:02 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:43:02 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:43:04 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:43:04 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:43:04 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:44:08 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:44:08 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:44:09 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:45:36 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:45:36 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 26
+[21-Apr-2025 02:45:36 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:45:36 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:45:39 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:45:39 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:45:39 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:45:44 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:45:44 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:45:45 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:01 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:01 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 26
+[21-Apr-2025 02:46:01 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:01 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:02 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:02 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:03 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:06 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:06 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:06 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:09 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:09 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:10 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:11 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:11 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:11 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:13 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:13 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:14 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:18 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:18 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:46:19 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:00 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:00 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:00 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:02 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:02 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:02 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:04 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:04 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:04 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:08 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:08 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:08 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:13 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:13 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:13 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:13 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:18 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:18 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:18 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:18 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:23 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:23 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6
+[21-Apr-2025 02:48:24 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 6

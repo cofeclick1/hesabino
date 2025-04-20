@@ -1,8 +1,6 @@
 <?php
 require_once '../includes/init.php';
 
-
-
 // ایجاد نمونه از دیتابیس
 $db = Database::getInstance();
 $error = '';
@@ -71,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $profileImage = '';
     if (!empty($_FILES['profile_image']['name'])) {
         try {
+            require_once '../includes/classes/ImageUploader.php';
             $uploader = new ImageUploader($_FILES['profile_image']);
             $uploader->setAllowedTypes(['image/jpeg', 'image/png', 'image/webp']);
             $uploader->setMaxSize(2 * 1024 * 1024); // 2MB
@@ -139,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $success = 'شخص جدید با موفقیت ثبت شد';
                 // ذخیره نام و نام خانوادگی برای نمایش در نوتیفیکیشن
                 echo "<script>
-                    var personName = '" . $firstName . ' ' . $lastName . "';
+                    var personName = '" . addslashes($firstName . ' ' . $lastName) . "';
                     var showSuccessMessage = true;
                     var redirectToEdit = true;
                     var personId = " . $personId . ";
@@ -602,7 +601,7 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
                                                         <i class="fab fa-instagram"></i>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
+                                                                                                <div class="col-md-4 mb-3">
                                                     <label class="form-label">تلگرام</label>
                                                     <div class="social-input">
                                                         <input type="text" name="telegram_id" class="form-control" dir="ltr"
@@ -794,7 +793,7 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
                         confirmButton: 'btn btn-primary',
                         popup: 'rtl swal2-persian'
                     }
-                });.then((result) => {
+                }).then((result) => {
                     if (result.isConfirmed && typeof redirectToEdit !== 'undefined' && redirectToEdit) {
                         window.location.href = 'edit_person.php?id=' + personId;
                     }

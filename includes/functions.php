@@ -1,139 +1,110 @@
 <?php
-// توابع عمومی
+/**
+ * تبدیل تاریخ میلادی به شمسی
+ */
+function toJalali($date) {
+    if (empty($date)) return '';
+    $timestamp = strtotime($date);
+    list($year, $month, $day) = explode('-', date('Y-m-d', $timestamp));
+    $result = gregorian_to_jalali($year, $month, $day);
+    return sprintf('%04d/%02d/%02d', $result[0], $result[1], $result[2]);
+}
 
+/**
+ * تبدیل تاریخ شمسی به میلادی
+ */
+function toGregorian($date) {
+    if (empty($date)) return null;
+    $parts = explode('/', $date);
+    if (count($parts) !== 3) return null;
+    
+    $result = jalali_to_gregorian($parts[0], $parts[1], $parts[2]);
+    return sprintf('%04d-%02d-%02d', $result[0], $result[1], $result[2]);
+}
+
+/**
+ * پاکسازی داده‌های ورودی
+ */
 function sanitize($input) {
+    if (is_null($input)) return '';
     if (is_array($input)) {
-        foreach($input as $key => $value) {
-            $input[$key] = sanitize($value);
+        return array_map('sanitize', $input);
+    }
+    return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * اعتبارسنجی کد ملی
+ */
+function validateNationalCode($code) {
+    if (!preg_match('/^[0-9]{10}$/', $code)) {
+        return false;
+    }
+    
+    $sum = 0;
+    for ($i = 0; $i < 9; $i++) {
+        $sum += ((10 - $i) * intval(substr($code, $i, 1)));
+    }
+    
+    $divideRemaining = $sum % 11;
+    $lastDigit = intval(substr($code, 9, 1));
+    
+    if ($divideRemaining < 2) {
+        return ($divideRemaining == $lastDigit);
+    }
+    return ((11 - $divideRemaining) == $lastDigit);
+}
+
+/**
+ * اعتبارسنجی شماره کارت
+ */
+function validateCardNumber($card) {
+    if (!preg_match('/^[0-9]{16}$/', $card)) {
+        return false;
+    }
+    
+    $sum = 0;
+    for ($i = 0; $i < 16; $i++) {
+        $digit = intval(substr($card, $i, 1));
+        if ($i % 2 == 0) {
+            $digit *= 2;
+            if ($digit > 9) {
+                $digit -= 9;
+            }
         }
-    } else {
-        $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
-    }
-    return $input;
-}
-
-function redirect($location) {
-    header("Location: {$location}");
-    exit;
-}
-
-function formatNumber($number) {
-    return number_format($number, 0, '.', ',');
-}
-
-function jalaliDate($timestamp = null) {
-    if ($timestamp === null) {
-        $timestamp = time();
-    }
-    return jdate("Y/m/d", $timestamp);
-}
-
-function flashMessage($message, $type = 'success') {
-    $_SESSION['flash'] = [
-        'message' => $message,
-        'type' => $type
-    ];
-}
-
-function showFlashMessage() {
-    if (isset($_SESSION['flash'])) {
-        $message = $_SESSION['flash']['message'];
-        $type = $_SESSION['flash']['type'];
-        unset($_SESSION['flash']);
-        
-        return "<div class='alert alert-{$type} alert-dismissible fade show' role='alert'>
-                    {$message}
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                </div>";
-    }
-    return '';
-}
-
-function isAjax() {
-    return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
-        strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
-}
-
-function generateRandomString($length = 10) {
-    return bin2hex(random_bytes($length));
-}
-
-function validateDate($date, $format = 'Y-m-d') {
-    $d = DateTime::createFromFormat($format, $date);
-    return $d && $d->format($format) === $date;
-}
-
-function createPagination($total, $perPage, $currentPage, $url) {
-    $totalPages = ceil($total / $perPage);
-    
-    if ($totalPages <= 1) return '';
-    
-    $html = '<nav aria-label="صفحه‌بندی"><ul class="pagination justify-content-center">';
-    
-    // قبلی
-    $html .= '<li class="page-item ' . ($currentPage <= 1 ? 'disabled' : '') . '">
-                <a class="page-link" href="' . ($currentPage > 1 ? $url . ($currentPage - 1) : '#') . '">قبلی</a>
-              </li>';
-    
-    // شماره صفحات
-    for ($i = 1; $i <= $totalPages; $i++) {
-        if ($i == $currentPage) {
-            $html .= '<li class="page-item active"><span class="page-link">' . $i . '</span></li>';
-        } else {
-            $html .= '<li class="page-item"><a class="page-link" href="' . $url . $i . '">' . $i . '</a></li>';
-        }
+        $sum += $digit;
     }
     
-    // بعدی
-    $html .= '<li class="page-item ' . ($currentPage >= $totalPages ? 'disabled' : '') . '">
-                <a class="page-link" href="' . ($currentPage < $totalPages ? $url . ($currentPage + 1) : '#') . '">بعدی</a>
-              </li>';
-    
-    $html .= '</ul></nav>';
-    
-    return $html;
+    return ($sum % 10 == 0);
 }
 
-function uploadImage($file) {
-    $targetDir = "uploads/";
-    if (!is_dir($targetDir)) {
-        mkdir($targetDir, 0777, true);
+/**
+ * اعتبارسنجی شماره شبا
+ */
+function validateIBAN($iban) {
+    if (!preg_match('/^IR[0-9]{24}$/', $iban)) {
+        return false;
     }
-    $targetFile = $targetDir . basename($file["name"]);
-    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-    $check = getimagesize($file["tmp_name"]);
-    if ($check !== false) {
-        if (move_uploaded_file($file["tmp_name"], $targetFile)) {
-            return $targetFile;
-        }
+    
+    $iban = substr($iban, 2) . '1827';
+    $remainder = '';
+    
+    for ($i = 0; $i < strlen($iban); $i++) {
+        $remainder = ($remainder . substr($iban, $i, 1)) % 97;
     }
-    return false;
+    
+    return ($remainder == 1);
 }
 
-function logActivity($userId, $action) {
-    global $db;
-    $db->insert('activity_log', [
-        'user_id' => $userId,
-        'action' => $action,
-        'timestamp' => date('Y-m-d H:i:s')
-    ]);
-}
-
-function getLowStockProducts() {
-    global $db;
-    return $db->query("SELECT * FROM products WHERE quantity <= min_quantity AND status = 'active'")->fetchAll();
-}
-
-function getUserRole($userId) {
-    global $db;
-    return $db->query("SELECT role FROM users WHERE id = ?", [$userId])->fetchColumn();
-}
-
-function formatCurrency($number) {
-    return number_format($number, 0, '.', ',') . ' تومان';
-}
-
-function toJalali($datetime, $format = 'Y/m/d H:i') {
-    if (empty($datetime)) return '-';
-    return jdate($format, strtotime($datetime));
+/**
+ * تبدیل تاریخ شمسی به میلادی برای ذخیره در دیتابیس
+ */
+function convertJalaliToGregorian($jalaliDate) {
+    if (empty($jalaliDate)) return null;
+    
+    $parts = explode('/', $jalaliDate);
+    if (count($parts) !== 3) return null;
+    
+    $result = jalali_to_gregorian($parts[0], $parts[1], $parts[2]);
+    return sprintf('%04d-%02d-%02d', $result[0], $result[1], $result[2]);
 }
