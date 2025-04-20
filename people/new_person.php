@@ -2,8 +2,9 @@
 require_once '../includes/init.php';
 
 // بررسی دسترسی کاربر
-if (!$auth->hasPermission('people_add')) {
-    redirect('dashboard.php', 'شما مجوز دسترسی به این بخش را ندارید.');
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ' . BASE_PATH . '/login.php');
+    exit;
 }
 
 $db = Database::getInstance();

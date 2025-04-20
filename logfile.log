@@ -1471,3 +1471,17 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\hesabino\people\new_person.php on line 5
+[21-Apr-2025 00:04:30 Europe/Berlin] PHP Parse error:  Unclosed '{' on line 11 in C:\xampp\htdocs\hesabino\people\new_person.php on line 823
+[21-Apr-2025 01:35:52 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Auth::hasPermission() in C:\xampp\htdocs\hesabino\people\new_person.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\new_person.php on line 5
+[21-Apr-2025 01:37:20 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Auth::getInstance() in C:\xampp\htdocs\hesabino\people\new_person.php:9
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\new_person.php on line 9
+[21-Apr-2025 01:37:29 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.provinces' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\new_person.php(163): Database->query('SELECT id, name...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
