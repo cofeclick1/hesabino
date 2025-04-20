@@ -1543,3 +1543,39 @@ Stack trace:
   thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
 [21-Apr-2025 02:24:12 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 28
 [21-Apr-2025 02:24:12 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10
+[21-Apr-2025 02:25:59 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 28
+[21-Apr-2025 02:25:59 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10
+[21-Apr-2025 02:25:59 Asia/Tehran] PHP Fatal error:  Uncaught Error: Object of class PDOStatement could not be converted to string in C:\xampp\htdocs\hesabino\config\database.php:69
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\config\database.php(69): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\hesabino\config\database.php(82): Database->query('INSERT INTO cha...', Array)
+#2 C:\xampp\htdocs\hesabino\people\new_person.php(136): Database->insert('changes', Array)
+#3 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 69
+[21-Apr-2025 02:26:17 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 28
+[21-Apr-2025 02:26:17 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10
+[21-Apr-2025 02:26:17 Asia/Tehran] PHP Fatal error:  Uncaught Error: Object of class PDOStatement could not be converted to string in C:\xampp\htdocs\hesabino\config\database.php:69
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\config\database.php(69): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\hesabino\config\database.php(82): Database->query('INSERT INTO cha...', Array)
+#2 C:\xampp\htdocs\hesabino\people\new_person.php(136): Database->insert('changes', Array)
+#3 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 69
+[21-Apr-2025 02:26:44 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 28
+[21-Apr-2025 02:26:44 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10
+[21-Apr-2025 02:26:44 Asia/Tehran] PHP Fatal error:  Uncaught Error: Object of class PDOStatement could not be converted to string in C:\xampp\htdocs\hesabino\config\database.php:69
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\config\database.php(69): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\hesabino\config\database.php(82): Database->query('INSERT INTO cha...', Array)
+#2 C:\xampp\htdocs\hesabino\people\new_person.php(136): Database->insert('changes', Array)
+#3 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 69
+[21-Apr-2025 02:30:41 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 28
+[21-Apr-2025 02:30:41 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10
+[21-Apr-2025 02:30:41 Asia/Tehran] PHP Fatal error:  Uncaught Error: Object of class PDOStatement could not be converted to string in C:\xampp\htdocs\hesabino\config\database.php:69
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\config\database.php(69): PDOStatement->execute(Array)
+#1 C:\xampp\htdocs\hesabino\config\database.php(82): Database->query('INSERT INTO cha...', Array)
+#2 C:\xampp\htdocs\hesabino\people\new_person.php(136): Database->insert('changes', Array)
+#3 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 69
