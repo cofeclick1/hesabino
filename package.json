@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  },
+  "dependencies": {
+    "apexcharts": "^4.5.0"
+  }
+}

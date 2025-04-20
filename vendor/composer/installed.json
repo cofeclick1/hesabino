@@ -1,0 +1,59 @@
+{
+    "packages": [
+        {
+            "name": "mojtabaahn/php-persian-number-to-words",
+            "version": "1.2.0",
+            "version_normalized": "1.2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mojtabaahn/php-persian-number-to-words.git",
+                "reference": "a426642c0288a959c7cf2a20febd683f9333615b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mojtabaahn/php-persian-number-to-words/zipball/a426642c0288a959c7cf2a20febd683f9333615b",
+                "reference": "a426642c0288a959c7cf2a20febd683f9333615b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "pestphp/pest": "^0.2.3|^1.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "time": "2023-09-29T06:27:46+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "MojtabaaHN\\PersianNumberToWords\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mojtabaa hn",
+                    "email": "mojtabaa.hn@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Converts number to words in persian",
+            "homepage": "https://github.com/mojtabaahn/php-number-to-words",
+            "keywords": [
+                "numbers-to-words",
+                "persian"
+            ],
+            "support": {
+                "issues": "https://github.com/mojtabaahn/php-persian-number-to-words/issues",
+                "source": "https://github.com/mojtabaahn/php-persian-number-to-words/tree/1.2.0"
+            },
+            "install-path": "../mojtabaahn/php-persian-number-to-words"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

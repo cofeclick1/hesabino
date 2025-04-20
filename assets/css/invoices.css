@@ -1,0 +1,219 @@
+.select2-container {
+    flex: 1;
+}
+.btn-add-customer {
+    white-space: nowrap;
+    margin-right: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    background: linear-gradient(to right, #5e72e4, #825ee4);
+    border: none;
+}
+.btn-add-customer:hover {
+    background: linear-gradient(to right, #4756b5, #6342b5);
+    transform: translateY(-1px);
+}
+
+.btn-floating {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: #5e72e4;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+            transition: all 0.3s ease;
+        }
+        .btn-floating:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,.2);
+        }
+        .custom-select2 {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .custom-select2:focus {
+            border-color: #5e72e4;
+            box-shadow: 0 0 0 0.2rem rgba(94, 114, 228, 0.25);
+        }     
+        
+/* استایل کانتینر نتایج جستجو */
+.product-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+}
+
+/* استایل هر آیتم در نتایج جستجو */
+.product-search-results .search-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.product-search-results .search-item:last-child {
+    border-bottom: none;
+}
+
+.product-search-results .search-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* استایل اطلاعات محصول */
+.product-search-results .search-item .fw-bold {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.product-search-results .search-item .small {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* استایل وضعیت موجودی */
+.product-search-results .search-item .text-success {
+    color: #198754 !important;
+}
+
+.product-search-results .search-item .text-danger {
+    color: #dc3545 !important;
+}
+
+/* استایل قیمت */
+.product-search-results .search-item .text-primary {
+    font-size: 14px;
+    color: #0d6efd !important;
+}
+
+/* استایل اسکرولبار */
+.product-search-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.product-search-results::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.product-search-results::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.product-search-results::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* استایل حالت بارگذاری */
+.product-search-results .spinner-border {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-width: 0.2em;
+}
+
+/* استایل پیام عدم یافتن نتیجه */
+.product-search-results .text-muted {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-search-results .text-muted i {
+    opacity: 0.5;
+    margin-bottom: 10px;
+}
+
+/* تنظیم position برای کانتینر اصلی */
+.invoice-item .position-relative {
+    position: relative !important;
+}
+/* استایل نوتیفیکیشن سفارشی */
+.custom-toast {
+    background: #ffffff !important;
+    color: #333333 !important;
+    border-radius: 10px !important;
+    padding: 15px 20px !important;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1) !important;
+    font-family: IRANSans, Tahoma !important;
+    border: 1px solid #eee !important;
+}
+
+.custom-toast-title {
+    font-size: 14px !important;
+    font-weight: normal !important;
+    color: #333333 !important;
+}
+
+/* استایل پیشرفت بار */
+.swal2-timer-progress-bar {
+    background: #4CAF50 !important;
+    height: 3px !important;
+}
+
+/* انیمیشن ورود نوتیفیکیشن */
+.swal2-show {
+    animation: slide-up 0.3s ease-out !important;
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* استایل نوتیفیکیشن خطا */
+.custom-toast-error {
+    background-color: #fff3f3 !important;
+    border-color: #ffcdd2 !important;
+}
+
+.custom-toast-error .swal2-title {
+    color: #d32f2f !important;
+}
+
+.custom-toast-error .swal2-timer-progress-bar {
+    background: #d32f2f !important;
+}
+
+.invoice-item {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+
+
+.remove-item:hover {
+    background: #dc3545;
+    color: #fff;
+}

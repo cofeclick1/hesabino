@@ -1,0 +1,18 @@
+{
+    "name": "pars-tech/hesabino",
+    "description": "حسابداری",
+    "autoload": {
+        "psr-4": {
+            "ParsTech\\Hesabino\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "akradimo",
+            "email": "akradim@hotmail.com"
+        }
+    ],
+    "require": {
+        "mojtabaahn/php-persian-number-to-words": "^1.2"
+    }
+}

@@ -1,0 +1,1386 @@
+[27-Mar-2025 02:09:07 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:423
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 423
+[27-Mar-2025 02:09:23 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:423
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 423
+[27-Mar-2025 02:09:48 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:423
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 423
+[27-Mar-2025 02:09:55 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:423
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 423
+[27-Mar-2025 02:10:07 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:423
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 423
+[27-Mar-2025 02:10:10 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:423
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 423
+[27-Mar-2025 02:10:14 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:423
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 423
+[27-Mar-2025 02:10:47 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:430
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 430
+[27-Mar-2025 02:10:50 Asia/Tehran] Decoded JSON input: Array
+(
+    [customer_id] => 
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 2
+                    [name] => کیبورد تسکو مدل 1714
+                    [price] => 952000
+                    [quantity] => 3
+                    [maxQuantity] => 18
+                    [code] => 65465
+                )
+
+        )
+
+    [payments] => Array
+        (
+        )
+
+    [discount_type] => amount
+    [discount_value] => 0
+    [subtotal] => 2856000
+    [tax] => 257040
+    [total] => 3113040
+)
+
+[27-Mar-2025 02:10:50 Asia/Tehran] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string + int in C:\xampp\htdocs\hesabino\ajax\save-invoice.php:83
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\ajax\save-invoice.php on line 83
+[27-Mar-2025 02:10:50 Asia/Tehran] Decoded JSON input: Array
+(
+    [customer_id] => 
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 2
+                    [name] => کیبورد تسکو مدل 1714
+                    [price] => 952000
+                    [quantity] => 3
+                    [maxQuantity] => 18
+                    [code] => 65465
+                )
+
+        )
+
+    [payments] => Array
+        (
+        )
+
+    [discount_type] => amount
+    [discount_value] => 0
+    [subtotal] => 2856000
+    [tax] => 257040
+    [total] => 3113040
+)
+
+[27-Mar-2025 02:10:50 Asia/Tehran] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string + int in C:\xampp\htdocs\hesabino\ajax\save-invoice.php:83
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\ajax\save-invoice.php on line 83
+[27-Mar-2025 02:13:38 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:430
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 430
+[27-Mar-2025 02:13:41 Asia/Tehran] Decoded JSON input: Array
+(
+    [customer_id] => 34
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 2
+                    [name] => کیبورد تسکو مدل 1714
+                    [price] => 952000
+                    [quantity] => 3
+                    [maxQuantity] => 18
+                    [code] => 65465
+                )
+
+        )
+
+    [payments] => Array
+        (
+        )
+
+    [discount_type] => amount
+    [discount_value] => 0
+    [subtotal] => 2856000
+    [tax] => 257040
+    [total] => 3113040
+)
+
+[27-Mar-2025 02:13:41 Asia/Tehran] Error in save-invoice.php: خطا در درج اطلاعات: خطا در اجرای کوئری: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'invoice_number'
+[27-Mar-2025 02:13:41 Asia/Tehran] Decoded JSON input: Array
+(
+    [customer_id] => 34
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 2
+                    [name] => کیبورد تسکو مدل 1714
+                    [price] => 952000
+                    [quantity] => 3
+                    [maxQuantity] => 18
+                    [code] => 65465
+                )
+
+        )
+
+    [payments] => Array
+        (
+        )
+
+    [discount_type] => amount
+    [discount_value] => 0
+    [subtotal] => 2856000
+    [tax] => 257040
+    [total] => 3113040
+)
+
+[27-Mar-2025 02:13:41 Asia/Tehran] Error in save-invoice.php: خطا در درج اطلاعات: خطا در اجرای کوئری: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'invoice_number'
+[27-Mar-2025 12:00:31 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:401
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 401
+[27-Mar-2025 12:10:28 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:401
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 401
+[27-Mar-2025 12:10:41 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:401
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 401
+[27-Mar-2025 12:10:47 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:401
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 401
+[27-Mar-2025 12:10:59 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "DEBUG" in C:\xampp\htdocs\hesabino\quick-sale.php:430
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\quick-sale.php on line 430
+[27-Mar-2025 12:13:14 Asia/Tehran] Error in save-invoice.php: لطفاً همه فیلدها را پر کنید: product_id, quantity, payment_method
+[27-Mar-2025 12:24:46 Asia/Tehran] PHP Fatal error:  Cannot redeclare gregorian_to_jalali() (previously declared in C:\xampp\htdocs\hesabino\customers.php:5) in C:\xampp\htdocs\hesabino\includes\jdf.php on line 622
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:25:34 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 305
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 12:26:08 Asia/Tehran] PHP Warning:  Undefined array key "customer_code" in C:\xampp\htdocs\hesabino\customers.php on line 303
+[27-Mar-2025 09:57:39 Europe/Berlin] PHP Warning:  Undefined variable $auth in C:\xampp\htdocs\hesabino\customers.php on line 5
+[27-Mar-2025 09:57:39 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function isLoggedIn() on null in C:\xampp\htdocs\hesabino\customers.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 5
+[27-Mar-2025 12:29:21 Asia/Tehran] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\hesabino\customers.php on line 79
+[27-Mar-2025 12:29:21 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\hesabino\customers.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\customers.php(79): generateCustomerCode(NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 19
+[27-Mar-2025 12:35:56 Asia/Tehran] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\hesabino\customers.php on line 256
+[27-Mar-2025 12:35:56 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\hesabino\customers.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\customers.php(256): generateCustomerCode(NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 19
+[27-Mar-2025 12:36:11 Asia/Tehran] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\hesabino\customers.php on line 256
+[27-Mar-2025 12:36:11 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\hesabino\customers.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\customers.php(256): generateCustomerCode(NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 19
+[27-Mar-2025 12:36:47 Asia/Tehran] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\hesabino\customers.php on line 256
+[27-Mar-2025 12:36:47 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\hesabino\customers.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\customers.php(256): generateCustomerCode(NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 19
+[27-Mar-2025 12:40:25 Asia/Tehran] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\hesabino\customers.php on line 256
+[27-Mar-2025 12:40:25 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\hesabino\customers.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\customers.php(256): generateCustomerCode(NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 19
+[27-Mar-2025 12:41:24 Asia/Tehran] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\hesabino\customers.php on line 256
+[27-Mar-2025 12:41:24 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\hesabino\customers.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\customers.php(256): generateCustomerCode(NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 19
+[27-Mar-2025 12:42:05 Asia/Tehran] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\hesabino\customers.php on line 256
+[27-Mar-2025 12:42:05 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\hesabino\customers.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\customers.php(256): generateCustomerCode(NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 19
+[27-Mar-2025 12:42:08 Asia/Tehran] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\hesabino\customers.php on line 256
+[27-Mar-2025 12:42:08 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\hesabino\customers.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\customers.php(256): generateCustomerCode(NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 19
+[27-Mar-2025 12:45:09 Asia/Tehran] PHP Warning:  Undefined variable $conn in C:\xampp\htdocs\hesabino\customers.php on line 256
+[27-Mar-2025 12:45:09 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\hesabino\customers.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\customers.php(256): generateCustomerCode(NULL)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 19
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 12:47:07 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 12:47:36 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function isUserLoggedIn() in C:\xampp\htdocs\hesabino\customers.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 8
+[27-Mar-2025 12:47:49 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function isUserLoggedIn() in C:\xampp\htdocs\hesabino\customers.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\customers.php on line 8
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 13:10:13 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 13:14:15 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 13:37:17 Asia/Tehran] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\hesabino\config\database.php on line 94
+[27-Mar-2025 13:37:17 Asia/Tehran] خطا در تولید کد مشتری: خطا در به‌روزرسانی اطلاعات: خطا در اجرای کوئری: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+[27-Mar-2025 11:12:06 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "endif", expecting end of file in C:\xampp\htdocs\hesabino\customers.php on line 238
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 14:22:03 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 14:37:54 Asia/Tehran] PHP Warning:  Undefined array key "croppedImage" in C:\xampp\htdocs\hesabino\customers.php on line 77
+[27-Mar-2025 14:37:54 Asia/Tehran] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in C:\xampp\htdocs\hesabino\customers.php on line 77
+[27-Mar-2025 14:38:49 Asia/Tehran] PHP Warning:  Undefined array key "croppedImage" in C:\xampp\htdocs\hesabino\customers.php on line 77
+[27-Mar-2025 14:38:49 Asia/Tehran] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in C:\xampp\htdocs\hesabino\customers.php on line 77
+[27-Mar-2025 14:39:46 Asia/Tehran] PHP Warning:  Undefined array key "croppedImage" in C:\xampp\htdocs\hesabino\customers.php on line 77
+[27-Mar-2025 14:39:46 Asia/Tehran] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in C:\xampp\htdocs\hesabino\customers.php on line 77
+[27-Mar-2025 15:04:56 Asia/Tehran] PHP Warning:  Undefined array key "organization_logo" in C:\xampp\htdocs\hesabino\settings.php on line 22
+[27-Mar-2025 15:05:05 Asia/Tehran] PHP Warning:  Undefined array key "organization_logo" in C:\xampp\htdocs\hesabino\settings.php on line 22
+[27-Mar-2025 15:06:24 Asia/Tehran] PHP Warning:  Undefined array key "organization_logo" in C:\xampp\htdocs\hesabino\settings.php on line 22
+[27-Mar-2025 15:06:31 Asia/Tehran] PHP Warning:  Undefined array key "organization_logo" in C:\xampp\htdocs\hesabino\settings.php on line 22
+[27-Mar-2025 15:13:14 Asia/Tehran] PHP Warning:  Undefined array key "mobile" in C:\xampp\htdocs\hesabino\settings.php on line 20
+[27-Mar-2025 15:13:14 Asia/Tehran] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\settings.php on line 20
+[27-Mar-2025 15:13:37 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Database::select() in C:\xampp\htdocs\hesabino\settings.php:162
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\settings.php on line 162
+[27-Mar-2025 15:13:39 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Database::select() in C:\xampp\htdocs\hesabino\settings.php:162
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\settings.php on line 162
+[27-Mar-2025 15:15:25 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در بازیابی اطلاعات: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'key, value FROM settings' at line 1 in C:\xampp\htdocs\hesabino\config\database.php:171
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\settings.php(162): Database->getAll('settings', 'key, value')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 171
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 16:08:42 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 18:16:43 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 18:17:20 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 18:17:52 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 17:03:23 Europe/Berlin] PHP Warning:  Undefined variable $currency in C:\xampp\htdocs\hesabino\invoices.php on line 3
+[27-Mar-2025 17:03:23 Europe/Berlin] PHP Warning:  Undefined variable $defaultTaxRate in C:\xampp\htdocs\hesabino\invoices.php on line 4
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 23:17:49 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[27-Mar-2025 21:39:17 Europe/Berlin] PHP Parse error:  syntax error, unexpected identifier "و" in C:\xampp\htdocs\hesabino\invoices.php on line 424
+[28-Mar-2025 00:12:12 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'type
+                         FROM invoices i
+                         LEFT...' at line 4 in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\invoices.php(303): Database->query('SELECT i.*, \r\n ...', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 00:12:26 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'type
+                         FROM invoices i
+                         LEFT...' at line 4 in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\invoices.php(303): Database->query('SELECT i.*, \r\n ...', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 00:41:01 Asia/Tehran] خطا در تولید کد مشتری: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'customer_code' in 'field list'
+[28-Mar-2025 00:41:07 Asia/Tehran] خطا در تولید کد مشتری: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'customer_code' in 'field list'
+[28-Mar-2025 00:44:20 Asia/Tehran] خطا در تولید کد مشتری: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'customer_code' in 'field list'
+[28-Mar-2025 00:44:46 Asia/Tehran] خطا در تولید کد مشتری: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'customer_code' in 'field list'
+[28-Mar-2025 00:45:03 Asia/Tehran] خطا در تولید کد مشتری: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'customer_code' in 'field list'
+[28-Mar-2025 00:48:05 Asia/Tehran] خطا در تولید کد مشتری: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'customer_code' in 'field list'
+[28-Mar-2025 00:48:45 Asia/Tehran] خطا در تولید کد مشتری: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'customer_code' in 'field list'
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 04:11:31 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 11:26:47 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 12:08:35 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 12:08:39 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:42 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 12:08:44 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 12:08:44 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 10:04:22 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "SITE_NAME" in C:\xampp\htdocs\hesabino\invoices.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\invoices.php on line 6
+[28-Mar-2025 10:04:42 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "SITE_NAME" in C:\xampp\htdocs\hesabino\invoices.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\invoices.php on line 6
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 13:08:23 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 13:08:23 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:10:15 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Warning:  Undefined array key "customer_name" in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\dashboard.php on line 243
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:11:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:13:54 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:13:54 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:15:14 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:15:14 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:46:35 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:46:35 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:52:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:52:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:52:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.debtors' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-debtors-data.php(11): Database->query('\r\n    SELECT cu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.debtors' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-debtors-data.php(11): Database->query('\r\n    SELECT cu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.profit_loss' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-profit-loss-data.php(11): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:22 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cheques' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-received-cheques-data.php(11): Database->query('\r\n    SELECT ch...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:30 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:30 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:30 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.debtors' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-debtors-data.php(11): Database->query('\r\n    SELECT cu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:30 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.profit_loss' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-profit-loss-data.php(11): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:55:30 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cheques' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-received-cheques-data.php(11): Database->query('\r\n    SELECT ch...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:03 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:03 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:03 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.debtors' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-debtors-data.php(11): Database->query('\r\n    SELECT cu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:03 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.profit_loss' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-profit-loss-data.php(11): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:03 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cheques' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-received-cheques-data.php(11): Database->query('\r\n    SELECT ch...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:15 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(13): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:15 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(13): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:15 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.debtors' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-debtors-data.php(11): Database->query('\r\n    SELECT cu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:15 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.profit_loss' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-profit-loss-data.php(11): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 14:59:15 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cheques' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-received-cheques-data.php(11): Database->query('\r\n    SELECT ch...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:01:16 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cash_flows' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-cash-flow-data.php(11): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:01:16 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(11): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:01:16 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.debtors' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-debtors-data.php(11): Database->query('\r\n    SELECT cu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:01:16 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.profit_loss' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-profit-loss-data.php(11): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:01:16 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cheques' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-received-cheques-data.php(11): Database->query('\r\n    SELECT ch...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:07:33 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(11): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:07:33 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.debtors' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-debtors-data.php(11): Database->query('\r\n    SELECT cu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:07:33 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.profit_loss' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-profit-loss-data.php(11): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:07:33 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cheques' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-received-cheques-data.php(11): Database->query('\r\n    SELECT ch...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:07:38 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.transactions' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-income-expense-data.php(11): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:07:38 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.debtors' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-debtors-data.php(11): Database->query('\r\n    SELECT cu...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:07:38 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.profit_loss' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-profit-loss-data.php(11): Database->query('\r\n    SELECT DA...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 15:07:38 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.cheques' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\ajax\get-received-cheques-data.php(11): Database->query('\r\n    SELECT ch...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[28-Mar-2025 12:56:50 Europe/Berlin] PHP Parse error:  syntax error, unexpected token ":" in C:\xampp\htdocs\hesabino\ajax\get-sales-data.php on line 108
+[28-Mar-2025 12:57:20 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "," in C:\xampp\htdocs\hesabino\ajax\get-sales-data.php on line 96
+[28-Mar-2025 12:57:51 Europe/Berlin] PHP Parse error:  syntax error, unexpected token ":" in C:\xampp\htdocs\hesabino\ajax\get-sales-data.php on line 95
+[28-Mar-2025 17:08:58 Asia/Tehran] PHP Fatal error:  Cannot redeclare formatNumber() (previously declared in C:\xampp\htdocs\hesabino\dashboard.php:58) in C:\xampp\htdocs\hesabino\includes\functions.php on line 21
+[28-Mar-2025 17:09:59 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:09:59 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:09:59 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:09:59 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:00 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:17 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:10:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:20 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:21 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:21 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:21 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:21 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:21 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:21 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:21 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:21 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:23 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:23 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 28
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Undefined variable $row in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:11:24 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\hesabino\includes\functions.php on line 29
+[28-Mar-2025 17:12:19 Asia/Tehran] PHP Parse error:  syntax error, unexpected token "{" in C:\xampp\htdocs\hesabino\includes\functions.php on line 4
+[28-Mar-2025 17:15:13 Asia/Tehran] PHP Fatal error:  Cannot redeclare formatNumber() (previously declared in C:\xampp\htdocs\hesabino\dashboard.php:5) in C:\xampp\htdocs\hesabino\includes\functions.php on line 21
+[28-Mar-2025 17:15:23 Asia/Tehran] PHP Fatal error:  Cannot redeclare formatNumber() (previously declared in C:\xampp\htdocs\hesabino\dashboard.php:5) in C:\xampp\htdocs\hesabino\includes\functions.php on line 21
+[28-Mar-2025 17:48:12 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 3
+[28-Mar-2025 17:48:12 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function check_login() in C:\xampp\htdocs\hesabino\includes\sidebar.php:5
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\dashboard.php(76): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 5
+[28-Mar-2025 17:50:02 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 3
+[28-Mar-2025 17:50:02 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function check_login() in C:\xampp\htdocs\hesabino\includes\sidebar.php:5
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\dashboard.php(76): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 5
+[28-Mar-2025 17:50:54 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 3
+[28-Mar-2025 17:50:54 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function check_login() in C:\xampp\htdocs\hesabino\includes\sidebar.php:5
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\dashboard.php(76): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 5
+[28-Mar-2025 17:51:44 Asia/Tehran] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 5
+[28-Mar-2025 15:32:17 Europe/Berlin] PHP Warning:  require_once(includes/init.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\people\customers.php on line 2
+[28-Mar-2025 15:32:17 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'includes/init.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\people\customers.php:2
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\customers.php on line 2
+[28-Mar-2025 15:32:33 Europe/Berlin] PHP Warning:  require_once(/includes/init.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\people\customers.php on line 2
+[28-Mar-2025 15:32:33 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '/includes/init.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\people\customers.php:2
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\customers.php on line 2
+[28-Mar-2025 18:02:41 Asia/Tehran] PHP Warning:  include(includes/sidebar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\people\customers.php on line 271
+[28-Mar-2025 18:02:41 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/sidebar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\people\customers.php on line 271
+[28-Mar-2025 18:02:41 Asia/Tehran] PHP Warning:  include(includes/navbar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\people\customers.php on line 274
+[28-Mar-2025 18:02:41 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/navbar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\people\customers.php on line 274
+[28-Mar-2025 15:32:46 Europe/Berlin] PHP Warning:  require_once(/includes/init.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\people\customers.php on line 2
+[28-Mar-2025 15:32:46 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '/includes/init.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\people\customers.php:2
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\customers.php on line 2
+[28-Mar-2025 18:03:18 Asia/Tehran] PHP Warning:  include(includes/sidebar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\people\customers.php on line 271
+[28-Mar-2025 18:03:18 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/sidebar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\people\customers.php on line 271
+[28-Mar-2025 18:03:18 Asia/Tehran] PHP Warning:  include(includes/navbar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\people\customers.php on line 274
+[28-Mar-2025 18:03:18 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/navbar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\people\customers.php on line 274
+[28-Mar-2025 18:16:04 Asia/Tehran] PHP Warning:  include(includes/sidebar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\products\new_product.php on line 135
+[28-Mar-2025 18:16:04 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/sidebar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\products\new_product.php on line 135
+[28-Mar-2025 18:16:04 Asia/Tehran] PHP Warning:  include(includes/navbar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\products\new_product.php on line 140
+[28-Mar-2025 18:16:04 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/navbar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\products\new_product.php on line 140
+[28-Mar-2025 18:16:57 Asia/Tehran] PHP Warning:  include(includes/sidebar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\products\new_product.php on line 135
+[28-Mar-2025 18:16:57 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/sidebar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\products\new_product.php on line 135
+[28-Mar-2025 18:16:57 Asia/Tehran] PHP Warning:  include(includes/navbar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\products\new_product.php on line 140
+[28-Mar-2025 18:16:57 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/navbar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\products\new_product.php on line 140
+[28-Mar-2025 18:17:19 Asia/Tehran] PHP Warning:  include(includes/sidebar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\products\new_product.php on line 135
+[28-Mar-2025 18:17:19 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/sidebar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\products\new_product.php on line 135
+[28-Mar-2025 18:17:19 Asia/Tehran] PHP Warning:  include(includes/navbar.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\products\new_product.php on line 140
+[28-Mar-2025 18:17:19 Asia/Tehran] PHP Warning:  include(): Failed opening 'includes/navbar.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\products\new_product.php on line 140
+[28-Mar-2025 19:30:04 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:30:11 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:31:23 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:31:30 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:31:58 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:32:17 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:32:24 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:36:54 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:37:15 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:37:18 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:38:25 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:38:29 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 19:38:33 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_URL" in C:\xampp\htdocs\hesabino\includes\sidebar.php:7
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(134): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 7
+[28-Mar-2025 20:35:25 Asia/Tehran] PHP Warning:  Undefined variable $error in C:\xampp\htdocs\hesabino\products\new_product.php on line 167
+[28-Mar-2025 20:35:25 Asia/Tehran] PHP Warning:  Undefined variable $success in C:\xampp\htdocs\hesabino\products\new_product.php on line 173
+[28-Mar-2025 20:35:40 Asia/Tehran] PHP Warning:  Undefined variable $error in C:\xampp\htdocs\hesabino\products\new_product.php on line 167
+[28-Mar-2025 20:35:40 Asia/Tehran] PHP Warning:  Undefined variable $success in C:\xampp\htdocs\hesabino\products\new_product.php on line 173
+[28-Mar-2025 20:35:41 Asia/Tehran] PHP Warning:  Undefined variable $error in C:\xampp\htdocs\hesabino\products\new_product.php on line 167
+[28-Mar-2025 20:35:41 Asia/Tehran] PHP Warning:  Undefined variable $success in C:\xampp\htdocs\hesabino\products\new_product.php on line 173
+[28-Mar-2025 20:35:41 Asia/Tehran] PHP Warning:  Undefined variable $error in C:\xampp\htdocs\hesabino\products\new_product.php on line 167
+[28-Mar-2025 20:35:41 Asia/Tehran] PHP Warning:  Undefined variable $success in C:\xampp\htdocs\hesabino\products\new_product.php on line 173
+[28-Mar-2025 20:36:34 Asia/Tehran] PHP Warning:  Undefined variable $error in C:\xampp\htdocs\hesabino\products\new_product.php on line 167
+[28-Mar-2025 20:36:34 Asia/Tehran] PHP Warning:  Undefined variable $success in C:\xampp\htdocs\hesabino\products\new_product.php on line 173
+[28-Mar-2025 20:36:36 Asia/Tehran] PHP Warning:  Undefined variable $error in C:\xampp\htdocs\hesabino\products\new_product.php on line 167
+[28-Mar-2025 20:36:36 Asia/Tehran] PHP Warning:  Undefined variable $success in C:\xampp\htdocs\hesabino\products\new_product.php on line 173
+[28-Mar-2025 20:38:35 Asia/Tehran] PHP Warning:  Undefined variable $error in C:\xampp\htdocs\hesabino\products\new_product.php on line 167
+[28-Mar-2025 20:38:35 Asia/Tehran] PHP Warning:  Undefined variable $success in C:\xampp\htdocs\hesabino\products\new_product.php on line 173
+[28-Mar-2025 21:42:40 Asia/Tehran] PHP Parse error:  syntax error, unexpected token "endif", expecting end of file in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 87
+[28-Mar-2025 21:42:52 Asia/Tehran] PHP Parse error:  syntax error, unexpected end of file, expecting "elseif" or "else" or "endif" in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 254
+[28-Mar-2025 21:43:05 Asia/Tehran] PHP Parse error:  syntax error, unexpected end of file, expecting "elseif" or "else" or "endif" in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 254
+[28-Mar-2025 21:46:00 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function getBasePath() in C:\xampp\htdocs\hesabino\includes\sidebar.php:6
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(178): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 6
+[28-Mar-2025 21:46:07 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function getBasePath() in C:\xampp\htdocs\hesabino\includes\sidebar.php:6
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(178): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 6
+[28-Mar-2025 21:46:58 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function hasPermission() in C:\xampp\htdocs\hesabino\includes\sidebar.php:2
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(178): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 2
+[28-Mar-2025 21:47:23 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function getBasePath() in C:\xampp\htdocs\hesabino\includes\sidebar.php:28
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\includes\sidebar.php(35): baseUrl('/assets/images/...')
+#1 C:\xampp\htdocs\hesabino\products\new_product.php(178): include('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 28
+[28-Mar-2025 21:49:21 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function getBasePath() in C:\xampp\htdocs\hesabino\includes\sidebar.php:5
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\includes\sidebar.php(12): baseUrl('/assets/images/...')
+#1 C:\xampp\htdocs\hesabino\products\new_product.php(178): include('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 5
+[28-Mar-2025 21:49:28 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function baseUrl() in C:\xampp\htdocs\hesabino\includes\sidebar.php:8
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(178): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 8
+[28-Mar-2025 21:49:30 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function baseUrl() in C:\xampp\htdocs\hesabino\includes\sidebar.php:8
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(178): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 8
+[28-Mar-2025 21:49:30 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function baseUrl() in C:\xampp\htdocs\hesabino\includes\sidebar.php:8
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(178): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 8
+[28-Mar-2025 21:49:41 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function baseUrl() in C:\xampp\htdocs\hesabino\includes\sidebar.php:8
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(178): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 8
+[28-Mar-2025 21:50:06 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function getBasePath() in C:\xampp\htdocs\hesabino\includes\sidebar.php:6
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(178): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 6
+[28-Mar-2025 22:11:07 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "APP_VERSION" in C:\xampp\htdocs\hesabino\includes\sidebar.php:270
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\products\new_product.php(178): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 270
+[28-Mar-2025 19:43:37 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:43:37 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:43:37 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:44:51 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:44:51 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:44:51 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:44:56 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:44:56 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:44:56 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:45:32 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:45:32 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:45:32 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:03 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 22:17:03 Asia/Tehran] PHP Warning:  Undefined variable $error in C:\xampp\htdocs\hesabino\products\new_product.php on line 203
+[28-Mar-2025 22:17:03 Asia/Tehran] PHP Warning:  Undefined variable $success in C:\xampp\htdocs\hesabino\products\new_product.php on line 209
+[28-Mar-2025 19:47:03 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:03 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:03 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:19 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:19 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:19 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:19 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:30 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:30 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:30 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:47:30 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:29 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:29 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:29 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:29 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:35 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:35 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:35 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:35 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:51 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:51 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:55:51 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:56:18 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:56:18 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:56:18 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:56:22 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:56:22 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 19:56:22 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 20:01:27 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 20:01:27 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 20:01:27 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 21:16:58 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 21:16:58 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 21:16:58 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[28-Mar-2025 21:16:59 Europe/Berlin] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\config\config.php on line 9
+[29-Mar-2025 00:10:10 Asia/Tehran] PHP Fatal error:  Cannot redeclare isActiveMenu() (previously declared in C:\xampp\htdocs\hesabino\includes\sidebar.php:8) in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 10
+[29-Mar-2025 00:10:38 Asia/Tehran] PHP Fatal error:  Cannot redeclare isActiveMenu() (previously declared in C:\xampp\htdocs\hesabino\includes\sidebar.php:8) in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 10
+[29-Mar-2025 00:26:37 Asia/Tehran] PHP Fatal error:  Cannot redeclare isActiveMenu() (previously declared in C:\xampp\htdocs\hesabino\includes\sidebar.php:8) in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 10
+[29-Mar-2025 00:28:04 Asia/Tehran] PHP Fatal error:  Cannot redeclare isActiveMenu() (previously declared in C:\xampp\htdocs\hesabino\includes\sidebar.php:8) in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 10
+[29-Mar-2025 00:48:02 Asia/Tehran] PHP Fatal error:  Cannot redeclare isActiveMenu() (previously declared in C:\xampp\htdocs\hesabino\includes\sidebar.php:8) in C:\xampp\htdocs\hesabino\includes\sidebar.php on line 10
+[29-Mar-2025 00:57:54 Asia/Tehran] PHP Parse error:  syntax error, unexpected token ".", expecting ":" in C:\xampp\htdocs\hesabino\config\database.php on line 100
+[29-Mar-2025 01:22:56 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:14
+Stack trace:
+#0 C:\xampp\htdocs\hesab\dashboard.php(76): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 14
+[29-Mar-2025 01:26:15 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:14
+Stack trace:
+#0 C:\xampp\htdocs\hesab\dashboard.php(76): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 14
+[28-Mar-2025 22:56:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "SITE_NAME" in C:\xampp\htdocs\hesab\people\new_person.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesab\people\new_person.php on line 6
+[28-Mar-2025 22:56:57 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "SITE_NAME" in C:\xampp\htdocs\hesab\people\new_person.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesab\people\new_person.php on line 6
+[29-Mar-2025 01:27:05 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:14
+Stack trace:
+#0 C:\xampp\htdocs\hesab\product-add.php(133): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 14
+[29-Mar-2025 01:27:09 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:14
+Stack trace:
+#0 C:\xampp\htdocs\hesab\product-add.php(133): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 14
+[29-Mar-2025 01:27:12 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:14
+Stack trace:
+#0 C:\xampp\htdocs\hesab\product-add.php(133): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 14
+[28-Mar-2025 22:57:52 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "SITE_NAME" in C:\xampp\htdocs\hesab\people\new_person.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesab\people\new_person.php on line 6
+[29-Mar-2025 01:27:53 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:14
+Stack trace:
+#0 C:\xampp\htdocs\hesab\product-add.php(133): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 14
+[28-Mar-2025 22:58:55 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "SITE_NAME" in C:\xampp\htdocs\hesab\people\new_person.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesab\people\new_person.php on line 6
+[28-Mar-2025 22:59:04 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "SITE_NAME" in C:\xampp\htdocs\hesab\people\new_person.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesab\people\new_person.php on line 6
+[28-Mar-2025 22:59:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "SITE_NAME" in C:\xampp\htdocs\hesab\people\new_person.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesab\people\new_person.php on line 6
+[29-Mar-2025 01:44:24 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Database::prepare() in C:\xampp\htdocs\hesab\classes\Menu.php:12
+Stack trace:
+#0 C:\xampp\htdocs\hesab\includes\sidebar.php(4): Menu->getMenus()
+#1 C:\xampp\htdocs\hesab\product-add.php(133): include('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\hesab\classes\Menu.php on line 12
+[28-Mar-2025 23:14:28 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "SITE_NAME" in C:\xampp\htdocs\hesab\people\new_person.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesab\people\new_person.php on line 6
+[29-Mar-2025 13:32:04 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:13
+Stack trace:
+#0 C:\xampp\htdocs\hesab\products.php(131): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 13
+[29-Mar-2025 13:32:11 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:13
+Stack trace:
+#0 C:\xampp\htdocs\hesab\products.php(131): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 13
+[29-Mar-2025 16:43:43 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:13
+Stack trace:
+#0 C:\xampp\htdocs\hesab\dashboard.php(76): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 13
+[29-Mar-2025 16:43:55 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:13
+Stack trace:
+#0 C:\xampp\htdocs\hesab\dashboard.php(76): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 13
+[29-Mar-2025 16:43:59 Asia/Tehran] PHP Fatal error:  Uncaught Error: Undefined constant "BASE_PATH" in C:\xampp\htdocs\hesab\includes\sidebar.php:13
+Stack trace:
+#0 C:\xampp\htdocs\hesab\dashboard.php(76): include()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesab\includes\sidebar.php on line 13
