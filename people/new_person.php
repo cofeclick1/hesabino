@@ -3,7 +3,6 @@ require_once '../includes/init.php';
 
 // بررسی دسترسی کاربر
 
-
 $db = Database::getInstance();
 $error = '';
 $success = '';
@@ -66,6 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if ($db->insert('people', $data)) {
                 $success = 'شخص جدید با موفقیت ثبت شد';
+                // ذخیره نام و نام خانوادگی برای نمایش در نوتیفیکیشن
+                echo "<script>
+                    var personName = '" . $firstName . ' ' . $lastName . "';
+                    var showSuccessMessage = true;
+                </script>";
                 // پاک کردن فرم
                 $_POST = [];
             } else {
@@ -91,22 +95,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/dashboard.css">
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/sidebar.css">
+    <!-- اضافه کردن SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
     
     <style>
         .profile-upload {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             margin: 0 auto 20px;
             position: relative;
             cursor: pointer;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .profile-upload img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            object-fit: cover;
             border: 3px solid #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         .profile-upload .overlay {
             position: absolute;
@@ -114,17 +127,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.5);
             border-radius: 50%;
+            background: rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
         }
         .profile-upload:hover .overlay {
             opacity: 1;
+        }
+        .profile-upload .fa-camera {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        .profile-upload:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
     </style>
 </head>
@@ -159,13 +180,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="alert alert-danger">
                         <i class="fas fa-exclamation-circle me-1"></i>
                         <?php echo $error; ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if ($success): ?>
-                    <div class="alert alert-success">
-                        <i class="fas fa-check-circle me-1"></i>
-                        <?php echo $success; ?>
                     </div>
                 <?php endif; ?>
 
@@ -290,6 +304,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo BASE_PATH; ?>/assets/js/sidebar.js"></script>
+    <!-- اضافه کردن اسکریپت SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
     
     <script>
         $(document).ready(function() {
@@ -321,6 +337,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // تنظیم وضعیت اولیه فیلدهای حقوقی
             if ($('#personType').val() === 'legal') {
                 $('.legal-fields').show();
+            }
+
+            // نمایش نوتیفیکیشن در صورت موفقیت
+            if (typeof showSuccessMessage !== 'undefined' && showSuccessMessage) {
+                Swal.fire({
+                    title: 'عملیات موفق',
+                    text: 'شخص ' + personName + ' با موفقیت افزوده شد',
+                    icon: 'success',
+                    confirmButtonText: 'تایید',
+                    customClass: {
+                        confirmButton: 'btn btn-primary',
+                        popup: 'rtl'
+                    }
+                });
             }
         });
     </script>
