@@ -1,23 +1,23 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // لود کردن تنظیمات اصلی
 require_once __DIR__ . '/../config/config.php';
 
-// تنظیمات پایه مسیرها
-define('BASE_PATH', '/hesabino');
-define('ASSETS_URL', BASE_PATH . '/assets');
-// بررسی و لود کردن فایل کانفیگ اصلی اگر لود نشده
+// تنظیمات پایه مسیرها - فقط اگر تعریف نشده باشد
 if (!defined('BASE_PATH')) {
     define('BASE_PATH', '/hesabino');
 }
-// شروع session
-session_start();
+if (!defined('ASSETS_URL')) {
+    define('ASSETS_URL', BASE_PATH . '/assets');
+}
 
 // تنظیم charset به UTF-8
 header('Content-Type: text/html; charset=utf-8');
 
 // لود کردن فایل‌های مورد نیاز
-require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/jdf.php';
@@ -70,20 +70,5 @@ if (!in_array($script_path, $public_pages)) {
 $user = $auth->getCurrentUser();
 $lowStock = $db->query("SELECT COUNT(*) as total FROM products WHERE quantity <= min_quantity AND status = 'active'")->fetch()['total'];
 
-// چک کردن زمان آخرین پاکسازی لیست مشتریان
-try {
-    $cleanupTime = $db->query("SELECT last_cleanup FROM customer_cleanup ORDER BY id DESC LIMIT 1")->fetchColumn();
-    if ($cleanupTime) {
-        $cleanupTime = new DateTime($cleanupTime);
-        $currentTime = new DateTime();
-        $interval = $currentTime->diff($cleanupTime);
-
-        // اگر بیشتر از یک روز گذشته باشد، لیست مشتریان را پاکسازی کنید
-        if ($interval->days >= 1) {
-            $db->query("DELETE FROM customers WHERE name = 'مشتری' AND DATE(created_at) < DATE_SUB(NOW(), INTERVAL 1 DAY)");
-            $db->query("INSERT INTO customer_cleanup (last_cleanup) VALUES (NOW())");
-        }
-    }
-} catch (Exception $e) {
-    error_log("خطا در پاکسازی لیست مشتریان: " . $e->getMessage());
-}
+// تنظیم منطقه زمانی
+date_default_timezone_set('Asia/Tehran');

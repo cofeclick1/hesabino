@@ -8,6 +8,10 @@ $success = '';
 
 // پردازش فرم در صورت ارسال
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // مقداردهی اولیه فیلدها برای جلوگیری از خطای undefined
+    $_POST['city'] = $_POST['city'] ?? null;
+    $_POST['tags'] = $_POST['tags'] ?? '';
+    
     $firstName = sanitize($_POST['first_name']);
     $lastName = sanitize($_POST['last_name']);
     $mobile = sanitize($_POST['mobile']);
@@ -20,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $creditLimit = floatval($_POST['credit_limit']);
     $address = sanitize($_POST['address']);
     $notes = sanitize($_POST['notes']);
-    $tags = isset($_POST['tags']) ? sanitize($_POST['tags']) : '';
+    $tags = sanitize($_POST['tags']);
     $birthday = sanitize($_POST['birthday']);
     $province = sanitize($_POST['province']);
     $city = sanitize($_POST['city']);
@@ -135,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $db->insert('changes', $changeLog);
 
                 $db->commit();
-                $success = 'شخص جدید با موفقیت ثبت شد';
+                $_SESSION['success'] = 'شخص جدید با موفقیت ثبت شد';
                 // ذخیره نام و نام خانوادگی برای نمایش در نوتیفیکیشن
                 echo "<script>
                     var personName = '" . addslashes($firstName . ' ' . $lastName) . "';
@@ -172,15 +176,14 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/dashboard.css">
     <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/sidebar.css">
-    <!-- اضافه کردن Select2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
     <!-- Persian DatePicker -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jalalidatepicker@0.1.0/dist/jalalidatepicker.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
-<script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+    
     <style>
         .swal2-persian .select2-container {
             display: none !important;
@@ -594,15 +597,15 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
 
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
-                                                    <label class="form-label">اینستاگرام</label>
+                                                                                                        <label class="form-label">اینستاگرام</label>
                                                     <div class="social-input">
                                                         <input type="text" name="instagram_id" class="form-control" dir="ltr"
-                                                           placeholder="نام کاربری اینستاگرام"
-                                                           value="<?php echo $_POST['instagram_id'] ?? ''; ?>">
+                                                               placeholder="نام کاربری اینستاگرام"
+                                                               value="<?php echo $_POST['instagram_id'] ?? ''; ?>">
                                                         <i class="fab fa-instagram"></i>
                                                     </div>
                                                 </div>
-                                                                                                <div class="col-md-4 mb-3">
+                                                <div class="col-md-4 mb-3">
                                                     <label class="form-label">تلگرام</label>
                                                     <div class="social-input">
                                                         <input type="text" name="telegram_id" class="form-control" dir="ltr"
@@ -697,10 +700,11 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
     <!-- Select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- Persian DatePicker -->
-    <script src="https://cdn.jsdelivr.net/npm/jalalidatepicker@0.1.0/dist/jalalidatepicker.min.js"></script>
+    <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/persian-date@1.1.0/dist/persian-date.min.js"></script>
+
     <script>
         $(document).ready(function() {
             // فعال‌سازی Select2
@@ -708,20 +712,34 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
                 theme: 'bootstrap-5',
                 width: '100%'
             });
-$('[data-jdp]').persianDatepicker({
-    format: 'YYYY/MM/DD',
-    autoClose: true,
-    initialValue: false,
-    persianDigit: false,
-    observer: true,
-    calendar: {
-        persian: {
-            locale: 'fa'
+
+           // تنظیمات تاریخ شمسی
+$('[data-jdp]').each(function() {
+    $(this).persianDatepicker({
+        format: 'YYYY/MM/DD',
+        autoClose: true,
+        initialValue: false,
+        persianDigit: false,
+        observer: true,
+        calendar: {
+            persian: {
+                locale: 'fa'
+            }
+        },
+        toolbox: {
+            calendarSwitch: {
+                enabled: false
+            }
+        },
+        dayPicker: {
+            onSelect: function(unix) {
+                // تبدیل به فرمت شمسی
+                var pd = new persianDate(unix);
+                $(this.model.inputElement).val(pd.format('YYYY/MM/DD'));
+            }
         }
-    }
+    });
 });
-            // فعال‌سازی تاریخ شمسی
-            jalaliDatepicker.startWatch();
 
             // نمایش/مخفی کردن فیلدهای حقوقی
             $('#personType').change(function() {
