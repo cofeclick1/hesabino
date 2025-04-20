@@ -1,163 +1,207 @@
-/* تنظیمات کلی */
+/**
+ * Hesabino Sidebar Styles
+ * Version: 1.0.0
+ * Author: Copilot
+ * License: MIT
+ */
+
+/* ---------- متغیرهای طراحی ---------- */
 :root {
     --sidebar-width: 280px;
-    --primary-color: #007bff;
-    --hover-color: #0056b3;
-    --text-color: #333;
-    --border-color: #eee;
-    --bg-hover: #f8f9fa;
+    --sidebar-bg: #2c3e50;
+    --sidebar-hover: rgba(255, 255, 255, 0.1);
+    --sidebar-active: #3498db;
+    --sidebar-text: #ecf0f1;
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+    --sidebar-submenu: rgba(0, 0, 0, 0.2);
+    --sidebar-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    --sidebar-transition: all 0.3s ease;
 }
 
-/* استایل کلی سایدبار */
+/* ---------- کانتینر اصلی سایدبار ---------- */
 .sidebar {
     width: var(--sidebar-width);
     height: 100vh;
-    background: #ffffff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom, var(--sidebar-bg), #34495e);
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 1000;
+    color: var(--sidebar-text);
     overflow-y: auto;
-    transition: transform 0.3s ease;
+    transition: var(--sidebar-transition);
+    box-shadow: var(--sidebar-shadow);
+    z-index: 1000;
+    font-family: IRANSans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* استایل اسکرول‌بار سایدبار */
+/* ---------- اسکرول‌بار سفارشی ---------- */
 .sidebar::-webkit-scrollbar {
     width: 5px;
 }
 
 .sidebar::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: transparent;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
+    background: var(--sidebar-border);
+    border-radius: 10px;
 }
 
-/* هدر سایدبار */
+/* ---------- هدر سایدبار ---------- */
 .sidebar-header {
     padding: 20px;
     text-align: center;
-    border-bottom: 1px solid var(--border-color);
-    background: var(--bg-hover);
+    border-bottom: 1px solid var(--sidebar-border);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-header .logo {
     width: 80px;
-    height: auto;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 15px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.1);
     margin-bottom: 10px;
+    transition: var(--sidebar-transition);
+}
+
+.sidebar-header .logo:hover {
+    transform: scale(1.05);
 }
 
 .sidebar-header h3 {
     margin: 0;
     font-size: 18px;
-    color: var(--text-color);
-    font-weight: bold;
+    font-weight: 500;
+    color: var(--sidebar-text);
 }
 
-/* منوی اصلی */
+/* ---------- منوی اصلی ---------- */
 .menu {
     list-style: none;
-    padding: 0;
+    padding: 10px 0;
     margin: 0;
 }
 
 .menu-item {
-    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    margin: 4px 0;
 }
 
 .menu-link {
     display: flex;
     align-items: center;
     padding: 12px 20px;
-    color: var(--text-color);
-    text-decoration: none !important;
-    transition: all 0.3s ease;
-    position: relative;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    transition: var(--sidebar-transition);
+    border-radius: 8px;
+    margin: 0 8px;
 }
 
 .menu-link:hover {
-    background: var(--bg-hover);
-    color: var(--primary-color);
+    background: var(--sidebar-hover);
+    color: var(--sidebar-text);
+    text-decoration: none;
 }
 
 .menu-link i {
-    margin-left: 10px;
+    width: 24px;
     font-size: 16px;
-    width: 20px;
+    margin-left: 10px;
     text-align: center;
-    transition: color 0.3s ease;
+    transition: var(--sidebar-transition);
 }
 
 .menu-link span {
     flex: 1;
-}
-
-/* زیرمنو */
-.submenu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: var(--bg-hover);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-}
-
-.menu-item.active .submenu {
-    max-height: 1000px;
-}
-
-.submenu li a {
-    padding: 10px 20px 10px 40px;
-    display: block;
-    color: var(--text-color);
-    text-decoration: none !important;
-    transition: all 0.3s ease;
     font-size: 14px;
 }
 
-.submenu li a:hover {
-    background: #f1f1f1;
-    color: var(--primary-color);
+/* ---------- نشانگر منوی فعال ---------- */
+.menu-item.active > .menu-link {
+    background: var(--sidebar-active);
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* فلش منوهای کشویی */
+.menu-item.active > .menu-link i {
+    transform: scale(1.1);
+}
+
+/* ---------- فلش زیرمنو ---------- */
 .submenu-arrow {
-    margin-right: auto;
-    transition: transform 0.3s ease;
+    transition: var(--sidebar-transition);
     font-size: 12px;
 }
 
-.menu-item.active > .menu-link .submenu-arrow {
+.menu-item.open .submenu-arrow {
     transform: rotate(-90deg);
 }
 
-/* فوتر سایدبار */
+/* ---------- زیرمنو ---------- */
+.submenu {
+    list-style: none;
+    padding: 5px 0;
+    margin: 0 8px;
+    background: var(--sidebar-submenu);
+    border-radius: 8px;
+    display: none;
+}
+
+.menu-item.open .submenu {
+    display: block;
+}
+
+.submenu li a {
+    display: block;
+    padding: 8px 20px 8px 35px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 13px;
+    transition: var(--sidebar-transition);
+    opacity: 0.8;
+    border-radius: 6px;
+    margin: 2px 4px;
+}
+
+.submenu li a:hover {
+    opacity: 1;
+    background: var(--sidebar-hover);
+    padding-right: 25px;
+}
+
+.submenu li a.active {
+    background: var(--sidebar-active);
+    color: #ffffff;
+    opacity: 1;
+}
+
+/* ---------- فوتر سایدبار ---------- */
 .sidebar-footer {
     padding: 15px 20px;
-    border-top: 1px solid var(--border-color);
-    position: sticky;
-    bottom: 0;
-    background: #fff;
-    z-index: 1;
+    border-top: 1px solid var(--sidebar-border);
+    background: rgba(0, 0, 0, 0.1);
+    margin-top: auto;
 }
 
 .user-info {
     display: flex;
     align-items: center;
+    background: var(--sidebar-submenu);
+    padding: 10px;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
 .user-avatar {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 8px;
     margin-left: 10px;
     object-fit: cover;
-    border: 2px solid var(--border-color);
 }
 
 .user-details {
@@ -166,84 +210,113 @@
 
 .user-name {
     display: block;
-    font-weight: bold;
     font-size: 14px;
-    color: var(--text-color);
+    font-weight: 500;
+    color: var(--sidebar-text);
     margin-bottom: 2px;
 }
 
 .user-role {
     display: block;
     font-size: 12px;
-    color: #666;
+    color: var(--sidebar-text);
+    opacity: 0.7;
 }
 
 .version-info {
     text-align: center;
     font-size: 12px;
-    color: #999;
-    margin-top: 5px;
+    color: var(--sidebar-text);
+    opacity: 0.5;
 }
 
-/* حالت فعال */
-.menu-item.active > .menu-link {
-    background: var(--primary-color);
-    color: #fff;
-}
-
-.menu-item.active > .menu-link i,
-.menu-item.active > .menu-link .submenu-arrow {
-    color: #fff;
-}
-
-/* تنظیمات ریسپانسیو */
-@media (max-width: 768px) {
+/* ---------- ریسپانسیو ---------- */
+@media (max-width: 992px) {
     .sidebar {
         transform: translateX(100%);
     }
     
-    .sidebar.mobile-visible {
+    .sidebar.open {
         transform: translateX(0);
     }
-
-    .main-content {
-        margin-right: 0 !important;
-    }
-
+    
     .sidebar-toggle {
-        display: block !important;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: var(--sidebar-active);
+        border: none;
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1050;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: var(--sidebar-transition);
+    }
+
+    .sidebar-toggle:hover {
+        transform: scale(1.1);
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+        backdrop-filter: blur(2px);
+    }
+
+    .sidebar.open + .sidebar-overlay {
+        display: block;
     }
 }
 
-/* محتوای اصلی */
-.main-content {
-    margin-right: var(--sidebar-width);
-    transition: margin 0.3s ease;
-    min-height: 100vh;
-    background: #f8f9fa;
-    padding: 20px;
-}
-
-/* دکمه تاگل سایدبار */
-.sidebar-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    padding: 10px;
-    font-size: 20px;
-}
-
-.sidebar-toggle:focus {
-    outline: none;
-}
-
-/* انیمیشن‌ها */
+/* ---------- انیمیشن‌ها ---------- */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.submenu.active {
-    animation: fadeIn 0.3s ease-in-out;
+.submenu {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ---------- بهینه‌سازی برای صفحات کوچک ---------- */
+@media (max-height: 600px) {
+    .sidebar-header {
+        padding: 15px;
+    }
+    
+    .sidebar-header .logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .menu-link {
+        padding: 8px 20px;
+    }
+    
+    .submenu li a {
+        padding: 6px 20px 6px 35px;
+    }
+    
+    .sidebar-footer {
+        padding: 10px 15px;
+    }
 }

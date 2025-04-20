@@ -17,8 +17,8 @@ if (!defined('BASE_PATH')) {
     <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/fontiran.css">
     <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/style.css">
     <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/dashboard.css">
-    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/sidebar.css">
 
+<link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/sidebar.css">
     <!-- استایل‌های اختصاصی -->
     <?php if (isset($customCss) && is_array($customCss)): ?>
         <?php foreach ($customCss as $cssFile): ?>

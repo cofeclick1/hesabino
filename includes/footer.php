@@ -10,5 +10,6 @@
     
     <!-- Custom JS -->
     <script src="assets/js/main.js"></script>
+    <script src="<?php echo BASE_PATH; ?>/assets/js/sidebar.js"></script>
 </body>
 </html>
