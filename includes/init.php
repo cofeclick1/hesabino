@@ -30,12 +30,14 @@ ini_set('display_errors', 1);
 $current_file = basename($_SERVER['SCRIPT_FILENAME']);
 $public_pages = ['login.php', 'register.php', 'forgot-password.php'];
 
+// اگر صفحه لاگین یا رجیستر نیست، بررسی لاگین کنیم
 if (!in_array($current_file, $public_pages)) {
+    // اگر کاربر لاگین نکرده، به صفحه لاگین هدایت شود
     if (!$auth->isLoggedIn()) {
         header('Location: ' . BASE_PATH . '/login.php');
         exit;
     }
-    
+
     // بررسی دسترسی‌ها برای صفحات مختلف
     $permission_map = [
         'new_person.php' => 'people_add',
@@ -44,17 +46,16 @@ if (!in_array($current_file, $public_pages)) {
         'people_list.php' => 'people_view'
     ];
 
-    if (isset($permission_map[$current_file]) && !$auth->hasPermission($permission_map[$current_file])) {
-        if (!isset($_SESSION['from_init'])) {
+    // اگر صفحه نیاز به دسترسی خاصی دارد
+    if (isset($permission_map[$current_file])) {
+        // اگر کاربر دسترسی ندارد و سوپر ادمین هم نیست
+        if (!$auth->hasPermission($permission_map[$current_file]) && !$_SESSION['is_super_admin']) {
             $_SESSION['error'] = 'شما مجوز دسترسی به این بخش را ندارید';
-            $_SESSION['from_init'] = true;
             header('Location: ' . BASE_PATH . '/dashboard.php');
             exit;
         }
     }
 }
-
-unset($_SESSION['from_init']);
 
 // مقداردهی متغیرهای مورد نیاز
 $user = $auth->getCurrentUser();

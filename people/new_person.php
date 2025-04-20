@@ -12,6 +12,7 @@ if (!$auth->hasPermission('people_add')) {
     exit;
 }
 
+// ایجاد نمونه از دیتابیس
 $db = Database::getInstance();
 $error = '';
 $success = '';
