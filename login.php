@@ -1,12 +1,13 @@
 <?php
+// جلوگیری از اجرای دوباره init.php
+define('IN_LOGIN', true);
 require_once 'includes/init.php';
 
 // اگر کاربر قبلاً لاگین کرده است
-if (isset($_SESSION['user_id'])) {
+if ($auth->isLoggedIn()) {
     redirect('dashboard.php');
 }
 
-$auth = new Auth();
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
