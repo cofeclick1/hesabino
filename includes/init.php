@@ -27,11 +27,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // بررسی لاگین کاربر
-$current_file = basename($_SERVER['SCRIPT_FILENAME']);
-$public_pages = ['login.php', 'register.php', 'forgot-password.php'];
+$script_path = $_SERVER['SCRIPT_NAME'];
+$public_pages = ['/login.php', '/register.php', '/forgot-password.php'];
 
-// اگر صفحه لاگین یا رجیستر نیست، بررسی لاگین کنیم
-if (!in_array($current_file, $public_pages)) {
+// اگر صفحه عمومی نیست، لاگین را بررسی کنیم
+if (!in_array($script_path, $public_pages)) {
     // اگر کاربر لاگین نکرده، به صفحه لاگین هدایت شود
     if (!$auth->isLoggedIn()) {
         header('Location: ' . BASE_PATH . '/login.php');
@@ -40,16 +40,16 @@ if (!in_array($current_file, $public_pages)) {
 
     // بررسی دسترسی‌ها برای صفحات مختلف
     $permission_map = [
-        'new_person.php' => 'people_add',
-        'edit_person.php' => 'people_edit',
-        'delete_person.php' => 'people_delete',
-        'people_list.php' => 'people_view'
+        '/people/new_person.php' => 'people_add',
+        '/people/edit_person.php' => 'people_edit',
+        '/people/delete_person.php' => 'people_delete',
+        '/people/people_list.php' => 'people_view'
     ];
 
     // اگر صفحه نیاز به دسترسی خاصی دارد
-    if (isset($permission_map[$current_file])) {
+    if (isset($permission_map[$script_path])) {
         // اگر کاربر دسترسی ندارد و سوپر ادمین هم نیست
-        if (!$auth->hasPermission($permission_map[$current_file]) && !$_SESSION['is_super_admin']) {
+        if (!$auth->hasPermission($permission_map[$script_path])) {
             $_SESSION['error'] = 'شما مجوز دسترسی به این بخش را ندارید';
             header('Location: ' . BASE_PATH . '/dashboard.php');
             exit;
