@@ -4,12 +4,7 @@ class Auth {
     private $db;
     private $userId = null;
     private $userPermissions = [];
-    
-    private function __construct() {
-        $this->db = Database::getInstance();
-        $this->initUser();
-    }
-    
+
     public static function getInstance() {
         if (self::$instance === null) {
             self::$instance = new self();
@@ -17,8 +12,13 @@ class Auth {
         return self::$instance;
     }
 
+    private function __construct() {
+        $this->db = Database::getInstance();
+        $this->initUser();
+    }
+
     private function initUser() {
-        if (isset($_SESSION['user_id'])) {
+        if ($this->isLoggedIn()) {
             $this->userId = $_SESSION['user_id'];
             $this->loadUserPermissions();
         }
@@ -56,17 +56,18 @@ class Auth {
     }
     
     public function login($username, $password) {
-        try {
-            $user = $this->db->get('users', '*', ['username' => $username]);
-            
-            if ($user && password_verify($password, $user['password'])) {
+        $stmt = $this->db->query(
+            "SELECT * FROM users WHERE username = ?", 
+            [$username]
+        );
+        
+        if ($user = $stmt->fetch()) {
+            if (password_verify($password, $user['password'])) {
                 $this->createSession($user);
                 $this->userId = $user['id'];
                 $this->loadUserPermissions();
                 return true;
             }
-        } catch (Exception $e) {
-            error_log("Login error: " . $e->getMessage());
         }
         return false;
     }
@@ -79,28 +80,27 @@ class Auth {
             $this->db->beginTransaction();
 
             // ثبت کاربر
-            $userId = $this->db->insert('users', $data);
-            if (!$userId) {
-                throw new Exception("خطا در ثبت کاربر");
-            }
+            if ($this->db->insert('users', $data)) {
+                $userId = $this->db->lastInsertId();
 
-            // اختصاص نقش پیش‌فرض به کاربر
-            $defaultRoleId = $this->db->get('roles', 'id', ['name' => 'user']);
-            if ($defaultRoleId) {
-                $this->db->insert('user_roles', [
-                    'user_id' => $userId,
-                    'role_id' => $defaultRoleId,
-                    'created_at' => date('Y-m-d H:i:s')
-                ]);
-            }
+                // اختصاص نقش پیش‌فرض به کاربر
+                $defaultRoleId = $this->db->get('roles', 'id', ['name' => 'user']);
+                if ($defaultRoleId) {
+                    $this->db->insert('user_roles', [
+                        'user_id' => $userId,
+                        'role_id' => $defaultRoleId,
+                        'created_at' => date('Y-m-d H:i:s')
+                    ]);
+                }
 
-            $this->db->commit();
-            return true;
+                $this->db->commit();
+                return true;
+            }
         } catch (Exception $e) {
             $this->db->rollback();
             error_log("Registration error: " . $e->getMessage());
-            return false;
         }
+        return false;
     }
     
     public function logout() {
@@ -118,12 +118,12 @@ class Auth {
         $_SESSION['last_activity'] = time();
     }
     
-    public function check() {
-        return $this->userId !== null;
-    }
-    
     public function isLoggedIn() {
-        return $this->check();
+        return isset($_SESSION['user_id']);
+    }
+
+    public function check() {
+        return $this->isLoggedIn();
     }
     
     public function checkRole($role) {
@@ -162,12 +162,33 @@ class Auth {
             return null;
         }
         
-        try {
-            return $this->db->get('users', '*', ['id' => $this->userId]);
-        } catch (Exception $e) {
-            error_log("Error getting current user: " . $e->getMessage());
-            return null;
-        }
+        $stmt = $this->db->query(
+            "SELECT * FROM users WHERE id = ?", 
+            [$_SESSION['user_id']]
+        );
+        
+        return $stmt->fetch();
+    }
+    
+    public function updatePassword($userId, $newPassword) {
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        return $this->db->update(
+            'users',
+            ['password' => $hashedPassword],
+            'id = ' . $userId
+        );
+    }
+    
+    public function updateUser($userId, $data) {
+        return $this->db->update(
+            'users',
+            $data,
+            'id = ' . $userId
+        );
+    }
+
+    public function getUserId() {
+        return $this->userId;
     }
 
     public function getUserPermissions() {
@@ -185,37 +206,6 @@ class Auth {
         } catch (Exception $e) {
             error_log("Error getting user roles: " . $e->getMessage());
             return [];
-        }
-    }
-    
-    public function updatePassword($userId, $newPassword) {
-        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-        try {
-            return $this->db->update(
-                'users',
-                ['password' => $hashedPassword],
-                ['id' => $userId]
-            );
-        } catch (Exception $e) {
-            error_log("Error updating password: " . $e->getMessage());
-            return false;
-        }
-    }
-    
-    public function updateUser($userId, $data) {
-        try {
-            // حذف فیلدهای حساس از آرایه داده
-            unset($data['password']);
-            unset($data['is_super_admin']);
-            
-            return $this->db->update(
-                'users',
-                $data,
-                ['id' => $userId]
-            );
-        } catch (Exception $e) {
-            error_log("Error updating user: " . $e->getMessage());
-            return false;
         }
     }
 
