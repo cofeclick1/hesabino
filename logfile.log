@@ -1541,3 +1541,5 @@ Stack trace:
 #0 C:\xampp\htdocs\hesabino\people\new_person.php(169): Database->query('SELECT id, name...')
 #1 {main}
   thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[21-Apr-2025 02:24:12 Asia/Tehran] PHP Warning:  Undefined array key "city" in C:\xampp\htdocs\hesabino\people\new_person.php on line 28
+[21-Apr-2025 02:24:12 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\includes\functions.php on line 10

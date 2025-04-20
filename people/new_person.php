@@ -1,16 +1,7 @@
 <?php
 require_once '../includes/init.php';
 
-// بررسی دسترسی کاربر
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ' . BASE_PATH . '/login.php');
-    exit;
-}
-if (!$auth->hasPermission('people_add')) {
-    header('Location: ' . BASE_PATH . '/dashboard.php');
-    $_SESSION['error'] = 'شما مجوز دسترسی به این بخش را ندارید';
-    exit;
-}
+
 
 // ایجاد نمونه از دیتابیس
 $db = Database::getInstance();
@@ -191,6 +182,9 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
     
     <style>
+        .swal2-persian .select2-container {
+            display: none !important;
+        }
         .profile-upload {
             width: 150px;
             height: 150px;
@@ -798,9 +792,9 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
                     confirmButtonText: 'تایید',
                     customClass: {
                         confirmButton: 'btn btn-primary',
-                        popup: 'rtl'
+                        popup: 'rtl swal2-persian'
                     }
-                }).then((result) => {
+                });.then((result) => {
                     if (result.isConfirmed && typeof redirectToEdit !== 'undefined' && redirectToEdit) {
                         window.location.href = 'edit_person.php?id=' + personId;
                     }
