@@ -1485,3 +1485,28 @@ Stack trace:
 #0 C:\xampp\htdocs\hesabino\people\new_person.php(163): Database->query('SELECT id, name...')
 #1 {main}
   thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[21-Apr-2025 01:39:38 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.provinces' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:72
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\new_person.php(163): Database->query('SELECT id, name...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[21-Apr-2025 01:41:44 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Auth::hasPermission() in C:\xampp\htdocs\hesabino\people\new_person.php:9
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\new_person.php on line 9
+[21-Apr-2025 01:42:52 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to private Auth::__construct() from global scope in C:\xampp\htdocs\hesabino\includes\init.php:36
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\new_person.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 36
+[21-Apr-2025 01:44:15 Asia/Tehran] PHP Warning:  Undefined variable $auth in C:\xampp\htdocs\hesabino\includes\init.php on line 37
+[21-Apr-2025 01:44:15 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to a member function getCurrentUser() on null in C:\xampp\htdocs\hesabino\includes\init.php:37
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\new_person.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 37
+[21-Apr-2025 01:44:22 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to private Auth::__construct() from global scope in C:\xampp\htdocs\hesabino\includes\init.php:36
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\new_person.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 36

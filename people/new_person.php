@@ -6,6 +6,11 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: ' . BASE_PATH . '/login.php');
     exit;
 }
+if (!$auth->hasPermission('people_add')) {
+    header('Location: ' . BASE_PATH . '/dashboard.php');
+    $_SESSION['error'] = 'شما مجوز دسترسی به این بخش را ندارید';
+    exit;
+}
 
 $db = Database::getInstance();
 $error = '';
