@@ -51,7 +51,7 @@ $showDeleted = isset($_GET['show_deleted']) && $_GET['show_deleted'] === '1';
 
 // ساخت کوئری
 $query = "SELECT p.*, 
-                 u.name as creator_name,
+                 COALESCE(u.username, '-') as creator_name,
                  COUNT(i.id) as invoice_count,
                  COALESCE(SUM(i.final_amount), 0) as total_purchases
           FROM people p 

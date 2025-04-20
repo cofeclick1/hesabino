@@ -132,3 +132,8 @@ function getUserRole($userId) {
 function formatCurrency($number) {
     return number_format($number, 0, '.', ',') . ' تومان';
 }
+
+function toJalali($datetime, $format = 'Y/m/d H:i') {
+    if (empty($datetime)) return '-';
+    return jdate($format, strtotime($datetime));
+}

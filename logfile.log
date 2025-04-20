@@ -1420,3 +1420,54 @@ Stack trace:
 #0 C:\xampp\htdocs\hesabino\people\people_list.php(105): Database->query('SELECT p.*, \r\n ...', Array)
 #1 {main}
   thrown in C:\xampp\htdocs\hesabino\config\database.php on line 72
+[21-Apr-2025 01:02:01 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function toJalali() in C:\xampp\htdocs\hesabino\people\people_list.php:382
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\people_list.php on line 382
+[21-Apr-2025 01:04:32 Asia/Tehran] PHP Warning:  require_once(C:\xampp\htdocs\hesabino\includes/includes/jdf.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\includes\init.php on line 19
+[21-Apr-2025 01:04:32 Asia/Tehran] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\hesabino\includes/includes/jdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\includes\init.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\people_list.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 19
+[21-Apr-2025 01:04:43 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function toJalali() in C:\xampp\htdocs\hesabino\people\people_list.php:382
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\people_list.php on line 382
+[21-Apr-2025 01:05:38 Asia/Tehran] PHP Warning:  require_once(C:\xampp\htdocs\hesabino\includesincludes/jdf.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\includes\init.php on line 19
+[21-Apr-2025 01:05:38 Asia/Tehran] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\hesabino\includesincludes/jdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\includes\init.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\people_list.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 19
+[21-Apr-2025 01:05:43 Asia/Tehran] PHP Warning:  require_once(C:\xampp\htdocs\hesabino\includes/includes/jdf.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\includes\init.php on line 19
+[21-Apr-2025 01:05:43 Asia/Tehran] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\hesabino\includes/includes/jdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\includes\init.php:19
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\people_list.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 19
+[21-Apr-2025 01:07:38 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to private Database::__construct() from global scope in C:\xampp\htdocs\hesabino\includes\init.php:24
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\people_list.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 24
+[21-Apr-2025 01:09:05 Asia/Tehran] PHP Warning:  Constant SITE_NAME already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 10
+[21-Apr-2025 01:09:05 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to private Database::__construct() from global scope in C:\xampp\htdocs\hesabino\includes\init.php:26
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\people_list.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 26
+[21-Apr-2025 01:09:09 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to private Database::__construct() from global scope in C:\xampp\htdocs\hesabino\includes\init.php:24
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\people_list.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 24
+[21-Apr-2025 01:12:47 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to private Database::__construct() from global scope in C:\xampp\htdocs\hesabino\includes\init.php:24
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\people_list.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 24
+[21-Apr-2025 01:30:55 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Auth::hasPermission() in C:\xampp\htdocs\hesabino\people\new_person.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\new_person.php on line 5

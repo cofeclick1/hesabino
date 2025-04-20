@@ -20,12 +20,13 @@ require_once __DIR__ . '/jdf.php';
 
 // ایجاد نمونه از کلاس دیتابیس
 $db = Database::getInstance();
+// ایجاد شیء دیتابیس
 
 // تنظیم error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// بررسی وضعیت لاگین کاربر
+// بررسی لاگین کاربر
 if (!isset($_SESSION['user_id']) && !in_array(basename($_SERVER['PHP_SELF']), ['login.php', 'register.php'])) {
     header('Location: ' . BASE_PATH . '/login.php');
     exit;
