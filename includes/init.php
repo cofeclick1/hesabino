@@ -20,20 +20,41 @@ require_once __DIR__ . '/jdf.php';
 
 // ایجاد نمونه از کلاس دیتابیس
 $db = Database::getInstance();
+$auth = new Auth();
 
 // تنظیم error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// ایجاد نمونه از کلاس Auth
-$auth = new Auth();
+// بررسی لاگین کاربر
+$current_file = basename($_SERVER['SCRIPT_FILENAME']);
+$public_pages = ['login.php', 'register.php', 'forgot-password.php'];
 
-// بررسی لاگین کاربر در صفحات غیر از login و register
-$current_page = basename($_SERVER['PHP_SELF']);
-if (!in_array($current_page, ['login.php', 'register.php']) && !$auth->isLoggedIn()) {
-    header('Location: ' . BASE_PATH . '/login.php');
-    exit;
+if (!in_array($current_file, $public_pages)) {
+    if (!$auth->isLoggedIn()) {
+        header('Location: ' . BASE_PATH . '/login.php');
+        exit;
+    }
+    
+    // بررسی دسترسی‌ها برای صفحات مختلف
+    $permission_map = [
+        'new_person.php' => 'people_add',
+        'edit_person.php' => 'people_edit',
+        'delete_person.php' => 'people_delete',
+        'people_list.php' => 'people_view'
+    ];
+
+    if (isset($permission_map[$current_file]) && !$auth->hasPermission($permission_map[$current_file])) {
+        if (!isset($_SESSION['from_init'])) {
+            $_SESSION['error'] = 'شما مجوز دسترسی به این بخش را ندارید';
+            $_SESSION['from_init'] = true;
+            header('Location: ' . BASE_PATH . '/dashboard.php');
+            exit;
+        }
+    }
 }
+
+unset($_SESSION['from_init']);
 
 // مقداردهی متغیرهای مورد نیاز
 $user = $auth->getCurrentUser();

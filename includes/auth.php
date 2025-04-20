@@ -1,6 +1,7 @@
 <?php
 class Auth {
     private $db;
+    private $permissions = null;
     
     public function __construct() {
         $this->db = Database::getInstance();
@@ -78,20 +79,35 @@ class Auth {
             return true;
         }
 
-        try {
-            // بررسی دسترسی‌های کاربر
-            $hasPermission = $this->db->query(
-                "SELECT COUNT(*) FROM permissions p
-                 INNER JOIN role_permissions rp ON p.id = rp.permission_id
-                 INNER JOIN user_roles ur ON rp.role_id = ur.role_id
-                 WHERE ur.user_id = ? AND p.name = ?",
-                [$_SESSION['user_id'], $permission]
-            )->fetchColumn();
+        // اگر دسترسی‌ها قبلاً بارگذاری نشده‌اند
+        if ($this->permissions === null) {
+            $this->loadPermissions();
+        }
 
-            return $hasPermission > 0;
+        return in_array($permission, $this->permissions);
+    }
+
+    private function loadPermissions() {
+        if (!$this->isLoggedIn()) {
+            $this->permissions = [];
+            return;
+        }
+
+        try {
+            // بارگذاری همه دسترسی‌های کاربر
+            $permissions = $this->db->query(
+                "SELECT DISTINCT p.name 
+                FROM permissions p 
+                INNER JOIN role_permissions rp ON p.id = rp.permission_id 
+                INNER JOIN user_roles ur ON rp.role_id = ur.role_id 
+                WHERE ur.user_id = ?",
+                [$_SESSION['user_id']]
+            )->fetchAll(PDO::FETCH_COLUMN);
+
+            $this->permissions = $permissions;
         } catch (Exception $e) {
-            error_log("Error checking permission: " . $e->getMessage());
-            return false;
+            error_log("Error loading permissions: " . $e->getMessage());
+            $this->permissions = [];
         }
     }
     
