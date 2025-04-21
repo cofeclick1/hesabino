@@ -364,3 +364,33 @@
 .submenu .nav-link {
     animation: slideIn 0.3s ease forwards;
 }
+
+/* Active State Enhancement */
+.nav-link.active {
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.submenu .nav-link.active {
+    background: rgba(255,255,255,0.15);
+    box-shadow: none;
+}
+
+/* Transition Enhancement */
+.submenu {
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-item.has-submenu > .nav-link::after {
+    margin-right: auto;
+    padding-right: 5px;
+}
+
+/* Hover Effects Enhancement */
+.nav-item:hover > .nav-link {
+    transform: translateX(-3px);
+}
+
+.submenu .nav-link:hover {
+    transform: translateX(-2px);
+}

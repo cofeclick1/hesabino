@@ -43,7 +43,20 @@ $(document).ready(function() {
         // بروزرسانی زیرمنوی فعلی
         currentOpenSubmenu = $navItem.hasClass('open') ? $navItem : null;
     });
-
+// تشخیص URL جاری و باز کردن زیرمنوی مربوطه
+const currentPath = window.location.pathname;
+$('.nav-item.has-submenu').each(function() {
+    const $submenuLinks = $(this).find('.submenu a');
+    $submenuLinks.each(function() {
+        if (currentPath.includes($(this).attr('href'))) {
+            const $navItem = $(this).closest('.nav-item.has-submenu');
+            $navItem.addClass('open');
+            $navItem.find('.submenu').show();
+            currentOpenSubmenu = $navItem;
+            return false;
+        }
+    });
+});
     // مدیریت منو در موبایل
     $('.mobile-menu-toggle').click(function(e) {
         e.preventDefault();
@@ -86,7 +99,7 @@ $(document).ready(function() {
             $('[href="/dashboard.php"]').addClass('active');
         }
     }
-
+    handleSubmenuState();
     // اجرای تابع تنظیم منوی فعال
     setActiveMenu();
 
@@ -127,4 +140,30 @@ $(document).ready(function() {
 
     // اجرای اسکرول به آیتم فعال
     setTimeout(scrollToActiveItem, 100);
+
+    function handleSubmenuState() {
+    $('.nav-item.has-submenu').each(function() {
+        const $submenu = $(this).find('.submenu');
+        const $toggle = $(this).children('.nav-link');
+        
+        if ($(this).hasClass('open')) {
+            $submenu.slideDown(300);
+        } else {
+            $submenu.slideUp(300);
+        }
+        
+        $toggle.off('click').on('click', function(e) {
+            e.preventDefault();
+            const $navItem = $(this).parent();
+            
+            // Close other open submenus
+            if (!$navItem.hasClass('open')) {
+                $('.nav-item.has-submenu.open').removeClass('open').find('.submenu').slideUp(300);
+            }
+            
+            $navItem.toggleClass('open');
+            $submenu.slideToggle(300);
+        });
+    });
+}
 });
