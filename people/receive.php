@@ -63,9 +63,39 @@ $pageTitle = 'دریافت جدید';
     <!-- نامبر فرمت -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/autonumeric@4.10.3/dist/autoNumeric.min.css">
     
-    <style>
-       
-    </style>
+<style>
+    /* Person Selection Custom Styles */
+    .person-select-container {
+        font-size: 0.875rem;
+    }
+    
+    .person-select-container .select2-selection__rendered {
+        display: flex !important;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .person-select-container .avatar-sm {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
+    .person-select-container .select2-selection__placeholder {
+        color: #6c757d;
+    }
+    
+    /* Select2 Dropdown Size Fix */
+    .select2-dropdown {
+        font-size: 0.875rem;
+    }
+    
+    .select2-results__options {
+        max-height: 250px;
+        overflow-y: auto;
+    }
+</style>
     <script>
     const BASE_PATH = '<?php echo BASE_PATH; ?>';
 </script>

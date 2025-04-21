@@ -1,215 +1,130 @@
-/**
- * Hesabino Sidebar JavaScript
- * Version: 1.0.0
- * Author: Copilot
- * License: MIT
- */
-
-document.addEventListener('DOMContentLoaded', function() {
-    'use strict';
-    
-    // ---------- تعریف متغیرهای اصلی ----------
-    const sidebar = document.getElementById('mainSidebar');
-    const menuItems = document.querySelectorAll('.menu-item');
-    const menuLinks = document.querySelectorAll('.menu-link, .submenu a');
-    
-    // ---------- مدیریت منوی فعال ----------
-    function setActiveMenu() {
-        const currentPath = window.location.pathname;
-        
-        menuLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && currentPath.includes(href)) {
-                // افزودن کلاس active به لینک
-                link.classList.add('active');
-                
-                // باز کردن منوی والد
-                const parentMenuItem = link.closest('.menu-item');
-                if (parentMenuItem && parentMenuItem.classList.contains('has-submenu')) {
-                    parentMenuItem.classList.add('open', 'active');
-                }
-                
-                // اضافه کردن کلاس active به والد برای زیرمنوها
-                const submenuParent = link.closest('.submenu');
-                if (submenuParent) {
-                    submenuParent.parentElement.classList.add('active');
-                }
-            }
-        });
-    }
-
-    // ---------- مدیریت منوهای کشویی ----------
-    function initSubmenuToggle() {
-        const menuItemsWithSubmenu = document.querySelectorAll('.has-submenu > .menu-link');
-        
-        menuItemsWithSubmenu.forEach(menuLink => {
-            menuLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const menuItem = this.parentElement;
-                const isOpen = menuItem.classList.contains('open');
-                
-                // بستن سایر منوهای باز
-                menuItems.forEach(item => {
-                    if (item !== menuItem && item.classList.contains('has-submenu')) {
-                        item.classList.remove('open');
-                        const submenu = item.querySelector('.submenu');
-                        if (submenu) {
-                            submenu.style.maxHeight = null;
-                        }
-                    }
-                });
-                
-                // باز/بسته کردن منوی کلیک شده
-                menuItem.classList.toggle('open');
-                
-                // انیمیشن برای باز/بسته شدن
-                const submenu = menuItem.querySelector('.submenu');
-                if (submenu) {
-                    if (!isOpen) {
-                        submenu.style.display = 'block';
-                        const height = submenu.scrollHeight;
-                        submenu.style.maxHeight = '0px';
-                        submenu.style.opacity = '0';
-                        
-                        setTimeout(() => {
-                            submenu.style.maxHeight = height + 'px';
-                            submenu.style.opacity = '1';
-                        }, 10);
-                    } else {
-                        submenu.style.maxHeight = '0px';
-                        submenu.style.opacity = '0';
-                        
-                        submenu.addEventListener('transitionend', function handler() {
-                            if (submenu.style.maxHeight === '0px') {
-                                submenu.style.display = 'none';
-                                submenu.removeEventListener('transitionend', handler);
-                            }
-                        });
-                    }
-                }
-            });
-        });
-    }
-
-    // ---------- مدیریت حالت موبایل ----------
-    function initMobileMenu() {
-        // ایجاد دکمه تاگل
-        if (!document.querySelector('.sidebar-toggle')) {
-            const toggleButton = document.createElement('button');
-            toggleButton.className = 'sidebar-toggle';
-            toggleButton.setAttribute('aria-label', 'Toggle Sidebar');
-            toggleButton.innerHTML = '<i class="fas fa-bars"></i>';
-            document.body.appendChild(toggleButton);
-
-            // ایجاد اورلی
-            const overlay = document.createElement('div');
-            overlay.className = 'sidebar-overlay';
-            document.body.appendChild(overlay);
-
-            // رویداد کلیک دکمه تاگل
-            toggleButton.addEventListener('click', function() {
-                sidebar.classList.toggle('open');
-            });
-
-            // رویداد کلیک اورلی
-            overlay.addEventListener('click', function() {
-                sidebar.classList.remove('open');
-            });
-
-            // بستن منو با کلیک روی لینک‌ها در حالت موبایل
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 992) {
-                        sidebar.classList.remove('open');
-                    }
-                });
-            });
-        }
-    }
-
-    // ---------- مدیریت اسکرول ----------
-    function initSidebarScroll() {
-        let lastScroll = 0;
-        
-        sidebar.addEventListener('scroll', function() {
-            const currentScroll = this.scrollTop;
-            
-            // اضافه کردن سایه به هدر در هنگام اسکرول
-            if (currentScroll > 10) {
-                this.querySelector('.sidebar-header').style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
-            } else {
-                this.querySelector('.sidebar-header').style.boxShadow = 'none';
-            }
-            
-            lastScroll = currentScroll;
-        });
-    }
-
-    // ---------- راه‌اندازی اولیه ----------
-    function init() {
-        setActiveMenu();
-        initSubmenuToggle();
-        initMobileMenu();
-        initSidebarScroll();
-        
-        // اضافه کردن کلاس loaded برای انیمیشن‌های اولیه
-        setTimeout(() => {
-            sidebar.classList.add('loaded');
-        }, 100);
-    }
-
-    // شروع
-    init();
-});
-
 $(document).ready(function() {
-    // باز/بسته کردن منو با کلیک روی دکمه
+    // تعریف متغیرهای کلی
+    const $sidebar = $('.sidebar');
+    const $mainContent = $('.main-content');
+    let currentOpenSubmenu = null;
+
+    // بررسی وضعیت قبلی سایدبار
+    if (localStorage.getItem('sidebarCollapsed') === 'true') {
+        $sidebar.addClass('collapsed');
+        $mainContent.addClass('expanded');
+    }
+
+    // باز/بسته کردن سایدبار
     $('.sidebar-toggle').click(function(e) {
         e.preventDefault();
-        $('.sidebar').toggleClass('collapsed');
-        
-        // ذخیره وضعیت در localStorage
-        localStorage.setItem('sidebarCollapsed', $('.sidebar').hasClass('collapsed'));
+        $sidebar.toggleClass('collapsed');
+        $mainContent.toggleClass('expanded');
+        localStorage.setItem('sidebarCollapsed', $sidebar.hasClass('collapsed'));
     });
-    
-    // بازیابی وضعیت از localStorage
-    if (localStorage.getItem('sidebarCollapsed') === 'true') {
-        $('.sidebar').addClass('collapsed');
-    }
-    
-    // باز/بسته کردن زیرمنوها
+
+    // مدیریت زیرمنوها
     $('.nav-item.has-submenu > .nav-link').click(function(e) {
         e.preventDefault();
         const $navItem = $(this).parent();
         
-        // بستن سایر زیرمنوهای باز
-        $('.nav-item.has-submenu').not($navItem).removeClass('open');
-        
+        // اگر سایدبار جمع شده است، آن را باز کنیم
+        if ($sidebar.hasClass('collapsed')) {
+            $sidebar.removeClass('collapsed');
+            $mainContent.removeClass('expanded');
+            localStorage.setItem('sidebarCollapsed', false);
+        }
+
+        // بستن زیرمنوی قبلی اگر باز است
+        if (currentOpenSubmenu && !currentOpenSubmenu.is($navItem)) {
+            currentOpenSubmenu.removeClass('open');
+            currentOpenSubmenu.find('.submenu').slideUp(300);
+        }
+
         // باز/بسته کردن زیرمنوی کلیک شده
         $navItem.toggleClass('open');
+        $navItem.find('.submenu').slideToggle(300);
+
+        // بروزرسانی زیرمنوی فعلی
+        currentOpenSubmenu = $navItem.hasClass('open') ? $navItem : null;
     });
-    
-    // نمایش/مخفی کردن منو در موبایل
+
+    // مدیریت منو در موبایل
     $('.mobile-menu-toggle').click(function(e) {
         e.preventDefault();
-        $('.sidebar').toggleClass('show');
+        $sidebar.toggleClass('show');
+        $('<div class="sidebar-overlay"></div>').insertAfter($sidebar);
     });
-    
+
     // بستن منو با کلیک بیرون از آن در موبایل
-    $(document).click(function(e) {
-        if (!$(e.target).closest('.sidebar, .mobile-menu-toggle').length) {
-            $('.sidebar').removeClass('show');
-        }
+    $(document).on('click', '.sidebar-overlay', function() {
+        $sidebar.removeClass('show');
+        $('.sidebar-overlay').remove();
     });
-    
+
     // تنظیم کلاس active برای منوی جاری
-    const currentPath = window.location.pathname;
-    $('.nav-link').each(function() {
-        const linkPath = $(this).attr('href');
-        if (currentPath === linkPath || currentPath.startsWith(linkPath)) {
-            $(this).addClass('active');
-            $(this).parents('.nav-item.has-submenu').addClass('open');
+    function setActiveMenu() {
+        const currentPath = window.location.pathname;
+        let activeFound = false;
+
+        $('.nav-link').each(function() {
+            const linkPath = $(this).attr('href');
+            if (currentPath === linkPath || currentPath.startsWith(linkPath)) {
+                $(this).addClass('active');
+                
+                // اگر لینک در زیرمنو است، منوی والد را باز کنیم
+                const $parentItem = $(this).closest('.nav-item.has-submenu');
+                if ($parentItem.length) {
+                    $parentItem.addClass('open');
+                    $parentItem.find('.submenu').show();
+                    currentOpenSubmenu = $parentItem;
+                }
+                
+                activeFound = true;
+            } else {
+                $(this).removeClass('active');
+            }
+        });
+
+        // اگر هیچ منویی فعال نشد، منوی داشبورد را فعال کنیم
+        if (!activeFound && currentPath === '/dashboard.php') {
+            $('[href="/dashboard.php"]').addClass('active');
         }
+    }
+
+    // اجرای تابع تنظیم منوی فعال
+    setActiveMenu();
+
+    // تنظیم ارتفاع اسکرول سایدبار
+    function adjustSidebarHeight() {
+        const windowHeight = window.innerHeight;
+        const sidebarHeaderHeight = $('.sidebar-header').outerHeight();
+        const sidebarProfileHeight = $('.sidebar-profile').outerHeight();
+        const sidebarNavHeight = windowHeight - sidebarHeaderHeight - sidebarProfileHeight;
+        $('.sidebar-nav').css('height', `${sidebarNavHeight}px`);
+    }
+
+    // اجرای تنظیم ارتفاع در لود و تغییر سایز صفحه
+    adjustSidebarHeight();
+    $(window).resize(adjustSidebarHeight);
+
+    // اضافه کردن tooltip برای حالت جمع شده
+    $('.nav-link').each(function() {
+        const $link = $(this);
+        const title = $link.find('.nav-text').text();
+        $link.attr('data-title', title);
     });
+
+    // انیمیشن نرم برای اسکرول به بخش فعال
+    function scrollToActiveItem() {
+        const $activeLink = $('.nav-link.active');
+        if ($activeLink.length) {
+            const $sidebarNav = $('.sidebar-nav');
+            const activeTop = $activeLink.offset().top;
+            const sidebarTop = $sidebarNav.offset().top;
+            const scrollTop = activeTop - sidebarTop - ($sidebarNav.height() / 2);
+            
+            $sidebarNav.animate({
+                scrollTop: scrollTop
+            }, 500);
+        }
+    }
+
+    // اجرای اسکرول به آیتم فعال
+    setTimeout(scrollToActiveItem, 100);
 });
