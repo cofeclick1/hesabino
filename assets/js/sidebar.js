@@ -4,6 +4,13 @@ $(document).ready(function() {
     const $mainContent = $('.main-content');
     let currentOpenSubmenu = null;
 
+    // پاکسازی تمام رویدادهای قبلی
+    $('.menu-item.has-submenu > .menu-link').off();
+    $('.submenu a').off();
+    $(document).off('click', '.sidebar-overlay');
+    $('.sidebar-toggle').off();
+    $('.mobile-menu-toggle').off();
+
     // بررسی وضعیت قبلی سایدبار
     if (localStorage.getItem('sidebarCollapsed') === 'true') {
         $sidebar.addClass('collapsed');
@@ -11,159 +18,137 @@ $(document).ready(function() {
     }
 
     // باز/بسته کردن سایدبار
-    $('.sidebar-toggle').click(function(e) {
+    $('.sidebar-toggle').on('click', function(e) {
         e.preventDefault();
         $sidebar.toggleClass('collapsed');
         $mainContent.toggleClass('expanded');
         localStorage.setItem('sidebarCollapsed', $sidebar.hasClass('collapsed'));
     });
 
-    // مدیریت زیرمنوها
-    $('.nav-item.has-submenu > .nav-link').click(function(e) {
+    // مدیریت منو در موبایل
+    $('.mobile-menu-toggle').on('click', function(e) {
         e.preventDefault();
-        const $navItem = $(this).parent();
+        $sidebar.addClass('show');
+        if (!$('.sidebar-overlay').length) {
+            $('<div class="sidebar-overlay"></div>').insertAfter($sidebar);
+        }
+    });
+
+    // بستن منو با کلیک روی overlay
+    $(document).on('click', '.sidebar-overlay', function() {
+        $sidebar.removeClass('show');
+        $(this).remove();
+    });
+
+    // تابع بستن تمام زیرمنوها
+    function closeAllSubmenus() {
+        $('.menu-item.has-submenu.open').removeClass('open').find('.submenu').slideUp(300);
+        currentOpenSubmenu = null;
+    }
+
+    // تابع باز کردن یک زیرمنو
+    function openSubmenu($menuItem) {
+        if (currentOpenSubmenu && !currentOpenSubmenu.is($menuItem)) {
+            currentOpenSubmenu.removeClass('open').find('.submenu').slideUp(300);
+        }
         
+        $menuItem.addClass('open').find('.submenu').slideDown(300);
+        currentOpenSubmenu = $menuItem;
+    }
+
+    // مدیریت کلیک روی منوها
+    $('.menu-item.has-submenu > .menu-link').on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const $menuItem = $(this).parent();
+
         // اگر سایدبار جمع شده است، آن را باز کنیم
         if ($sidebar.hasClass('collapsed')) {
             $sidebar.removeClass('collapsed');
             $mainContent.removeClass('expanded');
             localStorage.setItem('sidebarCollapsed', false);
+            
+            // کمی صبر کنیم تا سایدبار باز شود
+            setTimeout(() => {
+                if ($menuItem.hasClass('open')) {
+                    closeAllSubmenus();
+                } else {
+                    openSubmenu($menuItem);
+                }
+            }, 300);
+            return;
         }
 
-        // بستن زیرمنوی قبلی اگر باز است
-        if (currentOpenSubmenu && !currentOpenSubmenu.is($navItem)) {
-            currentOpenSubmenu.removeClass('open');
-            currentOpenSubmenu.find('.submenu').slideUp(300);
-        }
-
-        // باز/بسته کردن زیرمنوی کلیک شده
-        $navItem.toggleClass('open');
-        $navItem.find('.submenu').slideToggle(300);
-
-        // بروزرسانی زیرمنوی فعلی
-        currentOpenSubmenu = $navItem.hasClass('open') ? $navItem : null;
-    });
-// تشخیص URL جاری و باز کردن زیرمنوی مربوطه
-const currentPath = window.location.pathname;
-$('.nav-item.has-submenu').each(function() {
-    const $submenuLinks = $(this).find('.submenu a');
-    $submenuLinks.each(function() {
-        if (currentPath.includes($(this).attr('href'))) {
-            const $navItem = $(this).closest('.nav-item.has-submenu');
-            $navItem.addClass('open');
-            $navItem.find('.submenu').show();
-            currentOpenSubmenu = $navItem;
-            return false;
+        // باز/بسته کردن زیرمنو
+        if ($menuItem.hasClass('open')) {
+            closeAllSubmenus();
+        } else {
+            openSubmenu($menuItem);
         }
     });
-});
-    // مدیریت منو در موبایل
-    $('.mobile-menu-toggle').click(function(e) {
-        e.preventDefault();
-        $sidebar.toggleClass('show');
-        $('<div class="sidebar-overlay"></div>').insertAfter($sidebar);
+
+    // جلوگیری از تداخل رویدادها در زیرمنوها
+    $('.submenu a').on('click', function(e) {
+        e.stopPropagation();
     });
 
-    // بستن منو با کلیک بیرون از آن در موبایل
-    $(document).on('click', '.sidebar-overlay', function() {
-        $sidebar.removeClass('show');
-        $('.sidebar-overlay').remove();
-    });
-
-    // تنظیم کلاس active برای منوی جاری
+    // تنظیم منوی فعال و باز کردن والد آن
     function setActiveMenu() {
         const currentPath = window.location.pathname;
-        let activeFound = false;
 
-        $('.nav-link').each(function() {
+        // حذف کلاس active از همه لینک‌ها
+        $('.menu-link, .submenu a').removeClass('active');
+
+        // پیدا کردن و فعال کردن لینک جاری
+        $('.menu-link, .submenu a').each(function() {
             const linkPath = $(this).attr('href');
-            if (currentPath === linkPath || currentPath.startsWith(linkPath)) {
+            if (linkPath && (currentPath === linkPath || currentPath.startsWith(linkPath))) {
                 $(this).addClass('active');
-                
+
                 // اگر لینک در زیرمنو است، منوی والد را باز کنیم
-                const $parentItem = $(this).closest('.nav-item.has-submenu');
+                const $parentItem = $(this).closest('.menu-item.has-submenu');
                 if ($parentItem.length) {
-                    $parentItem.addClass('open');
-                    $parentItem.find('.submenu').show();
-                    currentOpenSubmenu = $parentItem;
+                    openSubmenu($parentItem);
                 }
-                
-                activeFound = true;
-            } else {
-                $(this).removeClass('active');
+                return false;
             }
         });
 
-        // اگر هیچ منویی فعال نشد، منوی داشبورد را فعال کنیم
-        if (!activeFound && currentPath === '/dashboard.php') {
+        // اگر هیچ منویی فعال نشد و در داشبورد هستیم
+        if (currentPath === '/dashboard.php' && !$('.menu-link.active, .submenu a.active').length) {
             $('[href="/dashboard.php"]').addClass('active');
         }
     }
-    handleSubmenuState();
-    // اجرای تابع تنظیم منوی فعال
-    setActiveMenu();
 
     // تنظیم ارتفاع اسکرول سایدبار
     function adjustSidebarHeight() {
         const windowHeight = window.innerHeight;
-        const sidebarHeaderHeight = $('.sidebar-header').outerHeight();
-        const sidebarProfileHeight = $('.sidebar-profile').outerHeight();
-        const sidebarNavHeight = windowHeight - sidebarHeaderHeight - sidebarProfileHeight;
-        $('.sidebar-nav').css('height', `${sidebarNavHeight}px`);
+        const headerHeight = $('.sidebar-header').outerHeight() || 0;
+        const profileHeight = $('.sidebar-profile').outerHeight() || 0;
+        const footerHeight = $('.sidebar-footer').outerHeight() || 0;
+        const alertsHeight = $('.sidebar-alerts').outerHeight() || 0;
+        const statsHeight = $('.sidebar-stats').outerHeight() || 0;
+        
+        const menu = $('.menu');
+        const availableHeight = windowHeight - headerHeight - profileHeight - footerHeight - alertsHeight - statsHeight;
+        
+        menu.css('height', `${Math.max(availableHeight, 200)}px`);
     }
-
-    // اجرای تنظیم ارتفاع در لود و تغییر سایز صفحه
-    adjustSidebarHeight();
-    $(window).resize(adjustSidebarHeight);
 
     // اضافه کردن tooltip برای حالت جمع شده
-    $('.nav-link').each(function() {
-        const $link = $(this);
-        const title = $link.find('.nav-text').text();
-        $link.attr('data-title', title);
-    });
-
-    // انیمیشن نرم برای اسکرول به بخش فعال
-    function scrollToActiveItem() {
-        const $activeLink = $('.nav-link.active');
-        if ($activeLink.length) {
-            const $sidebarNav = $('.sidebar-nav');
-            const activeTop = $activeLink.offset().top;
-            const sidebarTop = $sidebarNav.offset().top;
-            const scrollTop = activeTop - sidebarTop - ($sidebarNav.height() / 2);
-            
-            $sidebarNav.animate({
-                scrollTop: scrollTop
-            }, 500);
-        }
+    function initializeTooltips() {
+        $('.menu-link').each(function() {
+            const text = $(this).find('.menu-text').text();
+            $(this).attr('data-title', text);
+        });
     }
 
-    // اجرای اسکرول به آیتم فعال
-    setTimeout(scrollToActiveItem, 100);
+    // اجرای توابع اولیه
+    setActiveMenu();
+    adjustSidebarHeight();
+    initializeTooltips();
 
-    function handleSubmenuState() {
-    $('.nav-item.has-submenu').each(function() {
-        const $submenu = $(this).find('.submenu');
-        const $toggle = $(this).children('.nav-link');
-        
-        if ($(this).hasClass('open')) {
-            $submenu.slideDown(300);
-        } else {
-            $submenu.slideUp(300);
-        }
-        
-        $toggle.off('click').on('click', function(e) {
-            e.preventDefault();
-            const $navItem = $(this).parent();
-            
-            // Close other open submenus
-            if (!$navItem.hasClass('open')) {
-                $('.nav-item.has-submenu.open').removeClass('open').find('.submenu').slideUp(300);
-            }
-            
-            $navItem.toggleClass('open');
-            $submenu.slideToggle(300);
-        });
-    });
-}
+    // تنظیم مجدد ارتفاع در تغییر سایز پنجره
+    $(window).on('resize', adjustSidebarHeight);
 });

@@ -59,7 +59,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="اشخاص">
                 <i class="fas fa-users"></i>
                 <span class="menu-text">اشخاص</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/people/new_person.php" class="<?php echo isActiveMenu('/people/new_person.php'); ?>">شخص جدید</a></li>
@@ -78,7 +78,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="کالاها و خدمات">
                 <i class="fas fa-box"></i>
                 <span class="menu-text">کالاها و خدمات</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/products/new_product.php" class="<?php echo isActiveMenu('/products/new_product.php'); ?>">افزودن محصول</a></li>
@@ -96,7 +96,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="بانکداری">
                 <i class="fas fa-university"></i>
                 <span class="menu-text">بانکداری</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/banking/banks.php" class="<?php echo isActiveMenu('/banking/banks.php'); ?>">بانک‌ها</a></li>
@@ -114,7 +114,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="فروش و درآمد">
                 <i class="fas fa-shopping-cart"></i>
                 <span class="menu-text">فروش و درآمد</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/sales/new_sale.php" class="<?php echo isActiveMenu('/sales/new_sale.php'); ?>">فروش جدید</a></li>
@@ -135,7 +135,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="خرید و هزینه">
                 <i class="fas fa-shopping-basket"></i>
                 <span class="menu-text">خرید و هزینه</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/purchases/new_purchase.php" class="<?php echo isActiveMenu('/purchases/new_purchase.php'); ?>">خرید جدید</a></li>
@@ -154,7 +154,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="انبارداری">
                 <i class="fas fa-warehouse"></i>
                 <span class="menu-text">انبارداری</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/inventory/warehouses.php" class="<?php echo isActiveMenu('/inventory/warehouses.php'); ?>">انبارها</a></li>
@@ -171,7 +171,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="حسابداری">
                 <i class="fas fa-calculator"></i>
                 <span class="menu-text">حسابداری</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/accounting/new_document.php" class="<?php echo isActiveMenu('/accounting/new_document.php'); ?>">سند جدید</a></li>
@@ -188,7 +188,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="سایر">
                 <i class="fas fa-ellipsis-h"></i>
                 <span class="menu-text">سایر</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/others/archive.php" class="<?php echo isActiveMenu('/others/archive.php'); ?>">آرشیو</a></li>
@@ -210,7 +210,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="گزارش‌ها">
                 <i class="fas fa-chart-bar"></i>
                 <span class="menu-text">گزارش‌ها</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/reports/all_reports.php" class="<?php echo isActiveMenu('/reports/all_reports.php'); ?>">تمام گزارش‌ها</a></li>
@@ -228,7 +228,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="تنظیمات">
                 <i class="fas fa-cog"></i>
                 <span class="menu-text">تنظیمات</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/settings/projects.php" class="<?php echo isActiveMenu('/settings/projects.php'); ?>">پروژه‌ها</a></li>
@@ -251,7 +251,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="پروفایل">
                 <i class="fas fa-user"></i>
                 <span class="menu-text">پروفایل</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/profile/view.php" class="<?php echo isActiveMenu('/profile/view.php'); ?>">مشاهده پروفایل</a></li>
@@ -267,7 +267,7 @@ function isSubmenuOpen($path) {
             <a href="#" class="menu-link" data-title="راهنما">
                 <i class="fas fa-question-circle"></i>
                 <span class="menu-text">راهنما</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo BASE_PATH; ?>/help/guide.php" class="<?php echo isActiveMenu('/help/guide.php'); ?>">راهنمای کاربری</a></li>
