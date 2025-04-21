@@ -2,13 +2,11 @@
 require_once '../includes/init.php';
 
 // بررسی درخواست Ajax
-if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
-    exit('Direct access not permitted');
-}
+header('Content-Type: application/json; charset=utf-8');
 
 try {
     // دریافت متن توضیحات
-    $text = sanitize($_POST['text']);
+    $text = sanitize($_POST['text'] ?? '');
     $type = sanitize($_POST['type'] ?? 'payment');
     
     if (empty($text)) {
@@ -16,27 +14,28 @@ try {
     }
     
     // بررسی تکراری نبودن متن
-    $existingDesc = $db->get('recurring_descriptions', 'id', [
-        'text' => $text,
-        'type' => $type,
-        'deleted_at IS' => null
-    ]);
+    $stmt = $db->prepare("
+        SELECT id 
+        FROM recurring_descriptions 
+        WHERE text = ? AND type = ? AND deleted_at IS NULL
+    ");
+    $stmt->execute([$text, $type]);
     
-    if ($existingDesc) {
+    if ($stmt->fetch()) {
         throw new Exception('این متن قبلاً ثبت شده است');
     }
     
     // درج توضیحات جدید
-    $id = $db->insert('recurring_descriptions', [
-        'text' => $text,
-        'type' => $type,
-        'created_by' => $_SESSION['user_id'],
-        'created_at' => date('Y-m-d H:i:s')
-    ]);
+    $stmt = $db->prepare("
+        INSERT INTO recurring_descriptions (text, type, created_by, created_at)
+        VALUES (?, ?, ?, NOW())
+    ");
     
-    if (!$id) {
+    if (!$stmt->execute([$text, $type, $_SESSION['user_id']])) {
         throw new Exception('خطا در ثبت توضیحات');
     }
+    
+    $id = $db->lastInsertId();
     
     echo json_encode([
         'success' => true,

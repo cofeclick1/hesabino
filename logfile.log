@@ -1825,3 +1825,11 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\hesabino\login.php on line 25
+[21-Apr-2025 19:40:06 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Database::inTransaction() in C:\xampp\htdocs\hesabino\api\save-project.php:103
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\api\save-project.php on line 103
+[21-Apr-2025 19:43:07 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Database::inTransaction() in C:\xampp\htdocs\hesabino\api\save-project.php:103
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\api\save-project.php on line 103

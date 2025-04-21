@@ -46,15 +46,15 @@ $(document).ready(function() {
             });
         });
 
-    // تنظیم تاریخ امروز
-    $('#btnToday').click(function() {
-        const today = new persianDate();
-        $('input[name="date"]').val(today.format('YYYY/MM/DD'));
-    });
-    
-    // تنظیم تاریخ امروز به صورت پیش‌فرض
-    $('#btnToday').trigger('click');
-}
+        // تنظیم تاریخ امروز
+        $('#btnToday').click(function() {
+            const today = new persianDate();
+            $('input[name="date"]').val(today.format('YYYY/MM/DD'));
+        });
+        
+        // تنظیم تاریخ امروز به صورت پیش‌فرض
+        $('#btnToday').trigger('click');
+    }
     
     // راه‌اندازی select2
     function initializeSelect2() {
@@ -63,6 +63,77 @@ $(document).ready(function() {
             language: 'fa',
             dir: 'rtl'
         });
+    }
+    
+    // راه‌اندازی جستجوی افراد با Select2
+    function initializePersonSearch(input) {
+        $(input).select2({
+            theme: 'bootstrap-5',
+            language: 'fa',
+            dir: 'rtl',
+            ajax: {
+                url: BASE_PATH + '/api/search-people.php',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term,
+                        page: params.page || 1
+                    };
+                },
+                processResults: function(data, params) {
+                    params.page = params.page || 1;
+                    return {
+                        results: data.items,
+                        pagination: {
+                            more: data.hasMore
+                        }
+                    };
+                },
+                cache: true
+            },
+            minimumInputLength: 2,
+            templateResult: formatPersonResult,
+            templateSelection: formatPersonSelection,
+            escapeMarkup: function(markup) {
+                return markup;
+            }
+        });
+    }
+
+    // فرمت نمایش نتیجه جستجوی شخص
+    function formatPersonResult(person) {
+        if (!person.id) return person.text;
+        
+        var balance = parseInt(person.balance || 0);
+        var balanceClass = balance >= 0 ? 'text-success' : 'text-danger';
+        
+        return $(
+            '<div class="d-flex align-items-center p-2">' +
+                '<img src="' + person.avatar_path + '" class="rounded-circle me-2" style="width: 32px; height: 32px;">' +
+                '<div class="flex-grow-1">' +
+                    '<div class="fw-bold">' + person.text + '</div>' +
+                    '<div class="small text-muted">' +
+                        (person.mobile ? '<i class="fas fa-phone me-1"></i>' + person.mobile : '') +
+                        (person.national_code ? '<span class="mx-2">|</span><i class="fas fa-id-card me-1"></i>' + person.national_code : '') +
+                    '</div>' +
+                '</div>' +
+                '<div class="text-end">' +
+                    '<div class="' + balanceClass + '">' + formatCurrency(balance) + '</div>' +
+                '</div>' +
+            '</div>'
+        );
+    }
+
+    // فرمت نمایش شخص انتخاب شده
+    function formatPersonSelection(person) {
+        if (!person.id) return person.text;
+        return $(
+            '<div class="d-flex align-items-center">' +
+                '<img src="' + person.avatar_path + '" class="rounded-circle me-2" style="width: 24px; height: 24px;">' +
+                '<div class="fw-bold">' + person.text + '</div>' +
+            '</div>'
+        );
     }
     
     // تنظیم اعتبارسنجی فرم
@@ -116,10 +187,16 @@ $(document).ready(function() {
         $('select[name="currency_code"]').on('change', updateCurrencySymbols);
 
         // رویدادهای پروژه
-        $('#projectId').on('change', handleProjectChange);
         $('#btnNewProject').on('click', showNewProjectModal);
         
-        // رویداد دکمه انصراف مودال‌ها
+        // رویدادهای توضیحات
+        $('#btnAddDescription').on('click', showNewDescriptionModal);
+        
+        // رویداد دکمه‌های ذخیره در مودال‌ها
+        $('#saveProject').on('click', saveProject);
+        $('#saveDescription').on('click', saveDescription);
+        
+        // رویداد دکمه‌های انصراف مودال‌ها
         $('.modal .btn-secondary').on('click', function() {
             $(this).closest('.modal').modal('hide');
         });
@@ -179,88 +256,12 @@ $(document).ready(function() {
         });
 
         // افزودن شخص جدید
-        $(item).find('.btn-add-person').on('click', () => {
-            showNewPersonModal();
-        });
+        $(item).find('.btn-add-person').on('click', showNewPersonModal);
     }
-
-    // راه‌اندازی جستجوی افراد با Select2
-    function initializePersonSearch(input) {
-        $(input).select2({
-            theme: 'bootstrap-5',
-            language: 'fa',
-            dir: 'rtl',
-            ajax: {
-                url: BASE_PATH + '/api/search-people.php',
-                dataType: 'json',
-                delay: 250,
-                data: function(params) {
-                    return {
-                        search: params.term,
-                        page: params.page || 1
-                    };
-                },
-                processResults: function(data, params) {
-                    params.page = params.page || 1;
-                    return {
-                        results: data.items,
-                        pagination: {
-                            more: data.hasMore
-                        }
-                    };
-                },
-                cache: true
-            },
-            minimumInputLength: 2,
-            templateResult: formatPersonResult,
-            templateSelection: formatPersonSelection,
-            escapeMarkup: function(markup) {
-                return markup;
-            }
-        });
-    }
-
-// فرمت نمایش نتیجه جستجوی شخص
-function formatPersonResult(person) {
-    if (!person.id) return person.text;
     
-    var balance = parseInt(person.balance || 0);
-    var balanceClass = balance >= 0 ? 'text-success' : 'text-danger';
-    
-    return $(
-        '<div class="d-flex align-items-center p-2">' +
-            '<img src="' + person.avatar_path + '" class="rounded-circle me-2" style="width: 32px; height: 32px;">' +
-            '<div class="flex-grow-1">' +
-                '<div class="fw-bold">' + person.text + '</div>' +
-                '<div class="small text-muted">' +
-                    (person.mobile ? '<i class="fas fa-phone me-1"></i>' + person.mobile : '') +
-                    (person.national_code ? '<span class="mx-2">|</span><i class="fas fa-id-card me-1"></i>' + person.national_code : '') +
-                '</div>' +
-            '</div>' +
-            '<div class="text-end">' +
-                '<div class="' + balanceClass + '">' + formatCurrency(balance) + '</div>' +
-            '</div>' +
-        '</div>'
-    );
-}
-    // فرمت نمایش شخص انتخاب شده
-    function formatPersonSelection(person) {
-        if (!person.id) return person.text;
-        return $(
-            '<div class="d-flex align-items-center">' +
-                '<img src="' + person.avatar_path + '" class="rounded-circle me-2" style="width: 24px; height: 24px;">' +
-                '<div class="fw-bold">' + person.text + '</div>' +
-            '</div>'
-        );
-    }
-    // نمایش مودال پروژه جدید
-    function showNewProjectModal() {
-        $('#projectForm')[0].reset();
-        $('#projectForm').removeClass('was-validated');
-        $('#projectModal').modal('show');
-    }
     // تنظیم فرمت‌بندی مبلغ
-    function setupAmountInput(input) {
+function setupAmountInput(input) {
+    if (input) { // اضافه کردن چک کردن وجود input
         new Cleave(input, {
             numeral: true,
             numeralThousandsGroupStyle: 'thousand',
@@ -268,6 +269,7 @@ function formatPersonResult(person) {
             numeralPositiveOnly: true
         });
     }
+}
     
     // بروزرسانی نمادهای واحد پول
     function updateCurrencySymbols() {
@@ -319,6 +321,137 @@ function formatPersonResult(person) {
     function parseCurrency(value) {
         return parseInt(value.replace(/[^0-9-]/g, '')) || 0;
     }
+
+    // نمایش مودال پروژه جدید
+    function showNewProjectModal() {
+        $('#projectForm')[0].reset();
+        $('#projectForm').removeClass('was-validated');
+        $('#projectModal').modal('show');
+    }
+
+    // ذخیره پروژه
+    function saveProject() {
+    const form = $('#projectForm')[0];
+    if (!form.checkValidity()) {
+        $(form).addClass('was-validated');
+        return;
+    }
+    
+    const formData = new FormData(form);
+    
+    // نمایش loading
+    Swal.fire({
+        title: 'در حال ذخیره...',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+    
+    $.ajax({
+        url: BASE_PATH + '/api/save-project.php',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            if (response.success) {
+                const project = response.project;
+                const option = new Option(project.name, project.id, true, true);
+                $(option).data('logo', project.logo_path);
+                $('select[name="project_id"]').append(option).trigger('change');
+                
+                $('#projectModal').modal('hide');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'موفقیت',
+                    text: response.message,
+                    confirmButtonText: 'تایید'
+                });
+                
+                // پاکسازی فرم
+                form.reset();
+                $(form).removeClass('was-validated');
+            }
+        },
+        error: function(xhr) {
+            Swal.fire({
+                icon: 'error',
+                title: 'خطا',
+                text: xhr.responseJSON?.message || 'خطا در ارتباط با سرور',
+                confirmButtonText: 'تایید'
+            });
+        }
+    });
+}
+
+    // نمایش مودال توضیحات
+    function showNewDescriptionModal() {
+        $('#descriptionForm')[0].reset();
+        $('#descriptionForm').removeClass('was-validated');
+        $('#descriptionModal').modal('show');
+    }
+
+
+    // ذخیره توضیحات
+    function saveDescription() {
+        const form = $('#descriptionForm')[0];
+        if (!form.checkValidity()) {
+            $(form).addClass('was-validated');
+            return;
+        }
+        
+        // نمایش loading
+        Swal.fire({
+            title: 'در حال ذخیره...',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
+        const data = {
+            text: $('#descriptionText').val(),
+            type: 'payment'
+        };
+        
+        $.ajax({
+            url: BASE_PATH + '/api/save-description.php',
+            method: 'POST',
+            data: data,
+            success: function(response) {
+                if (response.success) {
+                    const desc = response.description;
+                    $('#commonDescriptions').append(
+                        '<option value="' + desc.text + '">'
+                    );
+                    
+                    // افزودن به فیلد توضیحات فعلی
+                    $('input[name="description"]').val(desc.text);
+                    
+                    $('#descriptionModal').modal('hide');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'موفقیت',
+                        text: response.message,
+                        confirmButtonText: 'تایید'
+                    });
+                    
+                    // پاکسازی فرم
+                    form.reset();
+                    $(form).removeClass('was-validated');
+                }
+            },
+            error: function(xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطا',
+                    text: xhr.responseJSON?.message || 'خطا در ارتباط با سرور',
+                    confirmButtonText: 'تایید'
+                });
+            }
+        });
+    }
     
     // نمایش مودال محاسبات
     function showCalculationModal() {
@@ -344,96 +477,6 @@ function formatPersonResult(person) {
         }
     }
 
-    // نمایش مودال پروژه جدید
-        function showNewProjectModal() {
-            // پاکسازی فرم قبل از نمایش
-            $('#projectForm')[0].reset();
-            $('#projectForm').removeClass('was-validated');
-            
-            // نمایش مودال
-            $('#projectModal').modal('show');
-            
-            // اضافه کردن رویداد ذخیره برای دکمه
-            $('#saveProject').off('click').on('click', function() {
-                const form = $('#projectForm')[0];
-                if (form.checkValidity()) {
-                    saveProject();
-                }
-                $(form).addClass('was-validated');
-            });
-        }
-    // ذخیره پروژه جدید
-function saveProject() {
-    const formData = new FormData($('#projectForm')[0]);
-    
-    $.ajax({
-        url: BASE_PATH + '/api/save-project.php',
-        method: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(response) {
-            if (response.success) {
-                // اضافه کردن پروژه جدید به لیست
-                const option = new Option(response.project.name, response.project.id, true, true);
-                $(option).data('logo', response.project.logo_path);
-                $('select[name="project_id"]').append(option).trigger('change');
-                
-                // بستن مودال
-                $('#projectModal').modal('hide');
-                
-                // نمایش پیام موفقیت
-                showSuccess('پروژه جدید با موفقیت اضافه شد');
-            } else {
-                showError(response.message || 'خطا در ثبت پروژه');
-            }
-        },
-        error: function() {
-            showError('خطا در ارتباط با سرور');
-        }
-    });
-}
-    // افزودن جزئیات پرداخت
-    function addPaymentDetail() {
-        const form = $('#paymentDetailForm')[0];
-        if (!form.checkValidity()) {
-            form.classList.add('was-validated');
-            return;
-        }
-        
-        const payment = {
-            method: $('select[name="paymentMethod"]').val(),
-            amount: parseCurrency($('input[name="amount"]').val()),
-            description: $('textarea[name="description"]').val()
-        };
-        
-        // اضافه کردن اطلاعات خاص هر روش
-        if (payment.method === 'card') {
-            payment.cardNumber = $('input[name="cardNumber"]').val();
-            payment.trackingNumber = $('input[name="trackingNumber"]').val();
-            payment.bankName = $('select[name="bankName"]').val();
-        } else if (payment.method === 'cheque') {
-            payment.chequeNumber = $('input[name="chequeNumber"]').val();
-            payment.dueDate = $('input[name="dueDate"]').val();
-            payment.bankName = $('select[name="bankName"]').val();
-        }
-        
-        payments.push(payment);
-        paidAmount += payment.amount;
-        updateRemainingAmount();
-        
-        $('#paymentModal').modal('hide');
-        resetPaymentForm();
-        
-        // نمایش پیام موفقیت
-        Swal.fire({
-            icon: 'success',
-            title: 'موفقیت',
-            text: 'پرداخت با موفقیت اضافه شد',
-            confirmButtonText: 'تایید'
-        });
-    }
-    
     // پاکسازی فرم
     function resetForm() {
         Swal.fire({
