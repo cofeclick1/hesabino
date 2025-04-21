@@ -42,19 +42,32 @@ try {
     $query .= " ORDER BY first_name, last_name LIMIT $perPage OFFSET $offset";
     
     // دریافت نتایج
-    $results = $db->query($query, $params)->fetchAll();
+    $items = $db->query($query, $params)->fetchAll();
     
-    // آماده‌سازی نتایج برای Select2
-    foreach ($results as &$result) {
+    $results = [];
+    foreach ($items as $item) {
+        // اطمینان از مسیر کامل تصویر پروفایل
+        $avatar = !empty($item['avatar']) ? BASE_PATH . '/' . $item['avatar'] : BASE_PATH . '/assets/images/default-avatar.png';
+        
+        // ساخت آیتم با فرمت مناسب برای Select2
+        $result = [
+            'id' => $item['id'],
+            'text' => $item['text']
+        ];
+        
         // اضافه کردن شرکت به متن اگر وجود داشته باشد
-        if (!empty($result['company'])) {
-            $result['text'] .= ' (' . $result['company'] . ')';
+        if (!empty($item['company'])) {
+            $result['text'] .= ' (' . $item['company'] . ')';
         }
         
-        // اطمینان از مسیر کامل تصویر پروفایل
-        if (!empty($result['avatar']) && !str_starts_with($result['avatar'], 'http')) {
-            $result['avatar'] = BASE_PATH . '/' . $result['avatar'];
+        // اضافه کردن اطلاعات اضافی
+        if (!empty($item['mobile'])) {
+            $result['mobile'] = $item['mobile'];
         }
+        
+        $result['avatar'] = $avatar;
+        
+        $results[] = $result;
     }
     
     echo json_encode([
@@ -66,6 +79,7 @@ try {
 
 } catch (Exception $e) {
     error_log($e->getMessage());
+    http_response_code(500);
     echo json_encode([
         'error' => 'خطا در دریافت اطلاعات',
         'results' => [],

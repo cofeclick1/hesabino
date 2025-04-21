@@ -631,12 +631,11 @@ $pageTitle = 'دریافت جدید';
                                 page: params.page || 1
                             };
                         },
-                        processResults: function(data, params) {
-                            params.page = params.page || 1;
+                        processResults: function(data) {
                             return {
-                                results: data.items,
+                                results: data.results || [],
                                 pagination: {
-                                    more: data.pagination.more
+                                    more: data.pagination?.more || false
                                 }
                             };
                         },
@@ -645,7 +644,23 @@ $pageTitle = 'دریافت جدید';
                     placeholder: 'جستجوی شخص...',
                     minimumInputLength: 2,
                     templateResult: formatPerson,
-                    templateSelection: formatPerson
+                    templateSelection: function(data) {
+                        return data.text || data.id;
+                    },
+                    language: {
+                        errorLoading: function() {
+                            return 'خطا در دریافت نتایج';
+                        },
+                        inputTooShort: function(args) {
+                            return 'لطفاً حداقل ' + args.minimum + ' حرف وارد کنید';
+                        },
+                        noResults: function() {
+                            return 'نتیجه‌ای یافت نشد';
+                        },
+                        searching: function() {
+                            return 'در حال جستجو...';
+                        }
+                    }
                 });
 
                 // تنظیمات ورودی مبلغ برای ردیف جدید
@@ -684,6 +699,7 @@ $pageTitle = 'دریافت جدید';
                 });
             }
 
+            // فرمت نمایش نتایج جستجوی شخص
             // فرمت نمایش نتایج جستجوی شخص
             function formatPerson(person) {
                 if (person.loading) return person.text;
