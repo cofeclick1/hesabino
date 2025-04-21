@@ -1,7 +1,7 @@
 <?php
 require_once '../includes/init.php';
 
-// بررسی دسترسی کاربر به صورت خودکار توسط init.php انجام می‌شود
+// بررسی دسترسی کاربر
 if (!$auth->hasPermission('payment.add') && !$_SESSION['is_super_admin']) {
     $_SESSION['error'] = 'شما دسترسی لازم برای این عملیات را ندارید';
     header('Location: ' . BASE_PATH . '/dashboard.php');
@@ -38,158 +38,164 @@ $pageTitle = 'پرداخت جدید';
 require_once '../includes/header.php';
 ?>
 
-<!-- Main Content -->
+<!-- Start main content area -->
 <div class="container-fluid">
-    <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div class="d-flex align-items-center">
-            <a href="javascript:history.back()" class="btn btn-outline-secondary me-2">
-                <i class="fas fa-arrow-right"></i>
-            </a>
-            <h4 class="mb-0"><?php echo $pageTitle ?></h4>
-        </div>
-        <div class="d-flex">
-            <button type="button" id="btnCalculate" class="btn btn-outline-primary me-2" title="راس‌گیری">
-                <i class="fas fa-chart-line"></i>
-                <span class="d-none d-md-inline">راس‌گیری</span>
-            </button>
-            <button type="button" id="btnNew" class="btn btn-outline-success me-2" title="پرداخت جدید">
-                <i class="fas fa-plus"></i>
-                <span class="d-none d-md-inline">جدید</span>
-            </button>
-            <button type="button" id="btnSave" class="btn btn-primary" form="paymentForm" title="ذخیره">
-                <i class="fas fa-save"></i>
-                <span class="d-none d-md-inline">ذخیره</span>
-            </button>
-        </div>
-    </div>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <?php require_once '../includes/sidebar.php'; ?>
 
-    <!-- Main Form -->
-    <form id="paymentForm" class="needs-validation" novalidate>
-        <div class="row">
-            <!-- اطلاعات اصلی -->
-            <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <!-- شماره سند -->
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label required">شماره سند</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="document_number" 
-                                           value="<?php echo $nextDocNumber; ?>" required>
-                                    <div class="input-group-text">
-                                        <div class="form-check form-switch mb-0">
-                                            <input class="form-check-input" type="checkbox" id="autoNumber" checked>
-                                            <label class="form-check-label" for="autoNumber">خودکار</label>
+        <!-- Main Content -->
+        <div class="main-content p-4 flex-grow-1">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex align-items-center">
+                    <a href="javascript:history.back()" class="btn btn-outline-secondary me-2">
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <h4 class="mb-0"><?php echo $pageTitle ?></h4>
+                </div>
+                <div class="d-flex">
+                    <button type="button" id="btnCalculate" class="btn btn-outline-primary me-2" title="راس‌گیری">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="d-none d-md-inline">راس‌گیری</span>
+                    </button>
+                    <button type="button" id="btnNew" class="btn btn-outline-success me-2" title="پرداخت جدید">
+                        <i class="fas fa-plus"></i>
+                        <span class="d-none d-md-inline">جدید</span>
+                    </button>
+                    <button type="button" id="btnSave" class="btn btn-primary" form="paymentForm" title="ذخیره">
+                        <i class="fas fa-save"></i>
+                        <span class="d-none d-md-inline">ذخیره</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Form -->
+            <form id="paymentForm" class="needs-validation" novalidate>
+                <div class="row">
+                    <!-- اطلاعات اصلی -->
+                    <div class="col-lg-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- شماره سند -->
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label required">شماره سند</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="document_number" 
+                                                   value="<?php echo $nextDocNumber; ?>" required>
+                                            <div class="input-group-text">
+                                                <div class="form-check form-switch mb-0">
+                                                    <input class="form-check-input" type="checkbox" id="autoNumber" checked>
+                                                    <label class="form-check-label" for="autoNumber">خودکار</label>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
+
+                                    <!-- تاریخ -->
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label required">تاریخ</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control date-picker" name="date" required>
+                                            <button class="btn btn-outline-secondary" type="button" id="btnToday">امروز</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- انتخاب پروژه -->
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">پروژه</label>
+                                        <div class="input-group">
+                                            <select class="form-select select2" name="project_id">
+                                                <option value="">انتخاب پروژه...</option>
+                                                <?php foreach ($projects as $project): ?>
+                                                <option value="<?php echo $project['id']; ?>">
+                                                    <?php echo $project['name']; ?>
+                                                </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <button class="btn btn-outline-secondary" type="button" id="btnNewProject">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- شرح -->
+                                    <div class="col-md-9 mb-3">
+                                        <label class="form-label">شرح</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="description" 
+                                                   list="commonDescriptions">
+                                            <button class="btn btn-outline-secondary" type="button" id="btnCopyDesc">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                            <datalist id="commonDescriptions">
+                                                <option value="پرداخت بابت خرید">
+                                                <option value="پرداخت هزینه">
+                                                <option value="پرداخت حقوق">
+                                            </datalist>
+                                        </div>
+                                    </div>
+
+                                    <!-- واحد پول -->
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label required">واحد پول</label>
+                                        <select class="form-select" name="currency_code" required>
+                                            <?php foreach ($currencies as $currency): ?>
+                                            <option value="<?php echo $currency['code']; ?>" 
+                                                    data-symbol="<?php echo $currency['symbol']; ?>">
+                                                <?php echo $currency['name']; ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- همه کدهای HTML بدون تغییر باقی می‌مانند -->
-
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
 
-                            <!-- انتخاب پروژه -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">پروژه</label>
-                                <div class="input-group">
-                                    <select class="form-select select2" name="project_id">
-                                        <option value="">انتخاب پروژه...</option>
-                                        <?php foreach ($projects as $project): ?>
-                                        <option value="<?php echo $project['id']; ?>" 
-                                                data-logo="<?php echo $project['logo_path']; ?>">
-                                            <?php echo $project['name']; ?>
-                                        </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <button class="btn btn-outline-secondary" type="button" id="btnNewProject">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
+                        <!-- آیتم‌های پرداخت -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div id="paymentItems">
+                                    <!-- آیتم‌ها اینجا اضافه می‌شوند -->
                                 </div>
+                                <button type="button" id="btnAddItem" class="btn btn-outline-primary mt-3">
+                                    <i class="fas fa-plus me-1"></i>
+                                    افزودن آیتم
+                                </button>
                             </div>
+                        </div>
+                    </div>
 
-                            <!-- شرح -->
-                            <div class="col-md-9 mb-3">
-                                <label class="form-label">شرح</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="description" 
-                                           list="commonDescriptions">
-                                    <button class="btn btn-outline-secondary" type="button" id="btnCopyDesc">
-                                        <i class="fas fa-copy"></i>
-                                    </button>
-                                    <datalist id="commonDescriptions">
-                                        <option value="پرداخت بابت خرید">
-                                        <option value="پرداخت هزینه">
-                                        <option value="پرداخت حقوق">
-                                    </datalist>
+                    <!-- پنل جمع و پرداخت -->
+                    <div class="col-lg-4">
+                        <div class="card mb-4 sticky-top" style="top: 1rem;">
+                            <div class="card-body">
+                                <h6 class="card-title mb-4">اطلاعات پرداخت</h6>
+                                
+                                <!-- جمع مبالغ -->
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>جمع کل:</span>
+                                    <span id="totalAmount" class="fw-bold">0</span>
                                 </div>
-                            </div>
-
-                            <!-- واحد پول -->
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label required">واحد پول</label>
-                                <select class="form-select" name="currency_code" required>
-                                    <?php foreach ($currencies as $currency): ?>
-                                    <option value="<?php echo $currency['code']; ?>" 
-                                            data-symbol="<?php echo $currency['symbol']; ?>">
-                                        <?php echo $currency['name']; ?>
-                                    </option>
-                                    <?php endforeach; ?>
-                                </select>
+                                
+                                <!-- باقیمانده -->
+                                <div class="d-flex justify-content-between mb-4">
+                                    <span>باقیمانده:</span>
+                                    <span id="remainingAmount" class="text-danger fw-bold">0</span>
+                                </div>
+                                
+                                <button type="button" id="btnAddPayment" class="btn btn-success w-100">
+                                    <i class="fas fa-plus me-1"></i>
+                                    افزودن پرداخت
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- آیتم‌های پرداخت -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div id="paymentItems">
-                            <!-- آیتم‌ها اینجا اضافه می‌شوند -->
-                        </div>
-                        <button type="button" id="btnAddItem" class="btn btn-outline-primary mt-3">
-                            <i class="fas fa-plus me-1"></i>
-                            افزودن آیتم
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- پنل جمع و پرداخت -->
-            <div class="col-lg-4">
-                <div class="card mb-4 sticky-top" style="top: 1rem;">
-                    <div class="card-body">
-                        <h6 class="card-title mb-4">اطلاعات پرداخت</h6>
-                        
-                        <!-- جمع مبالغ -->
-                        <div class="d-flex justify-content-between mb-3">
-                            <span>جمع کل:</span>
-                            <span id="totalAmount" class="fw-bold">0</span>
-                        </div>
-                        
-                        <!-- باقیمانده -->
-                        <div class="d-flex justify-content-between mb-4">
-                            <span>باقیمانده:</span>
-                            <span id="remainingAmount" class="text-danger fw-bold">0</span>
-                        </div>
-                        
-                        <button type="button" id="btnAddPayment" class="btn btn-success w-100">
-                            <i class="fas fa-plus me-1"></i>
-                            افزودن پرداخت
-                        </button>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 
 <!-- Template for Payment Items -->
