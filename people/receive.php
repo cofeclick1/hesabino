@@ -66,6 +66,9 @@ $pageTitle = 'دریافت جدید';
     <style>
        
     </style>
+    <script>
+    const BASE_PATH = '<?php echo BASE_PATH; ?>';
+</script>
 </head>
 <body>
     <div class="d-flex">
@@ -509,6 +512,7 @@ $pageTitle = 'دریافت جدید';
     <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.10.3/dist/autoNumeric.min.js"></script>
     <script src="<?php echo BASE_PATH; ?>/assets/js/sidebar.js"></script>
+    
     <script>
         $(document).ready(function() {
             // تنظیمات Select2
