@@ -1,0 +1,192 @@
+/* استایل‌های عمومی */
+.main-content {
+    background-color: #f8f9fa;
+}
+
+/* استایل Select2 */
+.select2-container .select2-selection--single {
+    height: 38px;
+}
+
+.select2-container--bootstrap-5 .select2-selection {
+    border-color: #ced4da;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+    line-height: 36px;
+    padding-right: 12px;
+}
+
+.select2-container--bootstrap-5 .select2-selection__arrow {
+    height: 36px;
+}
+
+/* استایل فرم‌ها */
+.form-label.required:after {
+    content: '*';
+    color: #dc3545;
+    margin-right: 4px;
+}
+
+/* استایل آیتم‌های پرداخت */
+.payment-item {
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.payment-item:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.avatar-wrapper {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+/* استایل مودال‌ها */
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+/* استایل دکمه‌ها */
+.btn-icon {
+    padding: 0.375rem;
+    line-height: 1;
+}
+
+.btn-floating {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1030;
+}
+
+/* استایل نوار جانبی */
+.sidebar-right {
+    position: sticky;
+    top: 1rem;
+}
+
+/* استایل مبالغ */
+.amount-group .currency-symbol {
+    min-width: 60px;
+    text-align: center;
+}
+
+.amount-input {
+    text-align: left !important;
+    direction: ltr;
+}
+
+/* استایل تاریخ‌پیکر */
+.datepicker-plot-area {
+    font-family: inherit;
+}
+
+.date-picker-wrapper {
+    position: relative;
+}
+
+.date-picker-wrapper .btn-today {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 0 0.375rem 0.375rem 0;
+}
+
+/* استایل کارت پروژه */
+.project-card {
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.project-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+/* استایل آیکون‌ها */
+.icon-box {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    background-color: #e9ecef;
+}
+
+/* استایل برچسب‌ها */
+.payment-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+}
+
+.payment-badge.cash {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.payment-badge.card {
+    background-color: #cfe2ff;
+    color: #084298;
+}
+
+.payment-badge.cheque {
+    background-color: #fff3cd;
+    color: #664d03;
+}
+
+.payment-badge.installment {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* استایل پنل جمع */
+.total-panel {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 1rem;
+}
+
+.total-panel .amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* استایل برای موبایل */
+@media (max-width: 768px) {
+    .btn-floating {
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .payment-item {
+        margin-bottom: 1rem;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+    }
+    
+    .modal-footer .btn {
+        width: 100%;
+        margin: 0.25rem 0;
+    }
+}
