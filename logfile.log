@@ -1736,3 +1736,17 @@ Stack trace:
 #0 C:\xampp\htdocs\hesabino\people\receive.php(14): Database->query('SELECT id, name...')
 #1 {main}
   thrown in C:\xampp\htdocs\hesabino\config\database.php on line 40
+[21-Apr-2025 12:38:30 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function isUserHaveAccess() in C:\xampp\htdocs\hesabino\people\pay.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\pay.php on line 5
+[21-Apr-2025 12:40:06 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function isUserHaveAccess() in C:\xampp\htdocs\hesabino\people\pay.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\pay.php on line 5
+[21-Apr-2025 12:42:21 Asia/Tehran] PHP Warning:  require_once(C:\xampp\htdocs\hesabino/includes/classes/Database.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\hesabino\includes\init.php on line 21
+[21-Apr-2025 12:42:21 Asia/Tehran] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\hesabino/includes/classes/Database.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\hesabino\includes\init.php:21
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\pay.php(2): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\init.php on line 21
