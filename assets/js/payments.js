@@ -23,27 +23,38 @@ $(document).ready(function() {
     
     // راه‌اندازی تاریخ‌پیکرها
     function initializeDatePickers() {
-        $('.date-picker').persianDatepicker({
-            format: 'YYYY/MM/DD',
-            autoClose: true,
-            initialValue: true,
-            initialValueType: 'persian',
-            toolbox: {
-                calendarSwitch: {
-                    enabled: false
+        $('.date-picker').each(function() {
+            $(this).pDatepicker({
+                format: 'YYYY/MM/DD',
+                autoClose: true,
+                initialValue: true,
+                initialValueType: 'persian',
+                calendar: {
+                    persian: {
+                        locale: 'fa'
+                    }
+                },
+                onSelect: function(unix) {
+                    // اگر رویداد change دستی نیاز باشد
+                    $(this.model.inputElement).trigger('change');
+                },
+                toolbox: {
+                    calendarSwitch: {
+                        enabled: false
+                    }
                 }
-            }
+            });
         });
 
-        // تنظیم تاریخ امروز
-        $('#btnToday').click(function() {
-            const today = new persianDate();
-            $('input[name="date"]').val(today.format('YYYY/MM/DD'));
-        });
-        
-        // تنظیم تاریخ امروز به صورت پیش‌فرض
-        $('#btnToday').trigger('click');
-    }
+    // تنظیم تاریخ امروز
+    $('#btnToday').click(function() {
+        const today = new persianDate();
+        $('input[name="date"]').val(today.format('YYYY/MM/DD'));
+    });
+    
+    // تنظیم تاریخ امروز به صورت پیش‌فرض
+    $('#btnToday').trigger('click');
+}
     
     // راه‌اندازی select2
     function initializeSelect2() {
@@ -308,10 +319,54 @@ $(document).ready(function() {
     }
 
     // نمایش مودال پروژه جدید
-    function showNewProjectModal() {
-        $('#projectModal').modal('show');
-    }
+        function showNewProjectModal() {
+            // پاکسازی فرم قبل از نمایش
+            $('#projectForm')[0].reset();
+            $('#projectForm').removeClass('was-validated');
+            
+            // نمایش مودال
+            $('#projectModal').modal('show');
+            
+            // اضافه کردن رویداد ذخیره برای دکمه
+            $('#saveProject').off('click').on('click', function() {
+                const form = $('#projectForm')[0];
+                if (form.checkValidity()) {
+                    saveProject();
+                }
+                $(form).addClass('was-validated');
+            });
+        }
+    // ذخیره پروژه جدید
+function saveProject() {
+    const formData = new FormData($('#projectForm')[0]);
     
+    $.ajax({
+        url: BASE_PATH + '/api/save-project.php',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            if (response.success) {
+                // اضافه کردن پروژه جدید به لیست
+                const option = new Option(response.project.name, response.project.id, true, true);
+                $(option).data('logo', response.project.logo_path);
+                $('select[name="project_id"]').append(option).trigger('change');
+                
+                // بستن مودال
+                $('#projectModal').modal('hide');
+                
+                // نمایش پیام موفقیت
+                showSuccess('پروژه جدید با موفقیت اضافه شد');
+            } else {
+                showError(response.message || 'خطا در ثبت پروژه');
+            }
+        },
+        error: function() {
+            showError('خطا در ارتباط با سرور');
+        }
+    });
+}
     // افزودن جزئیات پرداخت
     function addPaymentDetail() {
         const form = $('#paymentDetailForm')[0];

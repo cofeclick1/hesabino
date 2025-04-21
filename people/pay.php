@@ -2,7 +2,7 @@
 require_once '../includes/init.php';
 
 // بررسی دسترسی کاربر
-if (!$auth->hasPermission('payment_add') && !$_SESSION['is_super_admin']) {
+if (!$auth->hasPermission('payments_add') && !$_SESSION['is_super_admin']) {  // تغییر از payment_add به payments_add
     $_SESSION['error'] = 'شما دسترسی لازم برای این عملیات را ندارید';
     header('Location: ' . BASE_PATH . '/dashboard.php');
     exit;
@@ -411,14 +411,15 @@ require_once '../includes/header.php';
 $customCss = [
     'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css',
     'https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css',
-    'https://cdn.jsdelivr.net/npm/persiandate/dist/persiandate.min.css',
+    'https://unpkg.com/persian-datepicker@latest/dist/css/persian-datepicker.min.css', // تغییر به persian-datepicker
     BASE_PATH . '/assets/css/payments.css'
 ];
 
 $customJs = [
     'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
     'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/fa.js',
-    'https://cdn.jsdelivr.net/npm/persiandate/dist/persiandate.min.js',
+    'https://unpkg.com/persian-date@latest/dist/persian-date.min.js',
+    'https://unpkg.com/persian-datepicker@latest/dist/js/persian-datepicker.min.js', // اضافه کردن persian-datepicker
     'https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js',
     BASE_PATH . '/assets/js/payments.js',
     BASE_PATH . '/assets/js/recurring-descriptions.js'

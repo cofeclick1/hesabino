@@ -1793,3 +1793,35 @@ Stack trace:
 #2 C:\xampp\htdocs\hesabino\register.php(50): Auth->register(Array)
 #3 {main}
   thrown in C:\xampp\htdocs\hesabino\config\database.php on line 45
+[21-Apr-2025 18:40:10 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function redirect() in C:\xampp\htdocs\hesabino\login.php:25
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\login.php on line 25
+[21-Apr-2025 18:40:12 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function redirect() in C:\xampp\htdocs\hesabino\login.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\login.php on line 8
+[21-Apr-2025 18:40:34 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function redirect() in C:\xampp\htdocs\hesabino\register.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\register.php on line 6
+[21-Apr-2025 18:40:39 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function redirect() in C:\xampp\htdocs\hesabino\login.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\login.php on line 8
+[21-Apr-2025 18:41:02 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function redirect() in C:\xampp\htdocs\hesabino\login.php:25
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\login.php on line 25
+[21-Apr-2025 18:41:07 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function redirect() in C:\xampp\htdocs\hesabino\login.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\login.php on line 8
+[21-Apr-2025 18:41:09 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function redirect() in C:\xampp\htdocs\hesabino\register.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\register.php on line 6
+[21-Apr-2025 18:41:38 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function redirect() in C:\xampp\htdocs\hesabino\login.php:25
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\login.php on line 25

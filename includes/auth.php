@@ -44,47 +44,62 @@ class Auth {
             }
         }
         
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-        $data['created_at'] = date('Y-m-d H:i:s');
-        
         try {
             $this->db->beginTransaction();
             
             // درج کاربر جدید
             $userId = $this->db->insert('users', [
                 'username' => $data['username'],
-                'password' => $data['password'],
+                'password' => password_hash($data['password'], PASSWORD_DEFAULT),
                 'email' => $data['email'] ?? null,
                 'full_name' => $data['full_name'] ?? null,
                 'role' => 'user',
                 'status' => 'active',
-                'created_at' => $data['created_at']
+                'created_at' => date('Y-m-d H:i:s')
             ]);
             
             if ($userId) {
                 // اختصاص نقش پیش‌فرض به کاربر
                 $defaultRole = $this->db->get('roles', '*', ['name' => 'user']);
                 if ($defaultRole) {
-                    $this->db->insert('user_roles', [
-                        'user_id' => $userId,
-                        'role_id' => $defaultRole['id'],
-                        'created_at' => date('Y-m-d H:i:s')
-                    ]);
+                    // بررسی تکراری نبودن نقش کاربر
+                    $existingUserRole = $this->db->query(
+                        "SELECT 1 FROM user_roles WHERE user_id = ? AND role_id = ?",
+                        [$userId, $defaultRole['id']]
+                    )->fetch();
                     
-                    // اختصاص دسترسی‌های پیش‌فرض
-                    $defaultPermissions = [
-                        'dashboard_view',
-                        'profile_view',
-                        'profile_edit'
-                    ];
+                    if (!$existingUserRole) {
+                        $this->db->insert('user_roles', [
+                            'user_id' => $userId,
+                            'role_id' => $defaultRole['id'],
+                            'created_at' => date('Y-m-d H:i:s')
+                        ]);
+                    }
                     
+                    // اختصاص دسترسی‌های پیش‌فرض به نقش
+                    $defaultPermissions = ['dashboard_view', 'profile_view', 'profile_edit'];
                     foreach ($defaultPermissions as $permName) {
                         $perm = $this->db->get('permissions', '*', ['name' => $permName]);
                         if ($perm) {
-                            $this->db->insert('role_permissions', [
-                                'role_id' => $defaultRole['id'],
-                                'permission_id' => $perm['id']
-                            ]);
+                            // بررسی تکراری نبودن دسترسی نقش
+                            $existingRolePermission = $this->db->query(
+                                "SELECT 1 FROM role_permissions WHERE role_id = ? AND permission_id = ?",
+                                [$defaultRole['id'], $perm['id']]
+                            )->fetch();
+                            
+                            if (!$existingRolePermission) {
+                                try {
+                                    $this->db->insert('role_permissions', [
+                                        'role_id' => $defaultRole['id'],
+                                        'permission_id' => $perm['id']
+                                    ]);
+                                } catch (Exception $e) {
+                                    // اگر دسترسی قبلاً اضافه شده، ادامه می‌دهیم
+                                    if (strpos($e->getMessage(), 'Duplicate entry') === false) {
+                                        throw $e;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -92,12 +107,14 @@ class Auth {
                 $this->db->commit();
                 return true;
             }
+            
+            $this->db->rollback();
+            return false;
+            
         } catch (Exception $e) {
             $this->db->rollback();
             throw $e;
         }
-        
-        return false;
     }
     
     public function logout() {
