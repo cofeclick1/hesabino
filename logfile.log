@@ -1833,3 +1833,12 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\hesabino\api\save-project.php on line 103
+[21-Apr-2025 20:08:26 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Database::inTransaction() in C:\xampp\htdocs\hesabino\api\save-project.php:103
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\api\save-project.php on line 103
+[21-Apr-2025 20:09:58 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Database::prepare() in C:\xampp\htdocs\hesabino\api\save-description.php:17
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\api\save-description.php on line 17
+[21-Apr-2025 20:23:26 Asia/Tehran] Error in save-project.php: خطا در اجرای کوئری: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= NULL' at line 1

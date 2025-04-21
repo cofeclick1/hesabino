@@ -5,8 +5,13 @@ require_once '../includes/init.php';
 header('Content-Type: application/json; charset=utf-8');
 
 try {
-    // بررسی دسترسی
-    if (!$auth->hasPermission('projects_add') && !$_SESSION['is_super_admin']) {
+    // بررسی لاگین بودن کاربر
+    if (!$auth->check()) {
+        throw new Exception('لطفا ابتدا وارد سیستم شوید');
+    }
+
+    // بررسی دسترسی (اگر کاربر سوپر ادمین یا دارای دسترسی projects_add باشد)
+    if (!$auth->hasPermission('projects_add')) {
         throw new Exception('شما دسترسی لازم برای این عملیات را ندارید');
     }
     
@@ -22,9 +27,12 @@ try {
     }
     
     // بررسی تکراری نبودن نام پروژه
-    $stmt = $db->prepare("SELECT id FROM projects WHERE name = ? AND deleted_at IS NULL");
-    $stmt->execute([$projectName]);
-    if ($stmt->fetch()) {
+    $existingProject = $db->get('projects', 'id', [
+        'name' => $projectName,
+        'deleted_at IS' => null
+    ]);
+    
+    if ($existingProject) {
         throw new Exception('پروژه‌ای با این نام قبلاً ثبت شده است');
     }
     
@@ -57,57 +65,53 @@ try {
     // شروع تراکنش
     $db->beginTransaction();
     
-    // اگر این پروژه پیش‌فرض است، پروژه‌های دیگر از حالت پیش‌فرض خارج شوند
-    if ($isDefault) {
-        $stmt = $db->prepare("UPDATE projects SET is_default = 0 WHERE is_default = 1");
-        $stmt->execute();
-    }
-    
-    // درج پروژه جدید
-    $stmt = $db->prepare("
-        INSERT INTO projects (
-            name, code, description, logo_path, 
-            status, is_default, created_by, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())
-    ");
-    
-    $status = $isActive ? 'active' : 'inactive';
-    if (!$stmt->execute([
-        $projectName, 
-        $projectCode, 
-        $projectDescription,
-        $logoPath,
-        $status,
-        $isDefault,
-        $_SESSION['user_id']
-    ])) {
-        throw new Exception('خطا در ثبت پروژه');
-    }
-    
-    $projectId = $db->lastInsertId();
-    
-    $db->commit();
-    
-    // ارسال پاسخ موفقیت
-    echo json_encode([
-        'success' => true,
-        'message' => 'پروژه با موفقیت ثبت شد',
-        'project' => [
-            'id' => $projectId,
+    try {
+        // اگر این پروژه پیش‌فرض است، پروژه‌های دیگر از حالت پیش‌فرض خارج شوند
+        if ($isDefault) {
+            $db->update('projects', ['is_default' => 0], ['is_default' => 1]);
+        }
+        
+        // درج پروژه جدید
+        $projectId = $db->insert('projects', [
             'name' => $projectName,
-            'logo_path' => $logoPath ? BASE_PATH . '/uploads/logos/' . $logoPath : null
-        ]
-    ]);
+            'code' => $projectCode,
+            'description' => $projectDescription,
+            'logo_path' => $logoPath,
+            'status' => $isActive ? 'active' : 'inactive',
+            'is_default' => $isDefault,
+            'created_by' => $_SESSION['user_id'],
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+        
+        if (!$projectId) {
+            throw new Exception('خطا در ثبت پروژه');
+        }
+        
+        $db->commit();
+        
+        // ارسال پاسخ موفقیت
+        echo json_encode([
+            'success' => true,
+            'message' => 'پروژه با موفقیت ثبت شد',
+            'project' => [
+                'id' => $projectId,
+                'name' => $projectName,
+                'logo_path' => $logoPath ? BASE_PATH . '/uploads/logos/' . $logoPath : null
+            ]
+        ]);
+        
+    } catch (Exception $e) {
+        $db->rollback();
+        throw $e;
+    }
     
 } catch (Exception $e) {
-    if ($db->inTransaction()) {
-        $db->rollback();
-    }
-    
     // اگر فایل لوگو آپلود شده بود، حذف شود
     if (isset($logoPath) && file_exists(__DIR__ . '/../uploads/logos/' . $logoPath)) {
         unlink(__DIR__ . '/../uploads/logos/' . $logoPath);
     }
+    
+    error_log('Error in save-project.php: ' . $e->getMessage());
     
     http_response_code(500);
     echo json_encode([

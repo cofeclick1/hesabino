@@ -330,7 +330,7 @@ function setupAmountInput(input) {
     }
 
     // ذخیره پروژه
-    function saveProject() {
+function saveProject() {
     const form = $('#projectForm')[0];
     if (!form.checkValidity()) {
         $(form).addClass('was-validated');
@@ -394,64 +394,65 @@ function setupAmountInput(input) {
 
 
     // ذخیره توضیحات
-    function saveDescription() {
-        const form = $('#descriptionForm')[0];
-        if (!form.checkValidity()) {
-            $(form).addClass('was-validated');
-            return;
+function saveDescription() {
+    const form = $('#descriptionForm')[0];
+    if (!form.checkValidity()) {
+        $(form).addClass('was-validated');
+        return;
+    }
+    
+    // نمایش loading
+    Swal.fire({
+        title: 'در حال ذخیره...',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
         }
-        
-        // نمایش loading
-        Swal.fire({
-            title: 'در حال ذخیره...',
-            allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        });
-        
-        const data = {
-            text: $('#descriptionText').val(),
-            type: 'payment'
-        };
-        
-        $.ajax({
-            url: BASE_PATH + '/api/save-description.php',
-            method: 'POST',
-            data: data,
-            success: function(response) {
-                if (response.success) {
-                    const desc = response.description;
-                    $('#commonDescriptions').append(
-                        '<option value="' + desc.text + '">'
-                    );
-                    
-                    // افزودن به فیلد توضیحات فعلی
-                    $('input[name="description"]').val(desc.text);
-                    
-                    $('#descriptionModal').modal('hide');
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'موفقیت',
-                        text: response.message,
-                        confirmButtonText: 'تایید'
-                    });
-                    
-                    // پاکسازی فرم
-                    form.reset();
-                    $(form).removeClass('was-validated');
-                }
-            },
-            error: function(xhr) {
+    });
+    
+    const data = {
+        text: $('#descriptionText').val(),
+        type: 'payment'
+    };
+    
+    $.ajax({
+        url: BASE_PATH + '/api/save-description.php',
+        method: 'POST',
+        data: data,
+        success: function(response) {
+            if (response.success) {
+                const desc = response.description;
+                // اصلاح خط زیر
+                $('#commonDescriptions').append(
+                    '<option value="' + desc.text + '"></option>'
+                );
+                
+                // افزودن به فیلد توضیحات فعلی
+                $('input[name="description"]').val(desc.text);
+                
+                $('#descriptionModal').modal('hide');
                 Swal.fire({
-                    icon: 'error',
-                    title: 'خطا',
-                    text: xhr.responseJSON?.message || 'خطا در ارتباط با سرور',
+                    icon: 'success',
+                    title: 'موفقیت',
+                    text: response.message,
                     confirmButtonText: 'تایید'
                 });
+                
+                // پاکسازی فرم
+                form.reset();
+                $(form).removeClass('was-validated');
             }
-        });
-    }
+        },
+        error: function(xhr) {
+            Swal.fire({
+                icon: 'error',
+                title: 'خطا',
+                text: xhr.responseJSON?.message || 'خطا در ارتباط با سرور',
+                confirmButtonText: 'تایید'
+            });
+        }
+    });
+}
     
     // نمایش مودال محاسبات
     function showCalculationModal() {
