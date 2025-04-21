@@ -1842,3 +1842,4 @@ Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\hesabino\api\save-description.php on line 17
 [21-Apr-2025 20:23:26 Asia/Tehran] Error in save-project.php: خطا در اجرای کوئری: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= NULL' at line 1
+[21-Apr-2025 21:26:06 Asia/Tehran] Error in save-project.php: خطا در اجرای کوئری: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= NULL' at line 1
