@@ -1726,3 +1726,13 @@ Stack trace:
 [21-Apr-2025 03:04:36 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\init.php on line 14
 [21-Apr-2025 03:04:37 Asia/Tehran] PHP Warning:  Constant BASE_PATH already defined in C:\xampp\htdocs\hesabino\includes\init.php on line 7
 [21-Apr-2025 03:04:37 Asia/Tehran] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\hesabino\includes\init.php on line 14
+[21-Apr-2025 09:51:46 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.projects' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:40
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\receive.php(12): Database->query('SELECT id, name...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 40
+[21-Apr-2025 09:53:52 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting_db.currencies' doesn't exist in C:\xampp\htdocs\hesabino\config\database.php:40
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\receive.php(14): Database->query('SELECT id, name...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 40

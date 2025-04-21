@@ -162,3 +162,54 @@ document.addEventListener('DOMContentLoaded', function() {
     // شروع
     init();
 });
+
+$(document).ready(function() {
+    // باز/بسته کردن منو با کلیک روی دکمه
+    $('.sidebar-toggle').click(function(e) {
+        e.preventDefault();
+        $('.sidebar').toggleClass('collapsed');
+        
+        // ذخیره وضعیت در localStorage
+        localStorage.setItem('sidebarCollapsed', $('.sidebar').hasClass('collapsed'));
+    });
+    
+    // بازیابی وضعیت از localStorage
+    if (localStorage.getItem('sidebarCollapsed') === 'true') {
+        $('.sidebar').addClass('collapsed');
+    }
+    
+    // باز/بسته کردن زیرمنوها
+    $('.nav-item.has-submenu > .nav-link').click(function(e) {
+        e.preventDefault();
+        const $navItem = $(this).parent();
+        
+        // بستن سایر زیرمنوهای باز
+        $('.nav-item.has-submenu').not($navItem).removeClass('open');
+        
+        // باز/بسته کردن زیرمنوی کلیک شده
+        $navItem.toggleClass('open');
+    });
+    
+    // نمایش/مخفی کردن منو در موبایل
+    $('.mobile-menu-toggle').click(function(e) {
+        e.preventDefault();
+        $('.sidebar').toggleClass('show');
+    });
+    
+    // بستن منو با کلیک بیرون از آن در موبایل
+    $(document).click(function(e) {
+        if (!$(e.target).closest('.sidebar, .mobile-menu-toggle').length) {
+            $('.sidebar').removeClass('show');
+        }
+    });
+    
+    // تنظیم کلاس active برای منوی جاری
+    const currentPath = window.location.pathname;
+    $('.nav-link').each(function() {
+        const linkPath = $(this).attr('href');
+        if (currentPath === linkPath || currentPath.startsWith(linkPath)) {
+            $(this).addClass('active');
+            $(this).parents('.nav-item.has-submenu').addClass('open');
+        }
+    });
+});
