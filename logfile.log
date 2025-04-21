@@ -1786,3 +1786,10 @@ Stack trace:
 #0 C:\xampp\htdocs\hesabino\register.php(50): Auth->register(Array)
 #1 {main}
   thrown in C:\xampp\htdocs\hesabino\includes\auth.php on line 34
+[21-Apr-2025 18:37:06 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '3-1' for key 'PRIMARY' in C:\xampp\htdocs\hesabino\config\database.php:45
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\config\database.php(76): Database->query('INSERT INTO rol...', Array)
+#1 C:\xampp\htdocs\hesabino\includes\auth.php(84): Database->insert('role_permission...', Array)
+#2 C:\xampp\htdocs\hesabino\register.php(50): Auth->register(Array)
+#3 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 45

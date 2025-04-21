@@ -55,23 +55,28 @@ if (!in_array($script_path, $public_pages)) {
         '/hesabino/people/people_list.php' => 'people_view',
         '/hesabino/people/receive.php' => 'receipts_add',     // دسترسی صفحه دریافت
         '/hesabino/people/receive_list.php' => 'receipts_view', // دسترسی لیست دریافت‌ها
-        '/hesabino/people/pay.php' => 'payment_add'           // اصلاح دسترسی صفحه پرداخت
+        '/hesabino/people/pay.php' => 'payments_add'          // اصلاح دسترسی صفحه پرداخت
     ];
 
     // اگر صفحه نیاز به دسترسی خاصی دارد
     if (isset($permission_map[$script_path])) {
-        // اگر کاربر دسترسی ندارد
-        if (!$auth->hasPermission($permission_map[$script_path]) && !$_SESSION['is_super_admin']) {
-            $_SESSION['error'] = 'شما مجوز دسترسی به این بخش را ندارید';
-            header('Location: ' . BASE_PATH . '/dashboard.php');
-            exit;
+        // اگر کاربر سوپر ادمین باشد، همه دسترسی‌ها را دارد
+        if (!isset($_SESSION['is_super_admin']) || !$_SESSION['is_super_admin']) {
+            // اگر کاربر دسترسی ندارد
+            if (!$auth->hasPermission($permission_map[$script_path])) {
+                $_SESSION['error'] = 'شما مجوز دسترسی به این بخش را ندارید';
+                header('Location: ' . BASE_PATH . '/dashboard.php');
+                exit;
+            }
         }
     }
 }
 
 // مقداردهی متغیرهای مورد نیاز
 $user = $auth->getCurrentUser();
-$lowStock = $db->query("SELECT COUNT(*) as total FROM products WHERE quantity <= min_quantity AND status = 'active'")->fetch()['total'];
+if ($user) {
+    $lowStock = $db->query("SELECT COUNT(*) as total FROM products WHERE quantity <= min_quantity AND status = 'active'")->fetch()['total'];
+}
 
 // تنظیم منطقه زمانی
 date_default_timezone_set('Asia/Tehran');

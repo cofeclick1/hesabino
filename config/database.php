@@ -31,6 +31,11 @@ class Database {
         return $this->conn;
     }
 
+    // اضافه کردن متد lastInsertId
+    public function lastInsertId() {
+        return $this->conn->lastInsertId();
+    }
+
     public function query($sql, $params = []) {
         try {
             $stmt = $this->conn->prepare($sql);
