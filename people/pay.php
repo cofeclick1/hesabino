@@ -10,7 +10,7 @@ if (!$auth->hasPermission('payments_add') && !$_SESSION['is_super_admin']) {  //
 
 // دریافت لیست پروژه‌ها
 $projects = $db->query("
-    SELECT id, name, code, logo_path  // اضافه کردن code
+    SELECT id, name, code, logo_path 
     FROM projects 
     WHERE status = 'active' 
     AND deleted_at IS NULL
@@ -114,25 +114,25 @@ require_once '../includes/header.php';
 
                                     <!-- انتخاب پروژه -->
                                     <div class="col-md-6 mb-3">
-                                    <label class="form-label">پروژه</label>
-                                    <div class="input-group">
-                                        <select name="project_id" class="form-select select2" required>
-                                            <option value="">انتخاب پروژه...</option>
-                                            <?php foreach ($projects as $project): ?>
-                                            <option value="<?php echo $project['id']; ?>" 
-                                                    data-logo="<?php echo $project['logo_path']; ?>">
-                                                <?php echo $project['name']; ?>
-                                                <?php if ($project['code']): ?>
-                                                    (<?php echo $project['code']; ?>)
-                                                <?php endif; ?>
-                                            </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                        <button type="button" class="btn btn-outline-secondary" id="btnNewProject">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
+                                        <label class="form-label">پروژه</label>
+                                        <div class="input-group">
+                                            <select name="project_id" class="form-select select2" required>
+                                                <option value="">انتخاب پروژه...</option>
+                                                <?php foreach ($projects as $project): ?>
+                                                <option value="<?php echo $project['id']; ?>" 
+                                                        data-logo="<?php echo $project['logo_path']; ?>">
+                                                    <?php echo $project['name']; ?>
+                                                    <?php if (!empty($project['code'])): ?>
+                                                        (<?php echo $project['code']; ?>)
+                                                    <?php endif; ?>
+                                                </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <button type="button" class="btn btn-outline-secondary" id="btnNewProject">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
 
                                     <!-- شرح -->
                                     <div class="col-md-9 mb-3">
@@ -227,7 +227,9 @@ require_once '../includes/header.php';
                                 <div class="col-md-4 mb-3">
                                     <label class="form-label required">شخص</label>
                                     <div class="input-group">
-                                        <select class="form-select person-search" required> <option value="">انتخاب کنید</option> </select>
+                                        <select class="form-select person-search" required>
+                                            <option value="">انتخاب کنید</option>
+                                        </select>
                                         <button type="button" class="btn btn-outline-secondary btn-add-person">
                                             <i class="fas fa-plus"></i>
                                         </button>
@@ -332,25 +334,43 @@ require_once '../includes/header.php';
                 </div>
             </div>
 
-            <!-- Description Modal -->
-            <div class="modal fade" id="descriptionModal" tabindex="-1">
+            <!-- Person Modal -->
+            <div class="modal fade" id="personModal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">افزودن شرح جدید</h5>
+                            <h5 class="modal-title">افزودن شخص جدید</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="descriptionForm" class="needs-validation" novalidate>
+                            <form id="personForm" class="needs-validation" novalidate>
                                 <div class="mb-3">
-                                    <label class="form-label required">متن شرح</label>
-                                    <input type="text" class="form-control" id="descriptionText" required>
+                                    <label class="form-label required">نام</label>
+                                    <input type="text" class="form-control" name="firstName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label required">نام خانوادگی</label>
+                                    <input type="text" class="form-control" name="lastName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">موبایل</label>
+                                    <input type="text" class="form-control ltr text-start" name="mobile" 
+                                           pattern="[0-9]{11}" maxlength="11">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">کد ملی</label>
+                                    <input type="text" class="form-control ltr text-start" name="nationalCode" 
+                                           pattern="[0-9]{10}" maxlength="10">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">توضیحات</label>
+                                    <textarea class="form-control" name="description" rows="2"></textarea>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
-                            <button type="button" class="btn btn-primary" id="saveDescription">ذخیره</button>
+                            <button type="button" class="btn btn-primary" id="savePerson">ذخیره</button>
                         </div>
                     </div>
                 </div>
@@ -405,6 +425,29 @@ require_once '../includes/header.php';
                 </div>
             </div>
 
+            <!-- Description Modal -->
+            <div class="modal fade" id="descriptionModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">افزودن شرح جدید</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="descriptionForm" class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label class="form-label required">متن شرح</label>
+                                    <input type="text" class="form-control" id="descriptionText" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                            <button type="button" class="btn btn-primary" id="saveDescription">ذخیره</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -414,7 +457,7 @@ require_once '../includes/header.php';
 $customCss = [
     'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css',
     'https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css',
-    'https://unpkg.com/persian-datepicker@latest/dist/css/persian-datepicker.min.css', // تغییر به persian-datepicker
+    'https://unpkg.com/persian-datepicker@latest/dist/css/persian-datepicker.min.css', 
     BASE_PATH . '/assets/css/payments.css'
 ];
 
@@ -422,7 +465,7 @@ $customJs = [
     'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
     'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/fa.js',
     'https://unpkg.com/persian-date@latest/dist/persian-date.min.js',
-    'https://unpkg.com/persian-datepicker@latest/dist/js/persian-datepicker.min.js', // اضافه کردن persian-datepicker
+    'https://unpkg.com/persian-datepicker@latest/dist/js/persian-datepicker.min.js',
     'https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js',
     BASE_PATH . '/assets/js/payments.js',
     BASE_PATH . '/assets/js/recurring-descriptions.js'
