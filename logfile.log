@@ -1754,3 +1754,11 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\hesabino\people\pay.php on line 5
+[21-Apr-2025 12:53:23 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function redirectTo() in C:\xampp\htdocs\hesabino\people\pay.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\pay.php on line 6
+[21-Apr-2025 12:58:54 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function isUserHaveAccess() in C:\xampp\htdocs\hesabino\people\pay.php:5
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\pay.php on line 5
