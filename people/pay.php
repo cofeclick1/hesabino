@@ -10,7 +10,7 @@ if (!$auth->hasPermission('payments_add') && !$_SESSION['is_super_admin']) {  //
 
 // دریافت لیست پروژه‌ها
 $projects = $db->query("
-    SELECT id, name, logo_path 
+    SELECT id, name, code, logo_path  // اضافه کردن code
     FROM projects 
     WHERE status = 'active' 
     AND deleted_at IS NULL
@@ -227,7 +227,7 @@ require_once '../includes/header.php';
                                 <div class="col-md-4 mb-3">
                                     <label class="form-label required">شخص</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control person-search" required>
+                                        <select class="form-select person-search" required> <option value="">انتخاب کنید</option> </select>
                                         <button type="button" class="btn btn-outline-secondary btn-add-person">
                                             <i class="fas fa-plus"></i>
                                         </button>

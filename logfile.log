@@ -1886,3 +1886,15 @@ Stack trace:
 [21-Apr-2025 22:15:01 Asia/Tehran] PHP Warning:  Undefined array key "code" in C:\xampp\htdocs\hesabino\people\pay.php on line 125
 [21-Apr-2025 22:15:01 Asia/Tehran] PHP Warning:  Undefined array key "code" in C:\xampp\htdocs\hesabino\people\pay.php on line 125
 [21-Apr-2025 22:15:01 Asia/Tehran] PHP Warning:  Undefined array key "code" in C:\xampp\htdocs\hesabino\people\pay.php on line 125
+[21-Apr-2025 22:21:06 Asia/Tehran] PHP Warning:  Undefined array key "code" in C:\xampp\htdocs\hesabino\people\pay.php on line 125
+[21-Apr-2025 22:21:06 Asia/Tehran] PHP Warning:  Undefined array key "code" in C:\xampp\htdocs\hesabino\people\pay.php on line 125
+[21-Apr-2025 22:21:06 Asia/Tehran] PHP Warning:  Undefined array key "code" in C:\xampp\htdocs\hesabino\people\pay.php on line 125
+[21-Apr-2025 22:21:06 Asia/Tehran] PHP Warning:  Undefined array key "code" in C:\xampp\htdocs\hesabino\people\pay.php on line 125
+[21-Apr-2025 22:21:06 Asia/Tehran] PHP Warning:  Undefined array key "code" in C:\xampp\htdocs\hesabino\people\pay.php on line 125
+[21-Apr-2025 22:24:04 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '/ اضافه کردن code
+    FROM projects 
+    WHERE status = 'active' ...' at line 1 in C:\xampp\htdocs\hesabino\config\database.php:45
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\pay.php(12): Database->query('\r\n    SELECT id...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 45
