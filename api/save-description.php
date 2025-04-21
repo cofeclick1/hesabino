@@ -5,16 +5,6 @@ require_once '../includes/init.php';
 header('Content-Type: application/json; charset=utf-8');
 
 try {
-    // بررسی لاگین بودن کاربر
-    if (!$auth->check()) {
-        throw new Exception('لطفا ابتدا وارد سیستم شوید');
-    }
-    
-    // بررسی دسترسی
-    if (!$auth->hasPermission('descriptions_add')) {
-        throw new Exception('شما دسترسی لازم برای این عملیات را ندارید');
-    }
-    
     // دریافت متن توضیحات
     $text = sanitize($_POST['text'] ?? '');
     $type = sanitize($_POST['type'] ?? 'payment');
@@ -24,23 +14,23 @@ try {
     }
     
     // بررسی تکراری نبودن متن
-    $existingDesc = $db->get('recurring_descriptions', 'id', [
-        'text' => $text,
-        'type' => $type,
-        'deleted_at IS' => null
-    ]);
+    $stmt = $db->query("SELECT id FROM recurring_descriptions WHERE text = ? AND type = ? AND deleted_at IS NULL", 
+        [$text, $type]
+    );
     
-    if ($existingDesc) {
+    if ($stmt->fetch()) {
         throw new Exception('این متن قبلاً ثبت شده است');
     }
     
     // درج توضیحات جدید
-    $descriptionId = $db->insert('recurring_descriptions', [
+    $data = [
         'text' => $text,
         'type' => $type,
         'created_by' => $_SESSION['user_id'],
         'created_at' => date('Y-m-d H:i:s')
-    ]);
+    ];
+    
+    $descriptionId = $db->insert('recurring_descriptions', $data);
     
     if (!$descriptionId) {
         throw new Exception('خطا در ثبت توضیحات');

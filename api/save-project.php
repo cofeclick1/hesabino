@@ -5,34 +5,19 @@ require_once '../includes/init.php';
 header('Content-Type: application/json; charset=utf-8');
 
 try {
-    // بررسی لاگین بودن کاربر
-    if (!$auth->check()) {
-        throw new Exception('لطفا ابتدا وارد سیستم شوید');
-    }
-
-    // بررسی دسترسی (اگر کاربر سوپر ادمین یا دارای دسترسی projects_add باشد)
-    if (!$auth->hasPermission('projects_add')) {
-        throw new Exception('شما دسترسی لازم برای این عملیات را ندارید');
-    }
-    
     // دریافت داده‌های پروژه
     $projectName = sanitize($_POST['projectName'] ?? '');
     $projectCode = sanitize($_POST['projectCode'] ?? '');
     $projectDescription = sanitize($_POST['projectDescription'] ?? '');
     $isActive = isset($_POST['projectActive']) ? 1 : 0;
-    $isDefault = isset($_POST['projectDefault']) ? 1 : 0;
     
     if (empty($projectName)) {
         throw new Exception('نام پروژه الزامی است');
     }
     
     // بررسی تکراری نبودن نام پروژه
-    $existingProject = $db->get('projects', 'id', [
-        'name' => $projectName,
-        'deleted_at IS' => null
-    ]);
-    
-    if ($existingProject) {
+    $stmt = $db->query("SELECT id FROM projects WHERE name = ? AND deleted_at IS NULL", [$projectName]);
+    if ($stmt->fetch()) {
         throw new Exception('پروژه‌ای با این نام قبلاً ثبت شده است');
     }
     
@@ -60,55 +45,42 @@ try {
         if (!move_uploaded_file($file['tmp_name'], $uploadDir . $logoPath)) {
             throw new Exception('خطا در آپلود فایل لوگو');
         }
+        
+        $logoPath = '/uploads/logos/' . $logoPath;
     }
     
-    // شروع تراکنش
-    $db->beginTransaction();
+    // درج پروژه جدید
+    $data = [
+        'name' => $projectName,
+        'code' => $projectCode,
+        'description' => $projectDescription,
+        'logo_path' => $logoPath,
+        'status' => $isActive ? 'active' : 'inactive',
+        'created_by' => $_SESSION['user_id'],
+        'created_at' => date('Y-m-d H:i:s')
+    ];
     
-    try {
-        // اگر این پروژه پیش‌فرض است، پروژه‌های دیگر از حالت پیش‌فرض خارج شوند
-        if ($isDefault) {
-            $db->update('projects', ['is_default' => 0], ['is_default' => 1]);
-        }
-        
-        // درج پروژه جدید
-        $projectId = $db->insert('projects', [
+    $projectId = $db->insert('projects', $data);
+    
+    if (!$projectId) {
+        throw new Exception('خطا در ثبت پروژه');
+    }
+    
+    // ارسال پاسخ موفقیت
+    echo json_encode([
+        'success' => true,
+        'message' => 'پروژه با موفقیت ثبت شد',
+        'project' => [
+            'id' => $projectId,
             'name' => $projectName,
-            'code' => $projectCode,
-            'description' => $projectDescription,
-            'logo_path' => $logoPath,
-            'status' => $isActive ? 'active' : 'inactive',
-            'is_default' => $isDefault,
-            'created_by' => $_SESSION['user_id'],
-            'created_at' => date('Y-m-d H:i:s')
-        ]);
-        
-        if (!$projectId) {
-            throw new Exception('خطا در ثبت پروژه');
-        }
-        
-        $db->commit();
-        
-        // ارسال پاسخ موفقیت
-        echo json_encode([
-            'success' => true,
-            'message' => 'پروژه با موفقیت ثبت شد',
-            'project' => [
-                'id' => $projectId,
-                'name' => $projectName,
-                'logo_path' => $logoPath ? BASE_PATH . '/uploads/logos/' . $logoPath : null
-            ]
-        ]);
-        
-    } catch (Exception $e) {
-        $db->rollback();
-        throw $e;
-    }
+            'logo_path' => $logoPath ? BASE_PATH . $logoPath : null
+        ]
+    ]);
     
 } catch (Exception $e) {
     // اگر فایل لوگو آپلود شده بود، حذف شود
-    if (isset($logoPath) && file_exists(__DIR__ . '/../uploads/logos/' . $logoPath)) {
-        unlink(__DIR__ . '/../uploads/logos/' . $logoPath);
+    if (isset($logoPath) && file_exists(__DIR__ . '/..' . $logoPath)) {
+        unlink(__DIR__ . '/..' . $logoPath);
     }
     
     error_log('Error in save-project.php: ' . $e->getMessage());

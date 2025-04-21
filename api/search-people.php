@@ -1,10 +1,7 @@
 <?php
 require_once '../includes/init.php';
 
-// بررسی درخواست Ajax
-if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
-    exit('Direct access not permitted');
-}
+header('Content-Type: application/json; charset=utf-8');
 
 try {
     // دریافت پارامترهای جستجو
@@ -17,26 +14,18 @@ try {
     $query = "
         SELECT 
             p.id,
-            p.full_name as text,
+            CONCAT(p.first_name, ' ', p.last_name) as text,
             p.mobile,
-            p.avatar_path,
-            p.national_code,
-            COALESCE(
-                (SELECT SUM(amount) FROM transactions WHERE person_id = p.id AND type = 'debit'),
-                0
-            ) as total_debit,
-            COALESCE(
-                (SELECT SUM(amount) FROM transactions WHERE person_id = p.id AND type = 'credit'),
-                0
-            ) as total_credit
+            p.profile_image as avatar_path,
+            p.national_code
         FROM people p
         WHERE p.deleted_at IS NULL
         AND (
-            p.full_name LIKE ? OR 
+            CONCAT(p.first_name, ' ', p.last_name) LIKE ? OR 
             p.mobile LIKE ? OR 
             p.national_code LIKE ?
         )
-        ORDER BY p.full_name
+        ORDER BY p.first_name, p.last_name
         LIMIT ? OFFSET ?
     ";
     
@@ -53,14 +42,11 @@ try {
     // دریافت نتایج
     $people = [];
     while ($person = $stmt->fetch()) {
-        // محاسبه مانده حساب
-        $person['balance'] = $person['total_credit'] - $person['total_debit'];
-        
         // اضافه کردن مسیر آواتار
         if (!empty($person['avatar_path'])) {
-            $person['avatar_path'] = BASE_PATH . '/uploads/avatars/' . $person['avatar_path'];
+            $person['avatar_path'] = BASE_PATH . '/uploads/profiles/' . $person['avatar_path'];
         } else {
-            $person['avatar_path'] = BASE_PATH . '/assets/images/default-avatar.png';
+            $person['avatar_path'] = BASE_PATH . '/assets/images/avatar.png';
         }
         
         $people[] = $person;
@@ -72,7 +58,7 @@ try {
         FROM people
         WHERE deleted_at IS NULL
         AND (
-            full_name LIKE ? OR 
+            CONCAT(first_name, ' ', last_name) LIKE ? OR 
             mobile LIKE ? OR 
             national_code LIKE ?
         )
@@ -92,13 +78,14 @@ try {
         'hasMore' => ($offset + $limit) < $total
     ];
     
-    header('Content-Type: application/json');
     echo json_encode($response);
     
 } catch (Exception $e) {
+    error_log('Error in search-people.php: ' . $e->getMessage());
+    
     http_response_code(500);
     echo json_encode([
         'error' => true,
-        'message' => 'خطا در جستجوی اطلاعات: ' . $e->getMessage()
+        'message' => 'خطا در جستجوی اطلاعات'
     ]);
 }

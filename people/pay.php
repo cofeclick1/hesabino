@@ -114,22 +114,25 @@ require_once '../includes/header.php';
 
                                     <!-- انتخاب پروژه -->
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">پروژه</label>
-                                        <div class="input-group">
-                                            <select class="form-select select2" name="project_id">
-                                                <option value="">انتخاب پروژه...</option>
-                                                <?php foreach ($projects as $project): ?>
-                                                <option value="<?php echo $project['id']; ?>" 
-                                                        data-logo="<?php echo $project['logo_path']; ?>">
-                                                    <?php echo $project['name']; ?>
-                                                </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                            <button type="button" class="btn btn-outline-secondary" id="btnNewProject">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-                                        </div>
+                                    <label class="form-label">پروژه</label>
+                                    <div class="input-group">
+                                        <select name="project_id" class="form-select select2" required>
+                                            <option value="">انتخاب پروژه...</option>
+                                            <?php foreach ($projects as $project): ?>
+                                            <option value="<?php echo $project['id']; ?>" 
+                                                    data-logo="<?php echo $project['logo_path']; ?>">
+                                                <?php echo $project['name']; ?>
+                                                <?php if ($project['code']): ?>
+                                                    (<?php echo $project['code']; ?>)
+                                                <?php endif; ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <button type="button" class="btn btn-outline-secondary" id="btnNewProject">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
                                     </div>
+                                </div>
 
                                     <!-- شرح -->
                                     <div class="col-md-9 mb-3">
