@@ -694,3 +694,100 @@ function saveDescription() {
         });
     }
 });
+// تنظیم جستجوی شخص
+function setupPersonSearch() {
+    $(document).on('input', '.search-input', function() {
+        const searchInput = $(this);
+        const searchWrapper = searchInput.closest('.search-wrapper');
+        const resultsContainer = searchWrapper.find('.search-results');
+        const query = searchInput.val().trim();
+
+        if (query.length < 2) {
+            resultsContainer.hide();
+            return;
+        }
+
+        // ارسال درخواست AJAX
+        $.ajax({
+            url: BASE_PATH + '/api/search-people.php',
+            data: { search: query },
+            method: 'GET',
+            success: function(response) {
+                if (response.items && response.items.length > 0) {
+                    // ساخت HTML نتایج
+                    let resultsHtml = '';
+                    response.items.forEach(person => {
+                        resultsHtml += `
+                            <div class="search-result-item p-2 hover-bg" data-id="${person.id}" data-name="${person.text}">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-wrapper me-2">
+                                        <img src="${person.avatar_path || BASE_PATH + '/assets/images/avatar.png'}" 
+                                             class="rounded-circle" 
+                                             style="width: 40px; height: 40px; object-fit: cover;">
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">${person.text}</div>
+                                        <div class="small text-muted">
+                                            ${person.mobile ? `<i class="fas fa-phone me-1"></i>${person.mobile}` : ''}
+                                            ${person.national_code ? `<span class="mx-2">|</span><i class="fas fa-id-card me-1"></i>${person.national_code}` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    resultsContainer.html(resultsHtml).show();
+                } else {
+                    resultsContainer.html('<div class="p-2 text-muted">نتیجه‌ای یافت نشد</div>').show();
+                }
+            }
+        });
+    });
+
+    // انتخاب شخص از لیست
+    $(document).on('click', '.search-result-item', function() {
+        const item = $(this);
+        const searchWrapper = item.closest('.search-wrapper');
+        const personId = item.data('id');
+        const personName = item.data('name');
+        
+        // ذخیره ID در hidden input
+        searchWrapper.find('.person-id').val(personId);
+        
+        // نمایش نام انتخاب شده
+        searchWrapper.find('.search-input')
+            .val(personName)
+            .attr('readonly', true);
+
+        // مخفی کردن نتایج
+        searchWrapper.find('.search-results').hide();
+        
+        // آپدیت تصویر آواتار
+        const avatarImg = item.find('img').attr('src');
+        item.closest('.payment-item').find('.person-avatar').attr('src', avatarImg);
+    });
+
+    // امکان پاک کردن شخص انتخاب شده
+    $(document).on('click', '.search-input[readonly]', function() {
+        const input = $(this);
+        input.val('').attr('readonly', false);
+        input.closest('.search-wrapper').find('.person-id').val('');
+        input.closest('.payment-item').find('.person-avatar').attr('src', '');
+    });
+}
+
+// فراخوانی تابع در initializePage
+function initializePage() {
+    initializeDatePickers();
+    initializeSelect2();
+    setupValidation();
+    setupEventListeners();
+    setupPersonSearch(); // اضافه کردن این خط
+    
+    // اضافه کردن اولین آیتم
+    addPaymentItem();
+
+    // تنظیم مقدار اولیه واحد پول
+    updateCurrencySymbols();
+}
