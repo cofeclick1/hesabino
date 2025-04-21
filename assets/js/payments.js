@@ -791,3 +791,9 @@ function initializePage() {
     // تنظیم مقدار اولیه واحد پول
     updateCurrencySymbols();
 }
+
+// افزودن تابع formatAmount
+function formatAmount(input) {
+    const value = input.value.replace(/[^\d]/g, '');
+    input.value = value ? new Intl.NumberFormat('fa-IR').format(value) : '';
+}
