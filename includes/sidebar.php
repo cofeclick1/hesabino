@@ -9,266 +9,176 @@ function isActiveMenu($path) {
     $current_path = $_SERVER['REQUEST_URI'];
     return strpos($current_path, $path) !== false ? 'active' : '';
 }
+
+// تابع کمکی برای نمایش باز بودن زیرمنو
+function isSubmenuOpen($path) {
+    $current_path = $_SERVER['REQUEST_URI'];
+    return strpos($current_path, $path) !== false ? 'open' : '';
+}
 ?>
 
 <div class="sidebar" id="mainSidebar">
+    <!-- Sidebar Header -->
     <div class="sidebar-header">
-        <img src="<?php echo BASE_PATH; ?>/assets/images/logo.png" alt="<?php echo SITE_NAME; ?>" class="logo">
-        <h3><?php echo SITE_NAME; ?></h3>
+        <a href="<?php echo BASE_PATH; ?>/dashboard.php" class="sidebar-brand">
+            <img src="<?php echo BASE_PATH; ?>/assets/images/logo.png" alt="<?php echo SITE_NAME; ?>" class="brand-logo">
+            <span class="brand-text"><?php echo SITE_NAME; ?></span>
+        </a>
     </div>
 
-    <ul class="menu">
+    <!-- User Profile -->
+    <div class="sidebar-profile">
+        <div class="profile-info">
+            <img src="<?php echo !empty($user['profile_image']) ? BASE_PATH . '/' . $user['profile_image'] : BASE_PATH . '/assets/images/default-avatar.png'; ?>" 
+                 alt="<?php echo htmlspecialchars($user['username']); ?>" 
+                 class="profile-image">
+            <div class="profile-details">
+                <div class="profile-name"><?php echo htmlspecialchars($user['full_name'] ?? $user['username']); ?></div>
+                <div class="profile-role"><?php echo htmlspecialchars($user['role'] ?? 'کاربر'); ?></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <ul class="sidebar-nav">
         <!-- داشبورد -->
-        <li class="menu-item <?php echo isActiveMenu('/dashboard.php'); ?>">
-            <a href="<?php echo BASE_PATH; ?>/dashboard.php" class="menu-link">
-                <i class="fas fa-tachometer-alt"></i>
-                <span>داشبورد</span>
+        <li class="nav-item">
+            <a href="<?php echo BASE_PATH; ?>/dashboard.php" class="nav-link <?php echo isActiveMenu('/dashboard.php'); ?>" data-title="داشبورد">
+                <i class="fas fa-home"></i>
+                <span class="nav-text">داشبورد</span>
             </a>
         </li>
 
         <!-- اشخاص -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/people/'); ?>">
-            <a href="#" class="menu-link">
+        <li class="nav-item has-submenu <?php echo isSubmenuOpen('/people/'); ?>">
+            <a href="#" class="nav-link <?php echo isActiveMenu('/people/'); ?>" data-title="اشخاص">
                 <i class="fas fa-users"></i>
-                <span>اشخاص</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                <span class="nav-text">اشخاص</span>
             </a>
             <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/people/new_person.php">شخص جدید</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/people/people_list.php">لیست اشخاص</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/people/receive.php">دریافت</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/people/receive_list.php">لیست دریافت‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/people/pay.php">پرداخت</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/people/pay_list.php">لیست پرداخت‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/people/shareholders.php">سهامداران</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/people/sellers.php">فروشندگان</a></li>
-            </ul>
-        </li>
-
-        <!-- کالاها و خدمات -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/products/'); ?>">
-            <a href="#" class="menu-link">
-                <i class="fas fa-box"></i>
-                <span>کالاها و خدمات</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/products/new_product.php">افزودن محصول</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/products/new_service.php">خدمات جدید</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/products/products_services.php">کالاها و خدمات</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/products/update_price_list.php">به‌روزرسانی لیست قیمت</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/products/print_barcode.php">چاپ بارکد</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/products/print_bulk_barcode.php">چاپ بارکد تعدادی</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/products/price_list_page.php">صفحه لیست قیمت کالا</a></li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/people/people_list.php" class="nav-link <?php echo isActiveMenu('/people/people_list.php'); ?>">
+                        <i class="fas fa-list"></i>
+                        <span class="nav-text">لیست اشخاص</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/people/new_person.php" class="nav-link <?php echo isActiveMenu('/people/new_person.php'); ?>">
+                        <i class="fas fa-user-plus"></i>
+                        <span class="nav-text">افزودن شخص</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/people/receive.php" class="nav-link <?php echo isActiveMenu('/people/receive.php'); ?>">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span class="nav-text">دریافت</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/people/receive_list.php" class="nav-link <?php echo isActiveMenu('/people/receive_list.php'); ?>">
+                        <i class="fas fa-list-alt"></i>
+                        <span class="nav-text">لیست دریافت‌ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/people/pay.php" class="nav-link <?php echo isActiveMenu('/people/pay.php'); ?>">
+                        <i class="fas fa-money-check"></i>
+                        <span class="nav-text">پرداخت</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/people/pay_list.php" class="nav-link <?php echo isActiveMenu('/people/pay_list.php'); ?>">
+                        <i class="fas fa-list-ol"></i>
+                        <span class="nav-text">لیست پرداخت‌ها</span>
+                    </a>
+                </li>
             </ul>
         </li>
 
         <!-- بانکداری -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/banking/'); ?>">
-            <a href="#" class="menu-link">
+        <li class="nav-item has-submenu <?php echo isSubmenuOpen('/banking/'); ?>">
+            <a href="#" class="nav-link <?php echo isActiveMenu('/banking/'); ?>" data-title="بانکداری">
                 <i class="fas fa-university"></i>
-                <span>بانکداری</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                <span class="nav-text">بانکداری</span>
             </a>
             <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/banking/banks.php">بانک‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/banking/funds.php">صندوق‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/banking/petty_cash.php">تنخواه‌گردان‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/banking/transfer.php">انتقال</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/banking/transfer_list.php">لیست انتقال‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/banking/received_checks.php">لیست چک‌های دریافتی</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/banking/paid_checks.php">لیست چک‌های پرداختی</a></li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/banking/banks.php" class="nav-link <?php echo isActiveMenu('/banking/banks.php'); ?>">
+                        <i class="fas fa-building"></i>
+                        <span class="nav-text">بانک‌ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/banking/transfer.php" class="nav-link <?php echo isActiveMenu('/banking/transfer.php'); ?>">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span class="nav-text">انتقال وجه</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/banking/checks.php" class="nav-link <?php echo isActiveMenu('/banking/checks.php'); ?>">
+                        <i class="fas fa-money-check-alt"></i>
+                        <span class="nav-text">مدیریت چک‌ها</span>
+                    </a>
+                </li>
             </ul>
         </li>
 
-        <!-- فروش و درآمد -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/sales/'); ?>">
-            <a href="#" class="menu-link">
-                <i class="fas fa-shopping-cart"></i>
-                <span>فروش و درآمد</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/sales/new_sale.php">فروش جدید</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/sales/quick_invoice.php">فاکتور سریع</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/sales/return_from_sale.php">برگشت از فروش</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/sales/sale_invoices.php">فاکتورهای فروش</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/sales/return_invoices.php">فاکتورهای برگشت از فروش</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/sales/income.php">درآمد</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/sales/income_list.php">لیست درآمدها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/sales/installment_contract.php">قرارداد فروش اقساطی</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/sales/installment_list.php">لیست فروش اقساطی</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/sales/discounted_items.php">اقلام تخفیف‌دار</a></li>
-            </ul>
-        </li>
-
-        <!-- خرید و هزینه -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/purchases/'); ?>">
-            <a href="#" class="menu-link">
-                <i class="fas fa-shopping-basket"></i>
-                <span>خرید و هزینه</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/purchases/new_purchase.php">خرید جدید</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/purchases/return_from_purchase.php">برگشت از خرید</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/purchases/purchase_invoices.php">فاکتورهای خرید</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/purchases/return_purchase_invoices.php">فاکتورهای برگشت از خرید</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/purchases/expense.php">هزینه</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/purchases/expense_list.php">لیست هزینه‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/purchases/waste.php">ضایعات</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/purchases/waste_list.php">لیست ضایعات</a></li>
-            </ul>
-        </li>
-
-        <!-- انبارداری -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/inventory/'); ?>">
-            <a href="#" class="menu-link">
-                <i class="fas fa-warehouse"></i>
-                <span>انبارداری</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/inventory/warehouses.php">انبارها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/inventory/new_transfer.php">حواله جدید</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/inventory/warehouse_transfers.php">رسید و حواله‌های انبار</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/inventory/stock.php">موجودی کالا</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/inventory/all_warehouse_stock.php">موجودی تمامی انبارها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/inventory/inventory_audit.php">انبارگردانی</a></li>
-            </ul>
-        </li>
-
-        <!-- حسابداری -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/accounting/'); ?>">
-            <a href="#" class="menu-link">
-                <i class="fas fa-calculator"></i>
-                <span>حسابداری</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/accounting/new_document.php">سند جدید</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/accounting/document_list.php">لیست اسناد</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/accounting/opening_balance.php">تراز افتتاحیه</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/accounting/close_fiscal_year.php">بستن سال مالی</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/accounting/accounts_table.php">جدول حساب‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/accounting/consolidate_documents.php">تجمیع اسناد</a></li>
-            </ul>
-        </li>
-
-        <!-- سایر -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/others/'); ?>">
-            <a href="#" class="menu-link">
-                <i class="fas fa-ellipsis-h"></i>
-                <span>سایر</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/others/archive.php">آرشیو</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/sms_panel.php">پنل پیامک</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/inquiry.php">استعلام</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/other_receive.php">دریافت سایر</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/receive_list.php">لیست دریافت‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/other_pay.php">پرداخت سایر</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/pay_list.php">لیست پرداخت‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/currency_adjustment.php">سند تسعیر ارز</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/people_balance.php">سند توازن اشخاص</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/product_balance.php">سند توازن کالاها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/others/salary_document.php">سند حقوق</a></li>
-            </ul>
-        </li>
-
-        <!-- گزارش‌ها -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/reports/'); ?>">
-            <a href="#" class="menu-link">
-                <i class="fas fa-chart-bar"></i>
-                <span>گزارش‌ها</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/reports/all_reports.php">تمام گزارش‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/reports/balance_sheet.php">ترازنامه</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/reports/debtors_creditors.php">بدهکاران و بستانکاران</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/reports/person_account_card.php">کارت حساب اشخاص</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/reports/product_account_card.php">کارت حساب کالا</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/reports/sales_by_product.php">فروش به تفکیک کالا</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/reports/project_card.php">کارت پروژه</a></li>
-            </ul>
-        </li>
-        
         <!-- تنظیمات -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/settings/'); ?>">
-            <a href="#" class="menu-link">
+        <?php if ($_SESSION['is_super_admin']): ?>
+        <li class="nav-item has-submenu <?php echo isSubmenuOpen('/settings/'); ?>">
+            <a href="#" class="nav-link <?php echo isActiveMenu('/settings/'); ?>" data-title="تنظیمات">
                 <i class="fas fa-cog"></i>
-                <span>تنظیمات</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
+                <span class="nav-text">تنظیمات</span>
             </a>
             <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/settings/projects.php">پروژه‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/business_info.php">اطلاعات کسب‌وکار</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/financial_settings.php">تنظیمات مالی</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/currency_conversion.php">جدول تبدیل نرخ ارز</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/user_management.php">مدیریت کاربران</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/print_settings.php">تنظیمات چاپ</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/form_builder.php">فرم‌ساز</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/notifications.php">اعلانات</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/backup.php">پشتیبان‌گیری</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/restore.php">بازیابی اطلاعات</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/permissions.php">مدیریت دسترسی‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/settings/activity_log.php">گزارش فعالیت‌ها</a></li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/settings/users.php" class="nav-link <?php echo isActiveMenu('/settings/users.php'); ?>">
+                        <i class="fas fa-users-cog"></i>
+                        <span class="nav-text">مدیریت کاربران</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/settings/roles.php" class="nav-link <?php echo isActiveMenu('/settings/roles.php'); ?>">
+                        <i class="fas fa-user-shield"></i>
+                        <span class="nav-text">نقش‌ها و دسترسی‌ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo BASE_PATH; ?>/settings/general.php" class="nav-link <?php echo isActiveMenu('/settings/general.php'); ?>">
+                        <i class="fas fa-sliders-h"></i>
+                        <span class="nav-text">تنظیمات عمومی</span>
+                    </a>
+                </li>
             </ul>
         </li>
-
-        <!-- پروفایل -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/profile/'); ?>">
-            <a href="#" class="menu-link">
-                <i class="fas fa-user"></i>
-                <span>پروفایل</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/profile/view.php">مشاهده پروفایل</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/profile/edit.php">ویرایش اطلاعات</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/profile/change_password.php">تغییر رمز عبور</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/profile/notifications.php">تنظیمات اعلان‌ها</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/profile/activity.php">تاریخچه فعالیت‌ها</a></li>
-            </ul>
-        </li>
-        
-        <!-- راهنما -->
-        <li class="menu-item has-submenu <?php echo isActiveMenu('/help/'); ?>">
-            <a href="#" class="menu-link">
-                <i class="fas fa-question-circle"></i>
-                <span>راهنما</span>
-                <i class="fas fa-chevron-left submenu-arrow"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo BASE_PATH; ?>/help/guide.php">راهنمای کاربری</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/help/faq.php">سؤالات متداول</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/help/support.php">پشتیبانی</a></li>
-                <li><a href="<?php echo BASE_PATH; ?>/help/about.php">درباره ما</a></li>
-            </ul>
-        </li>
+        <?php endif; ?>
 
         <!-- خروج -->
-        <li class="menu-item">
-            <a href="<?php echo BASE_PATH; ?>/auth/logout.php" class="menu-link">
+        <li class="nav-item">
+            <a href="<?php echo BASE_PATH; ?>/logout.php" class="nav-link" data-title="خروج">
                 <i class="fas fa-sign-out-alt"></i>
-                <span>خروج</span>
+                <span class="nav-text">خروج</span>
             </a>
         </li>
     </ul>
 
-    <!-- نمایش اطلاعات کاربر -->
-    <div class="sidebar-footer">
-        <div class="user-info">
-                        <img src="<?php echo BASE_PATH; ?>/assets/images/avatars/<?php echo htmlspecialchars($_SESSION['user_avatar'] ?? 'default.png'); ?>" alt="تصویر کاربر" class="user-avatar">
-            <div class="user-details">
-                <span class="user-name"><?php echo htmlspecialchars($_SESSION['user_fullname'] ?? $_SESSION['username']); ?></span>
-                <span class="user-role"><?php echo htmlspecialchars($_SESSION['user_role'] ?? 'کاربر'); ?></span>
-            </div>
+    <!-- آمار و اطلاعات -->
+    <div class="sidebar-stats">
+        <?php if ($lowStock > 0): ?>
+        <div class="stat-item text-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span><?php echo $lowStock; ?> کالا در حد نصاب</span>
         </div>
+        <?php endif; ?>
+    </div>
+
+    <!-- نمایش نسخه -->
+    <div class="sidebar-footer">
         <div class="version-info">
             <small>نسخه <?php echo APP_VERSION; ?></small>
         </div>
     </div>
 </div>
+
+<!-- Overlay for mobile -->
+<div class="sidebar-overlay"></div>
