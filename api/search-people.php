@@ -55,12 +55,12 @@ try {
     // بررسی وجود نتایج بیشتر
     $totalQuery = "
         SELECT COUNT(*) as total
-        FROM people
-        WHERE deleted_at IS NULL
+        FROM people p
+        WHERE p.deleted_at IS NULL
         AND (
-            CONCAT(first_name, ' ', last_name) LIKE ? OR 
-            mobile LIKE ? OR 
-            national_code LIKE ?
+            CONCAT(p.first_name, ' ', p.last_name) LIKE ? OR 
+            p.mobile LIKE ? OR 
+            p.national_code LIKE ?
         )
     ";
     

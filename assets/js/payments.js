@@ -67,39 +67,39 @@ $(document).ready(function() {
     
     // راه‌اندازی جستجوی افراد با Select2
     function initializePersonSearch(input) {
-        $(input).select2({
-            theme: 'bootstrap-5',
-            language: 'fa',
-            dir: 'rtl',
-            ajax: {
-                url: BASE_PATH + '/api/search-people.php',
-                dataType: 'json',
-                delay: 250,
-                data: function(params) {
-                    return {
-                        search: params.term,
-                        page: params.page || 1
-                    };
-                },
-                processResults: function(data, params) {
-                    params.page = params.page || 1;
-                    return {
-                        results: data.items,
-                        pagination: {
-                            more: data.hasMore
-                        }
-                    };
-                },
-                cache: true
+    $(input).select2({
+        theme: 'bootstrap-5',
+        language: 'fa',
+        dir: 'rtl',
+        ajax: {
+            url: BASE_PATH + '/api/search-people.php',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    search: params.term,
+                    page: params.page || 1
+                };
             },
-            minimumInputLength: 2,
-            templateResult: formatPersonResult,
-            templateSelection: formatPersonSelection,
-            escapeMarkup: function(markup) {
-                return markup;
-            }
-        });
-    }
+            processResults: function(data, params) {
+                params.page = params.page || 1;
+                return {
+                    results: data.items,
+                    pagination: {
+                        more: data.hasMore
+                    }
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 2,
+        templateResult: formatPersonResult,
+        templateSelection: formatPersonSelection,
+        escapeMarkup: function(markup) {
+            return markup;
+        }
+    });
+}
 
     // فرمت نمایش نتیجه جستجوی شخص
     function formatPersonResult(person) {
