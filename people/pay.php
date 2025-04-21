@@ -2,7 +2,7 @@
 require_once '../includes/init.php';
 
 // بررسی دسترسی کاربر
-if (!$auth->hasPermission('payment.add') && !$_SESSION['is_super_admin']) {
+if (!$auth->hasPermission('payment_add') && !$_SESSION['is_super_admin']) {
     $_SESSION['error'] = 'شما دسترسی لازم برای این عملیات را ندارید';
     header('Location: ' . BASE_PATH . '/dashboard.php');
     exit;

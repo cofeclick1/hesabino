@@ -1781,3 +1781,8 @@ Stack trace:
 [21-Apr-2025 17:46:49 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
 [21-Apr-2025 17:46:49 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
 [21-Apr-2025 17:46:49 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
+[21-Apr-2025 18:33:15 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined method Database::lastInsertId() in C:\xampp\htdocs\hesabino\includes\auth.php:34
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\register.php(50): Auth->register(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\includes\auth.php on line 34

@@ -53,9 +53,9 @@ if (!in_array($script_path, $public_pages)) {
         '/hesabino/people/edit_person.php' => 'people_edit',
         '/hesabino/people/delete_person.php' => 'people_delete',
         '/hesabino/people/people_list.php' => 'people_view',
-        '/hesabino/people/receive.php' => 'receipts_add',     // اضافه کردن دسترسی صفحه دریافت
-        '/hesabino/people/receive_list.php' => 'receipts_view', // اضافه کردن دسترسی لیست دریافت‌ها
-        '/hesabino/people/pay.php' => 'payment.add'           // اضافه کردن دسترسی صفحه پرداخت
+        '/hesabino/people/receive.php' => 'receipts_add',     // دسترسی صفحه دریافت
+        '/hesabino/people/receive_list.php' => 'receipts_view', // دسترسی لیست دریافت‌ها
+        '/hesabino/people/pay.php' => 'payment_add'           // اصلاح دسترسی صفحه پرداخت
     ];
 
     // اگر صفحه نیاز به دسترسی خاصی دارد

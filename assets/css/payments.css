@@ -170,7 +170,7 @@
     font-weight: 700;
 }
 
-/* استایل برای موبایل */
+/* استایل موبایل */
 @media (max-width: 768px) {
     .btn-floating {
         bottom: 1rem;

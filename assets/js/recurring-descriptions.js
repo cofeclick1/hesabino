@@ -13,7 +13,7 @@ $(document).ready(function() {
     // دریافت لیست شرح‌های پرتکرار
     function loadDescriptions() {
         $.ajax({
-            url: BASE_PATH + '/api/get-descriptions.php',
+            url: BASE_PATH + '/api/descriptions.php',
             method: 'GET',
             success: function(response) {
                 if (response.success) {
@@ -40,11 +40,11 @@ $(document).ready(function() {
             showCancelButton: true,
             showConfirmButton: false,
             cancelButtonText: 'بستن',
-            width: '600px'
+            width: '600px',
+            didOpen: () => {
+                setupDescriptionListEvents();
+            }
         });
-        
-        // راه‌اندازی رویدادهای لیست
-        setupDescriptionListEvents();
     }
     
     // تولید HTML لیست شرح‌ها
@@ -102,12 +102,12 @@ $(document).ready(function() {
         $('#btnSaveDescription').prop('disabled', true);
         
         $.ajax({
-            url: BASE_PATH + '/api/save-description.php',
+            url: BASE_PATH + '/api/descriptions.php',
             method: 'POST',
             data: { text },
             success: function(response) {
                 if (response.success) {
-                    descriptions.push(response.data);
+                    descriptions.unshift(response.data);
                     $('#descriptionModal').modal('hide');
                     $('#descriptionText').val('');
                     updateDescriptionList();

@@ -27,6 +27,7 @@ $(document).ready(function() {
             format: 'YYYY/MM/DD',
             autoClose: true,
             initialValue: true,
+            initialValueType: 'persian',
             toolbox: {
                 calendarSwitch: {
                     enabled: false
@@ -39,6 +40,9 @@ $(document).ready(function() {
             const today = new persianDate();
             $('input[name="date"]').val(today.format('YYYY/MM/DD'));
         });
+        
+        // تنظیم تاریخ امروز به صورت پیش‌فرض
+        $('#btnToday').trigger('click');
     }
     
     // راه‌اندازی select2
@@ -103,6 +107,11 @@ $(document).ready(function() {
         // رویدادهای پروژه
         $('#projectId').on('change', handleProjectChange);
         $('#btnNewProject').on('click', showNewProjectModal);
+        
+        // رویداد دکمه انصراف مودال‌ها
+        $('.modal .btn-secondary').on('click', function() {
+            $(this).closest('.modal').modal('hide');
+        });
     }
     
     // افزودن آیتم پرداخت جدید
@@ -142,6 +151,13 @@ $(document).ready(function() {
                     $(this).remove();
                     updateTotalAmount();
                 });
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'توجه',
+                    text: 'حداقل یک آیتم پرداخت باید وجود داشته باشد',
+                    confirmButtonText: 'تایید'
+                });
             }
         });
         
@@ -152,7 +168,7 @@ $(document).ready(function() {
         });
 
         // افزودن شخص جدید
-        $(item).find('.btn-outline-secondary').on('click', () => {
+        $(item).find('.btn-add-person').on('click', () => {
             showNewPersonModal();
         });
     }
@@ -227,9 +243,14 @@ $(document).ready(function() {
         $('.payment-details').addClass('d-none');
         const method = $(this).val();
         if (method === 'card') {
-            $('#cardDetails').removeClass('d-none');
+            $('#cardDetails').removeClass('d-none')
+                .find('input, select').prop('required', true);
         } else if (method === 'cheque') {
-            $('#chequeDetails').removeClass('d-none');
+            $('#chequeDetails').removeClass('d-none')
+                .find('input, select').prop('required', true);
+        } else {
+            $('.payment-details')
+                .find('input, select').prop('required', false);
         }
     }
     
@@ -248,7 +269,8 @@ $(document).ready(function() {
         const remaining = totalAmount - paidAmount;
         $('#remainingAmount')
             .text(formatCurrency(remaining))
-            .toggleClass('text-danger', remaining > 0);
+            .toggleClass('text-danger', remaining > 0)
+            .toggleClass('text-success', remaining <= 0);
     }
     
     // فرمت کردن مبلغ
@@ -263,14 +285,17 @@ $(document).ready(function() {
     
     // نمایش مودال محاسبات
     function showCalculationModal() {
-        // TODO: پیاده‌سازی محاسبه راس چک‌ها
-        alert('این قابلیت در نسخه بعدی اضافه خواهد شد');
+        Swal.fire({
+            title: 'راس‌گیری',
+            text: 'این قابلیت در نسخه بعدی اضافه خواهد شد',
+            icon: 'info',
+            confirmButtonText: 'تایید'
+        });
     }
 
     // نمایش مودال شخص جدید
     function showNewPersonModal() {
-        // TODO: پیاده‌سازی افزودن شخص جدید
-        alert('این قابلیت در نسخه بعدی اضافه خواهد شد');
+        $('#personModal').modal('show');
     }
     
     // تغییر پروژه
@@ -318,24 +343,44 @@ $(document).ready(function() {
         
         $('#paymentModal').modal('hide');
         resetPaymentForm();
+        
+        // نمایش پیام موفقیت
+        Swal.fire({
+            icon: 'success',
+            title: 'موفقیت',
+            text: 'پرداخت با موفقیت اضافه شد',
+            confirmButtonText: 'تایید'
+        });
     }
     
     // پاکسازی فرم
     function resetForm() {
-        if (confirm('آیا از پاک کردن فرم اطمینان دارید؟')) {
-            $('#paymentForm')[0].reset();
-            $('#paymentItems').empty();
-            payments = [];
-            paidAmount = 0;
-            totalAmount = 0;
-            currentPaymentId = 1;
-            
-            addPaymentItem();
-            updateTotalAmount();
-            
-            // برگرداندن شماره سند به حالت خودکار
-            $('#autoNumber').prop('checked', true).trigger('change');
-        }
+        Swal.fire({
+            title: 'پاکسازی فرم',
+            text: 'آیا از پاک کردن فرم اطمینان دارید؟',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'بله',
+            cancelButtonText: 'خیر'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#paymentForm')[0].reset();
+                $('#paymentItems').empty();
+                payments = [];
+                paidAmount = 0;
+                totalAmount = 0;
+                currentPaymentId = 1;
+                
+                addPaymentItem();
+                updateTotalAmount();
+                
+                // برگرداندن شماره سند به حالت خودکار
+                $('#autoNumber').prop('checked', true).trigger('change');
+                
+                // تنظیم تاریخ امروز
+                $('#btnToday').trigger('click');
+            }
+        });
     }
     
     // پاکسازی فرم پرداخت
@@ -343,18 +388,29 @@ $(document).ready(function() {
         const form = $('#paymentDetailForm')[0];
         form.reset();
         form.classList.remove('was-validated');
-        $('.payment-details').addClass('d-none');
+        $('.payment-details').addClass('d-none')
+            .find('input, select').prop('required', false);
     }
     
     // ذخیره پرداخت
     function savePayment() {
         if (totalAmount === 0) {
-            showError('لطفا حداقل یک آیتم پرداخت اضافه کنید');
+            Swal.fire({
+                icon: 'error',
+                title: 'خطا',
+                text: 'لطفا حداقل یک آیتم پرداخت اضافه کنید',
+                confirmButtonText: 'تایید'
+            });
             return;
         }
         
         if (totalAmount !== paidAmount) {
-            showError('مبلغ پرداختی با جمع کل برابر نیست');
+            Swal.fire({
+                icon: 'error',
+                title: 'خطا',
+                text: 'مبلغ پرداختی با جمع کل برابر نیست',
+                confirmButtonText: 'تایید'
+            });
             return;
         }
         
@@ -371,6 +427,16 @@ $(document).ready(function() {
         // غیرفعال کردن دکمه‌ها
         $('#btnSave, #btnNew, #btnCalculate').prop('disabled', true);
         
+        // نمایش لودینگ
+        Swal.fire({
+            title: 'در حال ذخیره...',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            willOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
         // ارسال درخواست
         $.ajax({
             url: BASE_PATH + '/api/save-payment.php',
@@ -379,15 +445,30 @@ $(document).ready(function() {
             contentType: 'application/json',
             success: function(response) {
                 if (response.success) {
-                    showSuccess('پرداخت با موفقیت ثبت شد', () => {
-                        window.location.href = 'payments.php';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'موفقیت',
+                        text: 'پرداخت با موفقیت ثبت شد',
+                        confirmButtonText: 'تایید'
+                    }).then(() => {
+                        window.location.href = BASE_PATH + '/people/payments.php';
                     });
                 } else {
-                    showError(response.message || 'خطا در ثبت پرداخت');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'خطا',
+                        text: response.message || 'خطا در ثبت پرداخت',
+                        confirmButtonText: 'تایید'
+                    });
                 }
             },
             error: function(xhr) {
-                showError('خطا در ارتباط با سرور');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطا',
+                    text: 'خطا در ارتباط با سرور',
+                    confirmButtonText: 'تایید'
+                });
             },
             complete: function() {
                 // فعال کردن دکمه‌ها

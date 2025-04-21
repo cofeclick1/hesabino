@@ -14,15 +14,18 @@ if (!defined('BASE_PATH')) {
     <!-- فونت‌ها و استایل‌های اصلی -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/fontiran.css">
-    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/style.css">
-    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/dashboard.css">
-
-<link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/sidebar.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/fontiran.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/dashboard.css">
+    <link rel="stylesheet" href="<?php echo BASE_PATH; ?>/assets/css/sidebar.css">
+    
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css">
+    
     <!-- استایل‌های اختصاصی -->
     <?php if (isset($customCss) && is_array($customCss)): ?>
-        <?php foreach ($customCss as $cssFile): ?>
-            <link rel="stylesheet" href="<?php echo ASSETS_URL . $cssFile; ?>">
+        <?php foreach ($customCss as $css): ?>
+            <link rel="stylesheet" href="<?php echo $css; ?>">
         <?php endforeach; ?>
     <?php endif; ?>
 
