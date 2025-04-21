@@ -436,165 +436,317 @@ $provinces = $db->query("SELECT id, name FROM provinces ORDER BY name")->fetchAl
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover table-striped" id="peopleTable">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 50px">#</th>
-                                        <th style="width: 60px"></th>
-                                        <th>مشخصات</th>
-                                        <th>اطلاعات تماس</th>
-                                        <th>نوع</th>
-                                        <th>آمار</th>
-                                        <th>موقعیت</th>
-                                        <th>تاریخ ثبت</th>
-                                        <th style="width: 150px">عملیات</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($people as $index => $person): ?>
-                                    <tr class="<?php echo $person['deleted_at'] ? 'table-danger' : ''; ?>">
-                                        <td><?php echo $offset + $index + 1; ?></td>
-                                        <td>
-                                            <img src="<?php echo !empty($person['profile_image']) ? 
-                                                     BASE_PATH . '/' . $person['profile_image'] : 
-                                                     BASE_PATH . '/assets/images/default-avatar.png'; ?>" 
-                                                 class="avatar-sm" alt="تصویر پروفایل">
-                                        </td>
-                                        <td>
-                                            <div class="person-info">
-                                                <div class="person-details">
-                                                    <div class="person-name">
-                                                        <?php echo htmlspecialchars($person['first_name'] . ' ' . $person['last_name']); ?>
-                                                    </div>
-                                                    <?php if (!empty($person['company'])): ?>
-                                                    <div class="person-company">
-                                                        <i class="fas fa-building me-1"></i>
-                                                        <?php echo htmlspecialchars($person['company']); ?>
-                                                    </div>
-                                                    <?php endif; ?>
-                                                    <?php if (!empty($person['tags'])): ?>
-                                                    <div class="mt-1">
-                                                        <?php foreach (explode(',', $person['tags']) as $tag): ?>
-                                                        <span class="badge bg-light text-dark">
-                                                            <?php echo htmlspecialchars(trim($tag)); ?>
-                                                        </span>
-                                                        <?php endforeach; ?>
-                                                    </div>
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div dir="ltr" class="text-start">
-                                                <?php if (!empty($person['mobile'])): ?>
-                                                <div>
-                                                    <i class="fas fa-mobile-alt me-1"></i>
-                                                    <?php echo htmlspecialchars($person['mobile']); ?>
-                                                </div>
-                                                <?php endif; ?>
-                                                <?php if (!empty($person['phone'])): ?>
-                                                <div>
-                                                    <i class="fas fa-phone me-1"></i>
-                                                    <?php echo htmlspecialchars($person['phone']); ?>
-                                                </div>
-                                                <?php endif; ?>
-                                                <?php if (!empty($person['email'])): ?>
-                                                <div>
-                                                    <i class="fas fa-envelope me-1"></i>
-                                                    <?php echo htmlspecialchars($person['email']); ?>
-                                                </div>
-                                                <?php endif; ?>
-                                            </div>
-                                            <div class="mt-2">
-                                                <?php if (!empty($person['instagram_id'])): ?>
-                                                <a href="https://instagram.com/<?php echo $person['instagram_id']; ?>" 
-                                                   class="social-badge bg-danger bg-opacity-10 text-danger" 
-                                                   target="_blank">
-                                                    <i class="fab fa-instagram"></i>
-                                                </a>
-                                                <?php endif; ?>
-                                                <?php if (!empty($person['telegram_id'])): ?>
-                                                <a href="https://t.me/<?php echo $person['telegram_id']; ?>" 
-                                                   class="social-badge bg-info bg-opacity-10 text-info" 
-                                                   target="_blank">
-                                                    <i class="fab fa-telegram"></i>
-                                                </a>
-                                                <?php endif; ?>
-                                                <?php if (!empty($person['whatsapp_number'])): ?>
-                                                <a href="https://wa.me/<?php echo $person['whatsapp_number']; ?>" 
-                                                   class="social-badge bg-success bg-opacity-10 text-success" 
-                                                   target="_blank">
-                                                    <i class="fab fa-whatsapp"></i>
-                                                </a>
-                                                <?php endif; ?>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-soft-<?php echo $person['type'] === 'real' ? 'success' : 'warning'; ?>">
-                                                <?php echo $person['type'] === 'real' ? 'حقیقی' : 'حقوقی'; ?>
-                                            </span>
-                                            <?php if (!empty($person['national_code'])): ?>
-                                            <div class="small mt-1">
-                                                <?php echo $person['type'] === 'real' ? 'کد ملی: ' : 'شناسه ملی: '; ?>
-                                                <?php echo htmlspecialchars($person['national_code']); ?>
-                                            </div>
-                                            <?php endif; ?>
-                                            <?php if (!empty($person['economic_code'])): ?>
-                                            <div class="small">
-                                                کد اقتصادی: <?php echo htmlspecialchars($person['economic_code']); ?>
-                                            </div>
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <div class="small">
-                                                <div>
-                                                    <i class="fas fa-file-invoice me-1"></i>
-                                                    تعداد فاکتور: <?php echo number_format($person['invoice_count']); ?>
-                                                </div>
-                                                <div>
-                                                    <i class="fas fa-money-bill-wave me-1"></i>
-                                                    مجموع خرید: <?php echo number_format($person['total_purchases']); ?>
-                                                </div>
-                                                <div>
-                                                    <i class="fas fa-credit-card me-1"></i>
-                                                    سقف اعتبار: <?php echo number_format($person['credit_limit']); ?>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <?php if (!empty($person['province_name'])): ?>
-                                            <div>
-                                                <i class="fas fa-map-marker-alt me-1"></i>
-                                                <?php echo htmlspecialchars($person['province_name']); ?>
-                                                <?php if (!empty($person['city_name'])): ?>
-                                                    <br>
-                                                    <small><?php echo htmlspecialchars($person['city_name']); ?></small>
-                                                <?php endif; ?>
-                                            </div>
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <?php echo toJalali($person['created_at']); ?>
-                                            </div>
-                                            <small class="text-muted">
-                                                <?php echo htmlspecialchars($person['creator_name']); ?>
-                                            </small>
-                                        </td>
-                                        <td>
-                                            <?php if ($person['deleted_at']): ?>
-                                                <button type="button" class="btn btn-sm btn-success restore-btn" 
-                                                        data-id="<?php echo $person['id']; ?>"
-                                                        data-name="<?php echo htmlspecialchars($person['first_name'] . ' ' . $person['last_name']); ?>">
-                                                    <i class="fas fa-trash-restore"></i>
-                                                    بازیابی
-                                                </button>
-                                            <?php else: ?>
-                                                <div class="btn-group btn-group-sm">
-                                                    <a href="edit_person.php?id=<?php echo $person['id']; ?>" 
-                                                       class="btn btn-primary" title="ویرایش">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <button type="button" class="btn btn-danger delete-btn" 
-                                                            data-id="<?php echo $person['id']; ?>"
-                                                            data-name="<?php echo htmlspecialchars($person['first_name'] . ' ' . $person['last_
+                            <table class="table table-hover" id="peopleTable">
+    <thead>
+        <tr>
+            <th style="width: 50px">#</th>
+            <th style="width: 60px"></th>
+            <th>مشخصات</th>
+            <th>اطلاعات تماس</th>
+            <th>نوع</th>
+            <th>آمار</th>
+            <th>موقعیت</th>
+            <th>تاریخ ثبت</th>
+            <th style="width: 150px">عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($people as $index => $person): ?>
+        <tr class="<?php echo $person['deleted_at'] ? 'table-danger' : ''; ?>">
+            <td><?php echo $offset + $index + 1; ?></td>
+            <td>
+                <img src="<?php echo !empty($person['profile_image']) ? 
+                         BASE_PATH . '/' . $person['profile_image'] : 
+                         BASE_PATH . '/assets/images/default-avatar.png'; ?>" 
+                     class="avatar-sm" alt="تصویر پروفایل">
+            </td>
+            <td>
+                <div class="person-info">
+                    <div class="person-details">
+                        <div class="person-name">
+                            <?php echo htmlspecialchars($person['first_name'] . ' ' . $person['last_name']); ?>
+                        </div>
+                        <?php if (!empty($person['company'])): ?>
+                        <div class="person-company">
+                            <i class="fas fa-building me-1"></i>
+                            <?php echo htmlspecialchars($person['company']); ?>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div dir="ltr" class="text-start">
+                    <?php if (!empty($person['mobile'])): ?>
+                    <div>
+                        <i class="fas fa-mobile-alt me-1"></i>
+                        <?php echo htmlspecialchars($person['mobile']); ?>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($person['phone'])): ?>
+                    <div>
+                        <i class="fas fa-phone me-1"></i>
+                        <?php echo htmlspecialchars($person['phone']); ?>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($person['email'])): ?>
+                    <div>
+                        <i class="fas fa-envelope me-1"></i>
+                        <?php echo htmlspecialchars($person['email']); ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </td>
+            <td>
+                <span class="badge badge-soft-<?php echo $person['type'] === 'real' ? 'success' : 'warning'; ?>">
+                    <?php echo $person['type'] === 'real' ? 'حقیقی' : 'حقوقی'; ?>
+                </span>
+                <?php if (!empty($person['national_code'])): ?>
+                <div class="small mt-1">
+                    <?php echo $person['type'] === 'real' ? 'کد ملی: ' : 'شناسه ملی: '; ?>
+                    <?php echo htmlspecialchars($person['national_code']); ?>
+                </div>
+                <?php endif; ?>
+            </td>
+            <td>
+                <div class="small">
+                    <div><i class="fas fa-file-invoice me-1"></i>
+                        تعداد فاکتور: <?php echo number_format($person['invoice_count']); ?>
+                    </div>
+                    <div><i class="fas fa-money-bill-wave me-1"></i>
+                        مجموع خرید: <?php echo number_format($person['total_purchases']); ?>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <?php if (!empty($person['province_name'])): ?>
+                <div>
+                    <i class="fas fa-map-marker-alt me-1"></i>
+                    <?php echo htmlspecialchars($person['province_name']); ?>
+                    <?php if (!empty($person['city_name'])): ?>
+                        <br>
+                        <small><?php echo htmlspecialchars($person['city_name']); ?></small>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+            </td>
+            <td>
+                <div><?php echo toJalali($person['created_at']); ?></div>
+                <small class="text-muted">
+                    <?php echo htmlspecialchars($person['creator_name']); ?>
+                </small>
+            </td>
+            <td>
+                <div class="btn-group btn-group-sm">
+                    <?php if ($person['deleted_at']): ?>
+                        <button type="button" class="btn btn-success restore-btn" 
+                                data-id="<?php echo $person['id']; ?>"
+                                data-name="<?php echo htmlspecialchars($person['first_name'] . ' ' . $person['last_name']); ?>">
+                            <i class="fas fa-trash-restore"></i>
+                            بازیابی
+                        </button>
+                    <?php else: ?>
+                        <a href="edit_person.php?id=<?php echo $person['id']; ?>" 
+                           class="btn btn-primary" title="ویرایش">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <button type="button" class="btn btn-danger delete-btn" 
+                                data-id="<?php echo $person['id']; ?>"
+                                data-name="<?php echo htmlspecialchars($person['first_name'] . ' ' . $person['last_name']); ?>">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    <?php endif; ?>
+                </div>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+        
+        <?php if (empty($people)): ?>
+        <tr>
+            <td colspan="9" class="text-center py-4">
+                <div class="text-muted">هیچ شخصی یافت نشد</div>
+            </td>
+        </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <?php if ($totalPages > 1): ?>
+                        <nav aria-label="navigation" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                <?php if ($page > 1): ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=<?php echo $page - 1; ?>&per_page=<?php echo $perPage; ?>&search=<?php echo urlencode($search); ?>&type=<?php echo $type; ?>&sort=<?php echo $sortBy; ?>&order=<?php echo $sortOrder; ?>&show_deleted=<?php echo $showDeleted ? '1' : '0'; ?>">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+
+                                <?php
+                                $start = max(1, min($page - 2, $totalPages - 4));
+                                $end = min($totalPages, max(5, $page + 2));
+                                
+                                if ($start > 1) {
+                                    echo '<li class="page-item"><a class="page-link" href="?page=1&per_page=' . $perPage . '&search=' . urlencode($search) . '&type=' . $type . '&sort=' . $sortBy . '&order=' . $sortOrder . '&show_deleted=' . ($showDeleted ? '1' : '0') . '">1</a></li>';
+                                    if ($start > 2) {
+                                        echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                                    }
+                                }
+
+                                for ($i = $start; $i <= $end; $i++) {
+                                    echo '<li class="page-item' . ($page == $i ? ' active' : '') . '">
+                                            <a class="page-link" href="?page=' . $i . '&per_page=' . $perPage . '&search=' . urlencode($search) . '&type=' . $type . '&sort=' . $sortBy . '&order=' . $sortOrder . '&show_deleted=' . ($showDeleted ? '1' : '0') . '">' . $i . '</a>
+                                          </li>';
+                                }
+
+                                if ($end < $totalPages) {
+                                    if ($end < $totalPages - 1) {
+                                        echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                                    }
+                                    echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '&per_page=' . $perPage . '&search=' . urlencode($search) . '&type=' . $type . '&sort=' . $sortBy . '&order=' . $sortOrder . '&show_deleted=' . ($showDeleted ? '1' : '0') . '">' . $totalPages . '</a></li>';
+                                }
+                                ?>
+
+                                <?php if ($page < $totalPages): ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=<?php echo $page + 1; ?>&per_page=<?php echo $perPage; ?>&search=<?php echo urlencode($search); ?>&type=<?php echo $type; ?>&sort=<?php echo $sortBy; ?>&order=<?php echo $sortOrder; ?>&show_deleted=<?php echo $showDeleted ? '1' : '0'; ?>">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        </nav>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="<?php echo BASE_PATH; ?>/assets/js/sidebar.js"></script>
+
+<script>
+$(document).ready(function() {
+    // تنظیمات Select2
+    $('.select2').select2({
+        theme: 'bootstrap-5',
+        width: '100%',
+        language: {
+            noResults: function() {
+                return "نتیجه‌ای یافت نشد";
+            }
+        }
+    });
+
+    // اعمال فیلترها به صورت خودکار
+    $('#filterForm select, #filterForm input[type="checkbox"]').change(function() {
+        $('#filterForm').submit();
+    });
+
+    // تاخیر در ارسال فرم هنگام تایپ در فیلد جستجو
+    let searchTimeout;
+    $('input[name="search"]').keyup(function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(function() {
+            $('#filterForm').submit();
+        }, 500);
+    });
+
+    // تایید حذف
+    $('.delete-btn').click(function() {
+        const id = $(this).data('id');
+        const name = $(this).data('name');
+        
+        Swal.fire({
+            title: 'آیا مطمئن هستید؟',
+            text: `آیا از حذف "${name}" اطمینان دارید؟`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'بله، حذف شود',
+            cancelButtonText: 'خیر',
+            customClass: {
+                confirmButton: 'btn btn-danger me-3',
+                cancelButton: 'btn btn-secondary',
+                popup: 'rtl'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'people_list.php?action=delete&id=' + id;
+            }
+        });
+    });
+
+    // تایید بازیابی
+    $('.restore-btn').click(function() {
+        const id = $(this).data('id');
+        const name = $(this).data('name');
+        
+        Swal.fire({
+            title: 'آیا مطمئن هستید؟',
+            text: `آیا از بازیابی "${name}" اطمینان دارید؟`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'بله، بازیابی شود',
+            cancelButtonText: 'خیر',
+            customClass: {
+                confirmButton: 'btn btn-success me-3',
+                cancelButton: 'btn btn-secondary',
+                popup: 'rtl'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'people_list.php?action=restore&id=' + id;
+            }
+        });
+    });
+
+    // نمایش پیام‌های موفقیت و خطا
+    <?php if (isset($_SESSION['success'])): ?>
+        Swal.fire({
+            title: 'عملیات موفق',
+            text: '<?php echo $_SESSION['success']; ?>',
+            icon: 'success',
+            confirmButtonText: 'تایید',
+            customClass: {پ
+                confirmButton: 'btn btn-primary',
+                popup: 'rtl'
+            }
+        });
+        <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>7
+
+    <?php if (isset($_SESSION['error'])): ?>
+        Swal.fire({
+            title: 'خطا',
+            text: '<?php echo $_SESSION['error']; ?>',
+            icon: 'error',
+            confirmButtonText: 'تایید',
+            customClass: {
+                confirmButton: 'btn btn-primary',
+                popup: 'rtl'
+            }
+        });
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
+    // تنظیمات DataTables
+7777 zeroRecords: "هیچ شخصی یافت نشد"
+    },
+    columnDefs: [
+        { orderable: false, targets: [1, 8] }, // ستون‌های تصویر و عملیات غیرقابل مرتب‌سازی
+        { className: "text-center", targets: [0, 1, 8] } // ستون‌های شماره، تصویر و عملیات وسط‌چین
+    ]
+});
+});
+</script>
+</body>
+</html>
