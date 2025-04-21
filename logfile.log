@@ -1762,3 +1762,22 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\xampp\htdocs\hesabino\people\pay.php on line 5
+[21-Apr-2025 17:35:42 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'logo_path' in 'field list' in C:\xampp\htdocs\hesabino\config\database.php:40
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\pay.php(12): Database->query('\r\n    SELECT id...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 40
+[21-Apr-2025 17:40:14 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'document_number' in 'field list' in C:\xampp\htdocs\hesabino\config\database.php:40
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\pay.php(28): Database->query('\r\n    SELECT CO...')
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 40
+[21-Apr-2025 17:46:23 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
+[21-Apr-2025 17:46:23 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
+[21-Apr-2025 17:46:23 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
+[21-Apr-2025 17:46:39 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
+[21-Apr-2025 17:46:39 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
+[21-Apr-2025 17:46:39 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
+[21-Apr-2025 17:46:49 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
+[21-Apr-2025 17:46:49 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
+[21-Apr-2025 17:46:49 Asia/Tehran] PHP Warning:  Undefined array key "logo_path" in C:\xampp\htdocs\hesabino\people\pay.php on line 108
