@@ -1,50 +1,56 @@
 <?php
 require_once '../includes/init.php';
 
-header('Content-Type: application/json');
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
-    exit;
-}
-
-// بررسی دسترسی
-if (!$auth->hasPermission('payment.add') && !$_SESSION['is_super_admin']) {
-    http_response_code(403);
-    echo json_encode(['success' => false, 'message' => 'Permission denied']);
-    exit;
-}
-
-// دریافت داده‌ها
-$text = sanitize($_POST['text'] ?? '');
-
-if (empty($text)) {
-    echo json_encode(['success' => false, 'message' => 'متن شرح الزامی است']);
-    exit;
+// بررسی درخواست Ajax
+if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
+    exit('Direct access not permitted');
 }
 
 try {
-    // ذخیره شرح در دیتابیس
-    $db->insert('recurring_descriptions', [
+    // دریافت متن توضیحات
+    $text = sanitize($_POST['text']);
+    $type = sanitize($_POST['type'] ?? 'payment');
+    
+    if (empty($text)) {
+        throw new Exception('متن توضیحات الزامی است');
+    }
+    
+    // بررسی تکراری نبودن متن
+    $existingDesc = $db->get('recurring_descriptions', 'id', [
         'text' => $text,
-        'type' => 'payment',
-        'created_by' => $user['id'],
+        'type' => $type,
+        'deleted_at IS' => null
+    ]);
+    
+    if ($existingDesc) {
+        throw new Exception('این متن قبلاً ثبت شده است');
+    }
+    
+    // درج توضیحات جدید
+    $id = $db->insert('recurring_descriptions', [
+        'text' => $text,
+        'type' => $type,
+        'created_by' => $_SESSION['user_id'],
         'created_at' => date('Y-m-d H:i:s')
     ]);
-
+    
+    if (!$id) {
+        throw new Exception('خطا در ثبت توضیحات');
+    }
+    
     echo json_encode([
         'success' => true,
-        'data' => [
-            'id' => $db->lastInsertId(),
+        'message' => 'توضیحات با موفقیت ثبت شد',
+        'description' => [
+            'id' => $id,
             'text' => $text
         ]
     ]);
-
+    
 } catch (Exception $e) {
-    error_log($e->getMessage());
+    http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'خطا در ذخیره اطلاعات'
+        'message' => $e->getMessage()
     ]);
 }

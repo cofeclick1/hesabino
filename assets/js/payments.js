@@ -201,6 +201,7 @@ $(document).ready(function() {
                     };
                 },
                 processResults: function(data, params) {
+                    params.page = params.page || 1;
                     return {
                         results: data.items,
                         pagination: {
@@ -211,28 +212,53 @@ $(document).ready(function() {
                 cache: true
             },
             minimumInputLength: 2,
-            templateResult: formatPerson,
-            templateSelection: formatPerson
+            templateResult: formatPersonResult,
+            templateSelection: formatPersonSelection,
+            escapeMarkup: function(markup) {
+                return markup;
+            }
         });
     }
 
-    // فرمت شخص در Select2
-    function formatPerson(person) {
-        if (!person.id) return person.text;
-        
-        return $(`
-            <div class="d-flex align-items-center">
-                <img src="${person.avatar || BASE_PATH + '/assets/images/default-avatar.png'}" 
-                     class="rounded-circle me-2" 
-                     style="width: 24px; height: 24px;">
-                <div>
-                    <div class="fw-bold">${person.text}</div>
-                    ${person.mobile ? `<small class="text-muted">${person.mobile}</small>` : ''}
-                </div>
-            </div>
-        `);
-    }
+// فرمت نمایش نتیجه جستجوی شخص
+function formatPersonResult(person) {
+    if (!person.id) return person.text;
     
+    var balance = parseInt(person.balance || 0);
+    var balanceClass = balance >= 0 ? 'text-success' : 'text-danger';
+    
+    return $(
+        '<div class="d-flex align-items-center p-2">' +
+            '<img src="' + person.avatar_path + '" class="rounded-circle me-2" style="width: 32px; height: 32px;">' +
+            '<div class="flex-grow-1">' +
+                '<div class="fw-bold">' + person.text + '</div>' +
+                '<div class="small text-muted">' +
+                    (person.mobile ? '<i class="fas fa-phone me-1"></i>' + person.mobile : '') +
+                    (person.national_code ? '<span class="mx-2">|</span><i class="fas fa-id-card me-1"></i>' + person.national_code : '') +
+                '</div>' +
+            '</div>' +
+            '<div class="text-end">' +
+                '<div class="' + balanceClass + '">' + formatCurrency(balance) + '</div>' +
+            '</div>' +
+        '</div>'
+    );
+}
+    // فرمت نمایش شخص انتخاب شده
+    function formatPersonSelection(person) {
+        if (!person.id) return person.text;
+        return $(
+            '<div class="d-flex align-items-center">' +
+                '<img src="' + person.avatar_path + '" class="rounded-circle me-2" style="width: 24px; height: 24px;">' +
+                '<div class="fw-bold">' + person.text + '</div>' +
+            '</div>'
+        );
+    }
+    // نمایش مودال پروژه جدید
+    function showNewProjectModal() {
+        $('#projectForm')[0].reset();
+        $('#projectForm').removeClass('was-validated');
+        $('#projectModal').modal('show');
+    }
     // تنظیم فرمت‌بندی مبلغ
     function setupAmountInput(input) {
         new Cleave(input, {
