@@ -225,16 +225,23 @@ require_once '../includes/header.php';
                         <div class="col">
                             <div class="row">
                                 <div class="col-md-4 mb-3">
-                                    <label class="form-label required">شخص</label>
-                                    <div class="input-group">
-                                        <select class="form-select person-search" required data-placeholder="جستجو و انتخاب شخص...">
-                                            <option value="">انتخاب کنید</option>
-                                        </select>
-                                        <button type="button" class="btn btn-outline-secondary btn-add-person">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+    <label class="form-label required">شخص</label>
+    <div class="input-group">
+        <!-- جایگزینی input با div جستجو -->
+        <div class="search-wrapper position-relative flex-grow-1">
+            <div class="person-search-input form-control" data-placeholder="جستجوی شخص...">
+                <input type="text" class="search-input border-0 w-100" placeholder="نام، موبایل یا کد ملی را وارد کنید...">
+                <div class="search-results position-absolute w-100 bg-white border rounded-bottom" style="display: none; z-index: 1000;">
+                    <!-- نتایج جستجو اینجا نمایش داده می‌شود -->
+                </div>
+            </div>
+            <input type="hidden" name="person_id" class="person-id" required>
+        </div>
+        <button type="button" class="btn btn-outline-secondary btn-add-person">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+</div>
                                 <div class="col-md-3 mb-3">
                                     <label class="form-label required">مبلغ</label>
                                     <div class="input-group">
