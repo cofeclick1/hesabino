@@ -1,4 +1,21 @@
-$(document).ready(function() {
+// در ابتدای فایل قبلی اضافه کنید
+function formatPersonItem(person) {
+    if (!person.id) return person.text;
+    
+    return $(
+        '<div class="person-result">' +
+            '<img src="' + person.avatar_path + '" alt="" onerror="this.src=\'' + BASE_PATH + '/assets/images/avatar.png\'">' +
+            '<div class="person-info">' +
+                '<div class="person-name">' + person.text + '</div>' +
+                '<div class="person-details">' +
+                    (person.mobile ? '<i class="fas fa-phone me-1"></i>' + person.mobile : '') +
+                    (person.national_code ? '<span class="mx-2">|</span><i class="fas fa-id-card me-1"></i>' + person.national_code : '') +
+                '</div>' +
+            '</div>' +
+        '</div>'
+    );
+}
+$(document).ready(function () {
     // متغیرهای عمومی
     let totalAmount = 0;
     let paidAmount = 0;
@@ -57,13 +74,51 @@ $(document).ready(function() {
     }
     
     // راه‌اندازی select2
-    function initializeSelect2() {
-        $('.select2').select2({
-            theme: 'bootstrap-5',
-            language: 'fa',
-            dir: 'rtl'
-        });
-    }
+function initializeSelect2() {
+    // برای سایر select ها
+    $('.select2').not('.person-search').select2({
+        theme: 'bootstrap-5',
+        language: 'fa',
+        dir: 'rtl'
+    });
+
+    // برای جستجوی اشخاص
+    $('.person-search').select2({
+        theme: 'bootstrap-5',
+        language: 'fa',
+        dir: 'rtl',
+        placeholder: 'نام، موبایل یا کد ملی شخص را وارد کنید...',
+        allowClear: true,
+        ajax: {
+            url: BASE_PATH + '/api/search-people.php',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    search: params.term || '',
+                    page: params.page || 1
+                };
+            },
+            processResults: function(data, params) {
+                params.page = params.page || 1;
+                return {
+                    results: data.items,
+                    pagination: {
+                        more: data.hasMore
+                    }
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 2,
+        templateResult: formatPersonItem,
+        templateSelection: formatPersonItem
+    }).on('select2:open', function() {
+        // اضافه کردن پلیس‌هولدر به فیلد جستجو
+        $('.select2-search__field').attr('placeholder', 'برای جستجو تایپ کنید...');
+    });
+}
+
     
     // راه‌اندازی جستجوی افراد با Select2
     function initializePersonSearch(input) {

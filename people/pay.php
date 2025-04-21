@@ -227,7 +227,7 @@ require_once '../includes/header.php';
                                 <div class="col-md-4 mb-3">
                                     <label class="form-label required">شخص</label>
                                     <div class="input-group">
-                                        <select class="form-select person-search" required>
+                                        <select class="form-select person-search" required data-placeholder="جستجو و انتخاب شخص...">
                                             <option value="">انتخاب کنید</option>
                                         </select>
                                         <button type="button" class="btn btn-outline-secondary btn-add-person">
