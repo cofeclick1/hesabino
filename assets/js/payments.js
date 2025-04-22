@@ -24,7 +24,11 @@ $(document).ready(function () {
     
     // تنظیمات اولیه
     initializePage();
-    
+    // اضافه کردن تابع formatAmount (بعد از initializePage)
+function formatAmount(input) {
+    const value = input.value.replace(/[^\d]/g, '');
+    input.value = value ? new Intl.NumberFormat('fa-IR').format(value) : '';
+}
     function initializePage() {
         initializeDatePickers();
         initializeSelect2();
@@ -792,8 +796,3 @@ function initializePage() {
     updateCurrencySymbols();
 }
 
-// افزودن تابع formatAmount
-function formatAmount(input) {
-    const value = input.value.replace(/[^\d]/g, '');
-    input.value = value ? new Intl.NumberFormat('fa-IR').format(value) : '';
-}
