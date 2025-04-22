@@ -1,177 +1,184 @@
-/* استایل‌های کلی */
-.main-content {
-    background-color: #f8f9fa;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-/* کارت اصلی */
+/* استایل‌های اصلی صفحه افزودن محصول */
 .product-card {
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
 }
 
 .product-card .card-header {
-    background: #fff;
-    border-bottom: 1px solid #eaeaea;
-    padding: 15px 20px;
-}
-
-.product-card .card-title {
-    color: #333;
-    font-size: 1.1rem;
-    margin: 0;
-}
-
-.product-card .card-body {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
     padding: 20px;
-}
-
-/* فرم‌ها */
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    color: #333;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-}
-
-.form-group .hint-text {
-    color: #6c757d;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-}
-
-.form-control {
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    padding: 0.5rem 0.75rem;
-    transition: border-color 0.15s ease-in-out;
-}
-
-.form-control:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
-}
-
-/* دکمه‌ها */
-.btn {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-
-.btn-primary {
-    background: #007bff;
+    border-radius: 15px 15px 0 0;
     border: none;
 }
 
-.btn-primary:hover {
-    background: #0056b3;
-}
-
-.btn-outline-secondary {
-    color: #6c757d;
-    border-color: #6c757d;
-}
-
-.btn-outline-secondary:hover {
+.product-card .card-header .card-title {
     color: #fff;
-    background: #6c757d;
+    font-size: 1.2rem;
+    margin: 0;
 }
 
-/* آپلود تصویر */
-.image-upload-wrapper {
-    border: 2px dashed #ddd;
-    padding: 20px;
-    text-align: center;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
+.product-card .card-header .btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
-.image-upload-wrapper:hover {
-    border-color: #80bdff;
-}
-
-.image-upload-wrapper i {
-    font-size: 2rem;
-    color: #6c757d;
-    margin-bottom: 10px;
-}
-
-/* Select2 سفارشی */
-.select2-container .select2-selection--single {
-    height: 38px;
-}
-
-.select2-container--default .select2-selection--single {
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    line-height: 36px;
-    padding-left: 12px;
-    padding-right: 12px;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 36px;
+.product-card .card-header .btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* تب‌ها */
 .nav-tabs {
-    border-bottom: 1px solid #dee2e6;
-    margin-bottom: 20px;
+    border: none;
+    margin: 20px 0;
+    gap: 10px;
 }
 
 .nav-tabs .nav-link {
     border: none;
-    color: #495057;
-    padding: 0.75rem 1rem;
+    color: #666;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+    background: #f8f9fa;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #4CAF50;
+    background: #e8f5e9;
 }
 
 .nav-tabs .nav-link.active {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+    color: #fff;
+    background: #4CAF50;
+    box-shadow: 0 2px 5px rgba(76, 175, 80, 0.2);
 }
 
-/* جدول‌ها */
-.table th {
+/* فرم‌ها */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
     font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+.hint-text {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* آپلود تصویر */
+.image-upload-wrapper {
+    border: 2px dashed #4CAF50;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
     background: #f8f9fa;
+    position: relative;
+    overflow: hidden;
 }
 
-.table td {
-    vertical-align: middle;
+.image-upload-wrapper:hover {
+    border-color: #45a049;
+    background: #e8f5e9;
 }
 
-/* نمایشگر قیمت */
-.price-display {
-    font-size: 1.25rem;
+.image-upload-wrapper i {
+    font-size: 3rem;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.image-upload-wrapper p {
+    color: #333;
+    margin: 0;
     font-weight: 500;
-    color: #28a745;
 }
 
-/* ویژگی‌های فنی */
-.technical-features {
-    background: #f8f9fa;
+.image-upload-wrapper small {
+    color: #6c757d;
+}
+
+.image-upload-wrapper.drag-over {
+    background: #e8f5e9;
+    border-style: solid;
+}
+
+#imagePreview {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#imagePreview img {
+    max-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* قیمت و موجودی */
+.price-group {
+    position: relative;
+}
+
+.price-group .form-control {
+    padding-left: 60px;
+    text-align: left;
+    direction: ltr;
+}
+
+.price-group .currency-symbol {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* نمایش سود */
+.profit-display {
+    background: linear-gradient(45deg, #e8f5e9, #f1f8e9);
+    border-radius: 8px;
     padding: 15px;
-    border-radius: 4px;
+    text-align: center;
+}
+
+.profit-display .profit-title {
+    color: #2e7d32;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.profit-display .profit-amount {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4CAF50;
 }
 
 /* بارکد */
 .barcode-section {
-    border: 1px solid #ddd;
+    background: #f8f9fa;
+    border-radius: 8px;
     padding: 15px;
-    border-radius: 4px;
-    margin-top: 10px;
 }
 
 .barcode-preview {
@@ -179,28 +186,78 @@
     margin-top: 10px;
 }
 
-/* پیام‌های خطا و موفقیت */
-.alert {
+.barcode-preview img {
+    max-width: 200px;
+    padding: 10px;
+    background: #fff;
     border-radius: 4px;
-    padding: 1rem;
+}
+
+/* دکمه‌ها */
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #4CAF50;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #45a049;
+    transform: translateY(-1px);
+}
+
+.btn-outline-secondary {
+    color: #666;
+    border-color: #ddd;
+}
+
+.btn-outline-secondary:hover {
+    color: #333;
+    background: #f8f9fa;
+}
+
+/* آلرت‌ها */
+.alert {
+    border-radius: 8px;
+    border: none;
+    padding: 15px 20px;
 }
 
 .alert-success {
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-    color: #155724;
+    background: #e8f5e9;
+    color: #2e7d32;
 }
 
 .alert-danger {
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    color: #721c24;
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .card-body {
-        padding: 15px;
+    .nav-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .nav-tabs .nav-link {
+        white-space: nowrap;
     }
 
     .btn {
@@ -208,7 +265,122 @@
         margin-bottom: 10px;
     }
 
-    .form-group {
-        margin-bottom: 1rem;
+    .product-card .card-header {
+        flex-direction: column;
+        gap: 10px;
     }
+}
+
+/* تم تاریک */
+@media (prefers-color-scheme: dark) {
+    .product-card {
+        background: #1a1a1a;
+    }
+
+    .form-control {
+        background: #2d2d2d;
+        border-color: #404040;
+        color: #fff;
+    }
+
+    .nav-tabs .nav-link {
+        background: #2d2d2d;
+        color: #fff;
+    }
+
+    .image-upload-wrapper {
+        background: #2d2d2d;
+        border-color: #4CAF50;
+    }
+
+    .profit-display {
+        background: linear-gradient(45deg, #1b5e20, #2e7d32);
+    }
+
+    .profit-display .profit-title,
+    .profit-display .profit-amount {
+        color: #fff;
+    }
+}
+/* اضافه کردن این استایل‌ها به انتهای فایل products.css */
+
+/* Select2 Custom Styles */
+.select2-container--bootstrap-5 {
+    width: 100% !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.select2-container--bootstrap-5 .select2-selection:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+}
+
+.select2-container--bootstrap-5 .select2-selection--single {
+    height: 45px;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+    line-height: 42px;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: #495057;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__arrow {
+    height: 43px;
+    width: 30px;
+}
+
+.select2-container--bootstrap-5 .select2-search--dropdown .select2-search__field {
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+.select2-container--bootstrap-5 .select2-results__option {
+    padding: 8px 12px;
+}
+
+.select2-container--bootstrap-5 .select2-results__option--highlighted[aria-selected] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.select2-container--bootstrap-5 .select2-results__option[aria-selected=true] {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.select2-dropdown {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading Spinner */
+.select2-result-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.select2-result-loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #4CAF50;
+    border-radius: 50%;
+    animation: select2-spinner 1s linear infinite;
+}
+
+@keyframes select2-spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

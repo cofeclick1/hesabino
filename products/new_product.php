@@ -280,15 +280,20 @@ $categories = $db->query("SELECT id, name FROM categories WHERE status = 'active
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="category">دسته‌بندی</label>
-                                <select id="category" name="category_id" class="form-control select2">
-                                    <option value="">انتخاب دسته‌بندی...</option>
-                                    <?php foreach($categories as $category): ?>
-                                    <option value="<?php echo $category['id']; ?>">
-                                        <?php echo htmlspecialchars($category['name']); ?>
-                                    </option>
-                                    <?php endforeach; ?>
+                                <label for="category_id">دسته‌بندی</label>
+                                <select id="category_id" name="category_id" class="form-control select2-category">
+                                    <?php if (!empty($category_id)): ?>
+                                        <?php 
+                                            $category = $db->query("SELECT id, name FROM categories WHERE id = ?", [$category_id])->fetch();
+                                            if ($category):
+                                        ?>
+                                        <option value="<?php echo $category['id']; ?>" selected>
+                                            <?php echo htmlspecialchars($category['name']); ?>
+                                        </option>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
                                 </select>
+                                <small class="hint-text">برای جستجو نام دسته‌بندی را تایپ کنید</small>
                             </div>
                         </div>
 
