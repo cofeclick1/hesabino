@@ -1,4 +1,8 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+var_dump($_SESSION);
+exit;
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -55,7 +59,8 @@ if (!in_array($script_path, $public_pages)) {
         '/hesabino/people/people_list.php' => 'people_view',
         '/hesabino/people/receive.php' => 'receipts_add',     // دسترسی صفحه دریافت
         '/hesabino/people/receive_list.php' => 'receipts_view', // دسترسی لیست دریافت‌ها
-        '/hesabino/people/pay.php' => 'payments_add'          // اصلاح دسترسی صفحه پرداخت
+        '/hesabino/people/pay.php' => 'payments_add',          // اصلاح دسترسی صفحه پرداخت
+        '/hesabino/products/new_product.php' => 'products_add',
     ];
 
     // اگر صفحه نیاز به دسترسی خاصی دارد

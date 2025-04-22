@@ -2085,3 +2085,4 @@ Stack trace:
 #1 C:\xampp\htdocs\hesabino\products\new_product.php(101): Database->insert('products', Array)
 #2 {main}
   thrown in C:\xampp\htdocs\hesabino\config\database.php on line 45
+[22-Apr-2025 22:31:22 Europe/Berlin] PHP Warning:  Undefined global variable $_SESSION in C:\xampp\htdocs\hesabino\includes\init.php on line 4

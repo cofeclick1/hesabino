@@ -5,7 +5,11 @@ require_once '../includes/init.php';
 if (!isset($_SESSION['user_id'])) {
     redirect('../login.php');
 }
-
+// تنظیم عنوان صفحه و متغیرهای اولیه
+$pageTitle = 'افزودن محصول جدید';
+$db = Database::getInstance();
+$error = '';
+$success = '';
 // بررسی دسترسی کاربر
 if (!$auth->hasPermission('products_add') && !$_SESSION['is_super_admin']) {
     $_SESSION['error'] = 'شما دسترسی لازم برای این عملیات را ندارید';
