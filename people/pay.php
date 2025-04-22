@@ -214,56 +214,52 @@ require_once '../includes/header.php';
 
             <!-- Payment Items Template -->
             <template id="paymentItemTemplate">
-                <div class="payment-item border rounded p-3 mb-3">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <div class="avatar-wrapper rounded-circle bg-light d-flex align-items-center justify-content-center" 
-                                 style="width: 48px; height: 48px;">
-                                <img src="" alt="" class="person-avatar" style="max-width: 32px; max-height: 32px;">
+        <div class="payment-item border rounded p-3 mb-3">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <div class="avatar-wrapper rounded-circle bg-light d-flex align-items-center justify-content-center" 
+                        style="width: 48px; height: 48px;">
+                        <img src="<?php echo BASE_PATH ?>/assets/images/avatar.png" alt="" class="person-avatar" 
+                            style="max-width: 32px; max-height: 32px;">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label required">شخص</label>
+                            <div class="input-group">
+                                <div class="search-wrapper position-relative flex-grow-1">
+                                    <input type="text" class="form-control person-search-input" placeholder="نام، موبایل یا کد ملی را وارد کنید...">
+                                    <div class="search-results position-absolute w-100 bg-white border rounded-bottom shadow-sm" style="display: none; z-index: 1050;"></div>
+                                    <input type="hidden" name="person_id[]" class="person-id" required>
+                                </div>
+                                <button type="button" class="btn btn-outline-secondary btn-add-person">
+                                    <i class="fas fa-plus"></i>
+                                </button>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-    <label class="form-label required">شخص</label>
-    <div class="input-group">
-        <!-- جایگزینی input با div جستجو -->
-        <div class="search-wrapper position-relative flex-grow-1">
-            <div class="person-search-input form-control" data-placeholder="جستجوی شخص...">
-                <input type="text" class="search-input border-0 w-100" placeholder="نام، موبایل یا کد ملی را وارد کنید...">
-                <div class="search-results position-absolute w-100 bg-white border rounded-bottom" style="display: none; z-index: 1000;">
-                    <!-- نتایج جستجو اینجا نمایش داده می‌شود -->
-                </div>
-            </div>
-            <input type="hidden" name="person_id" class="person-id" required>
-        </div>
-        <button type="button" class="btn btn-outline-secondary btn-add-person">
-            <i class="fas fa-plus"></i>
-        </button>
-    </div>
-</div>
-                                <div class="col-md-3 mb-3">
-                                    <label class="form-label required">مبلغ</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control amount-input text-start" required>
-                                        <span class="input-group-text currency-symbol">ریال</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label class="form-label">شرح</label>
-                                    <input type="text" class="form-control item-description">
-                                </div>
-                                <div class="col-md-1 mb-3 text-end">
-                                    <label class="d-block">&nbsp;</label>
-                                    <button type="button" class="btn btn-outline-danger btn-sm delete-item">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label required">مبلغ</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control amount-input text-start" required>
+                                <span class="input-group-text currency-symbol">ریال</span>
                             </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">شرح</label>
+                            <input type="text" class="form-control item-description">
+                        </div>
+                        <div class="col-md-1 mb-3 text-end">
+                            <label class="d-block">&nbsp;</label>
+                            <button type="button" class="btn btn-outline-danger btn-sm delete-item">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </template>
+            </div>
+        </div>
+    </template>
 
             <!-- Payment Modal -->
             <div class="modal fade" id="paymentModal" tabindex="-1">
@@ -465,7 +461,8 @@ $customCss = [
     'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css',
     'https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css',
     'https://unpkg.com/persian-datepicker@latest/dist/css/persian-datepicker.min.css', 
-    BASE_PATH . '/assets/css/payments.css'
+    BASE_PATH . '/assets/css/payments.css',
+    BASE_PATH . '/assets/css/search-people.css'
 ];
 
 $customJs = [
@@ -475,6 +472,7 @@ $customJs = [
     'https://unpkg.com/persian-datepicker@latest/dist/js/persian-datepicker.min.js',
     'https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js',
     BASE_PATH . '/assets/js/payments.js',
+    BASE_PATH . '/assets/js/search-people.js',
     BASE_PATH . '/assets/js/recurring-descriptions.js'
 ];
 

@@ -4,88 +4,109 @@ require_once '../includes/init.php';
 header('Content-Type: application/json; charset=utf-8');
 
 try {
-    // دریافت پارامترهای جستجو
-    $search = $_GET['search'] ?? '';
+    // بررسی پارامترهای ورودی
+    $search = $_GET['q'] ?? '';
     $page = max(1, intval($_GET['page'] ?? 1));
-    $limit = 10;
-    $offset = ($page - 1) * $limit;
-    
-    // ساخت کوئری جستجو
+    $perPage = 10;
+
+    if (empty($search)) {
+        throw new Exception('پارامتر جستجو الزامی است');
+    }
+
+    // ساخت کوئری جستجو - اصلاح LIMIT و OFFSET
     $query = "
         SELECT 
             p.id,
             CONCAT(p.first_name, ' ', p.last_name) as text,
             p.mobile,
-            p.profile_image as avatar_path,
-            p.national_code
+            p.company,
+            p.national_code,
+            p.email,
+            p.profile_image,
+            p.type
         FROM people p
         WHERE p.deleted_at IS NULL
         AND (
-            CONCAT(p.first_name, ' ', p.last_name) LIKE ? OR 
+            p.first_name LIKE ? OR 
+            p.last_name LIKE ? OR 
             p.mobile LIKE ? OR 
-            p.national_code LIKE ?
+            p.company LIKE ? OR
+            p.national_code LIKE ? OR
+            CONCAT(p.first_name, ' ', p.last_name) LIKE ?
         )
-        ORDER BY p.first_name, p.last_name
+        ORDER BY p.first_name ASC, p.last_name ASC
         LIMIT ? OFFSET ?
     ";
+
+    $searchTerm = '%' . $search . '%';
+    $offset = ($page - 1) * $perPage;
     
-    // اجرای کوئری با پارامترها
-    $searchTerm = "%{$search}%";
-    $stmt = $db->query($query, [
-        $searchTerm,
-        $searchTerm,
-        $searchTerm,
-        $limit,
-        $offset
-    ]);
-    
-    // دریافت نتایج
-    $people = [];
-    while ($person = $stmt->fetch()) {
-        // اضافه کردن مسیر آواتار
-        if (!empty($person['avatar_path'])) {
-            $person['avatar_path'] = BASE_PATH . '/uploads/profiles/' . $person['avatar_path'];
-        } else {
-            $person['avatar_path'] = BASE_PATH . '/assets/images/avatar.png';
-        }
-        
-        $people[] = $person;
-    }
-    
-    // بررسی وجود نتایج بیشتر
-    $totalQuery = "
+    // اصلاح پارامترها - تبدیل LIMIT و OFFSET به integer
+    $params = [
+        $searchTerm, // first_name
+        $searchTerm, // last_name
+        $searchTerm, // mobile
+        $searchTerm, // company
+        $searchTerm, // national_code
+        $searchTerm, // full_name
+        (int)$perPage,  // LIMIT
+        (int)$offset    // OFFSET
+    ];
+
+    // اجرای کوئری و دریافت نتایج
+    $results = $db->query($query, $params)->fetchAll();
+
+    // شمارش کل نتایج برای صفحه‌بندی
+    $countQuery = "
         SELECT COUNT(*) as total
         FROM people p
         WHERE p.deleted_at IS NULL
         AND (
-            CONCAT(p.first_name, ' ', p.last_name) LIKE ? OR 
+            p.first_name LIKE ? OR 
+            p.last_name LIKE ? OR 
             p.mobile LIKE ? OR 
-            p.national_code LIKE ?
+            p.company LIKE ? OR
+            p.national_code LIKE ? OR
+            CONCAT(p.first_name, ' ', p.last_name) LIKE ?
         )
     ";
     
-    $totalStmt = $db->query($totalQuery, [
-        $searchTerm,
-        $searchTerm,
-        $searchTerm
+    // استفاده از 6 پارامتر اول برای کوئری شمارش
+    $countParams = array_slice($params, 0, 6);
+    $totalCount = $db->query($countQuery, $countParams)->fetch()['total'];
+
+    // تبدیل نتایج به فرمت مناسب
+    $items = array_map(function($person) {
+        return [
+            'id' => $person['id'],
+            'text' => $person['text'],
+            'mobile' => $person['mobile'],
+            'national_code' => $person['national_code'],
+            'company' => $person['company'],
+            'email' => $person['email'],
+            'type' => $person['type'],
+            'avatar_path' => !empty($person['profile_image']) 
+                ? BASE_PATH . '/' . $person['profile_image']
+                : BASE_PATH . '/assets/images/avatar.png'
+        ];
+    }, $results);
+
+    // ارسال پاسخ
+    echo json_encode([
+        'results' => $items,
+        'pagination' => [
+            'more' => ($totalCount > ($page * $perPage)),
+            'total' => $totalCount,
+            'page' => $page,
+            'per_page' => $perPage
+        ]
     ]);
-    $total = $totalStmt->fetch()['total'];
-    
-    // ساخت پاسخ
-    $response = [
-        'items' => $people,
-        'total' => $total,
-        'hasMore' => ($offset + $limit) < $total
-    ];
-    
-    echo json_encode($response);
-    
+
 } catch (Exception $e) {
-    error_log('Error in search-people.php: ' . $e->getMessage());
-    
+    error_log('Search People Error: ' . $e->getMessage());
     http_response_code(500);
     echo json_encode([
         'error' => true,
-        'message' => 'خطا در جستجوی اطلاعات'
+        'message' => 'خطا در جستجوی اطلاعات: ' . $e->getMessage()
     ]);
 }

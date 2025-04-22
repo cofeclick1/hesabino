@@ -12,12 +12,15 @@ try {
     // ساخت کوئری
     $query = "SELECT 
                 id,
-                CONCAT(first_name, ' ', last_name) as text,
+                first_name,
+                last_name,
+                CONCAT(first_name, ' ', last_name) as full_name,
                 mobile,
                 COALESCE(company, '') as company,
-                COALESCE(profile_image, 'assets/images/default-avatar.png') as avatar
-              FROM people 
-              WHERE deleted_at IS NULL";
+                COALESCE(profile_image, 'assets/images/default-avatar.png') as avatar,
+                type
+            FROM people 
+            WHERE deleted_at IS NULL";
     
     $params = [];
     
@@ -52,7 +55,7 @@ try {
         // ساخت آیتم با فرمت مناسب برای Select2
         $result = [
             'id' => $item['id'],
-            'text' => $item['text']
+            'text' => $item['full_name']
         ];
         
         // اضافه کردن شرکت به متن اگر وجود داشته باشد
@@ -66,23 +69,22 @@ try {
         }
         
         $result['avatar'] = $avatar;
+        $result['type'] = $item['type'];
         
         $results[] = $result;
     }
     
     echo json_encode([
-        'results' => $results,
-        'pagination' => [
-            'more' => ($total > ($page * $perPage))
-        ]
+        'items' => $results,
+        'total' => $total,
+        'hasMore' => ($total > ($page * $perPage))
     ]);
 
 } catch (Exception $e) {
     error_log($e->getMessage());
     http_response_code(500);
     echo json_encode([
-        'error' => 'خطا در دریافت اطلاعات',
-        'results' => [],
-        'pagination' => ['more' => false]
+        'error' => true,
+        'message' => 'خطا در دریافت اطلاعات'
     ]);
 }
