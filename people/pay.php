@@ -481,7 +481,12 @@ $customJs = [
     BASE_PATH . '/assets/js/payments.js',
     BASE_PATH . '/assets/js/search-people.js',
     BASE_PATH . '/assets/js/recurring-descriptions.js',
-     BASE_PATH . '/assets/js/person-picker.js'
+    BASE_PATH . '/assets/js/person-picker.js',
+    BASE_PATH . '/assets/js/add-item.js',
+    BASE_PATH . '/assets/js/project.js', 
+    BASE_PATH . '/assets/js/calculate.js',
+    BASE_PATH . '/assets/js/new-payment.js',
+    BASE_PATH . '/assets/js/save-payment.js'
 ];
 
 require_once '../includes/footer.php';
