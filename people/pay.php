@@ -225,15 +225,13 @@ require_once '../includes/header.php';
                             </div>
                             <div class="col">
                                 <div class="row">
-                                    <div class="col-md-4 mb-3">
+                                   <div class="col-md-4 mb-3">
                                         <label class="form-label required">شخص</label>
                                         <div class="input-group">
                                             <div class="search-wrapper position-relative flex-grow-1">
                                                 <input type="text" class="form-control person-search-input" 
-                                                    placeholder="نام، موبایل یا کد ملی را وارد کنید..."
-                                                    autocomplete="off">
-                                                <div class="search-results position-absolute w-100 bg-white border rounded-bottom shadow-sm" 
-                                                    style="display: none; z-index: 1050;"></div>
+                                                    placeholder="نام، موبایل یا کد ملی را وارد کنید...">
+                                                <div class="search-results"></div>
                                                 <input type="hidden" name="person_id[]" class="person-id" required>
                                             </div>
                                             <button type="button" class="btn btn-outline-secondary btn-add-person">
@@ -486,7 +484,8 @@ $customJs = [
     BASE_PATH . '/assets/js/project.js', 
     BASE_PATH . '/assets/js/calculate.js',
     BASE_PATH . '/assets/js/new-payment.js',
-    BASE_PATH . '/assets/js/save-payment.js'
+    BASE_PATH . '/assets/js/save-payment.js',
+    BASE_PATH . '/assets/css/person-search.css'
 ];
 
 require_once '../includes/footer.php';

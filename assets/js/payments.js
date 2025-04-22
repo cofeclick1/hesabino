@@ -1,4 +1,5 @@
-// کلاس جستجوی پیشرفته شخص
+// اضافه کردن بخش زیر به ابتدای فایل payments.js
+
 class PersonPicker {
     constructor(wrapper) {
         this.wrapper = wrapper;
@@ -6,11 +7,7 @@ class PersonPicker {
         this.searchResults = wrapper.querySelector('.search-results');
         this.hiddenInput = wrapper.querySelector('.person-id');
         this.avatarImg = wrapper.closest('.payment-item').querySelector('.person-avatar');
-        this.page = 1;
-        this.loading = false;
-        this.hasMore = true;
-        this.lastQuery = '';
-
+        
         this.setupEventListeners();
     }
 
@@ -22,9 +19,6 @@ class PersonPicker {
                 this.hideResults();
                 return;
             }
-            this.page = 1;
-            this.hasMore = true;
-            this.lastQuery = query;
             this.searchPeople(query);
         }, 300));
 
@@ -44,9 +38,6 @@ class PersonPicker {
     }
 
     async searchPeople(query) {
-        if (this.loading) return;
-        this.loading = true;
-
         this.showLoading();
 
         try {
@@ -58,13 +49,10 @@ class PersonPicker {
             }
 
             this.renderResults(data.items);
-            this.showResults();
 
         } catch (error) {
             console.error('Error searching people:', error);
             this.renderError('خطا در جستجو');
-        } finally {
-            this.loading = false;
         }
     }
 
@@ -75,46 +63,35 @@ class PersonPicker {
                     <i class="fas fa-search me-1"></i>
                     نتیجه‌ای یافت نشد
                 </div>`;
+            this.showResults();
             return;
         }
 
         this.searchResults.innerHTML = items.map(person => `
-            <div class="search-result-item p-2 hover-bg" 
+            <div class="search-result-item" 
                  data-id="${person.id}" 
                  data-name="${person.name}"
                  data-mobile="${person.mobile || ''}"
                  data-type="${person.type || 'real'}">
                 <div class="d-flex align-items-center">
-                    <img src="${person.avatar}" class="rounded-circle me-2" 
-                         style="width: 40px; height: 40px; object-fit: cover;"
+                    <img src="${person.avatar}" class="me-2" 
                          onerror="this.src='${BASE_PATH}/assets/images/avatar.png'">
                     <div class="flex-grow-1">
                         <div class="fw-bold">${person.name}</div>
-                        ${person.categories ? 
-                            `<div class="small text-muted">${person.categories}</div>` : ''}
-                        <div class="d-flex gap-2 mt-1">
+                        <div class="person-details">
                             ${person.mobile ? 
-                                `<div class="small">
-                                    <i class="fas fa-mobile-alt text-primary"></i>
-                                    ${person.mobile}
-                                </div>` : ''}
+                                `<span><i class="fas fa-mobile-alt text-primary me-1"></i>${person.mobile}</span>` : ''}
                             ${person.phone ? 
-                                `<div class="small">
-                                    <i class="fas fa-phone text-success"></i>
-                                    ${person.phone}
-                                </div>` : ''}
+                                `<span><i class="fas fa-phone text-success me-1"></i>${person.phone}</span>` : ''}
                             ${person.email ? 
-                                `<div class="small">
-                                    <i class="fas fa-envelope text-warning"></i>
-                                    ${person.email}
-                                </div>` : ''}
+                                `<span><i class="fas fa-envelope text-warning me-1"></i>${person.email}</span>` : ''}
                         </div>
                     </div>
                 </div>
             </div>
         `).join('');
 
-        // اضافه کردن event listener برای آیتم‌ها
+        // اضافه کردن event listeners
         this.searchResults.querySelectorAll('.search-result-item').forEach(item => {
             item.addEventListener('click', () => {
                 this.selectPerson({
@@ -126,6 +103,8 @@ class PersonPicker {
                 });
             });
         });
+
+        this.showResults();
     }
 
     selectPerson(person) {
@@ -134,15 +113,14 @@ class PersonPicker {
 
         // تغییر input به حالت انتخاب شده
         const selectedHtml = `
-            <div class="selected-person d-flex align-items-center p-2">
-                <img src="${person.avatar}" class="rounded-circle me-2" 
-                     style="width: 24px; height: 24px; object-fit: cover;">
+            <div class="selected-person">
+                <img src="${person.avatar}">
                 <div class="flex-grow-1">
                     <div class="fw-bold">${person.name}</div>
                     ${person.mobile ? 
                         `<small class="text-muted">${person.mobile}</small>` : ''}
                 </div>
-                <button type="button" class="btn-close clear-person ms-2" 
+                <button type="button" class="btn-close clear-person" 
                         aria-label="Clear"></button>
             </div>
         `;
@@ -154,10 +132,8 @@ class PersonPicker {
             this.clearSelection();
         });
 
-        // اینجا مشکل داشت - این خط رو اصلاح کردم
-        const oldInput = this.searchInput;
+        this.searchInput.replaceWith(selectedElement);
         this.searchInput = selectedElement;
-        oldInput.replaceWith(selectedElement);
 
         // آپدیت آواتار اصلی
         this.avatarImg.src = person.avatar;
@@ -173,10 +149,8 @@ class PersonPicker {
         newInput.className = 'form-control person-search-input';
         newInput.placeholder = 'نام، موبایل یا کد ملی را وارد کنید...';
         
-        // اینجا هم مشکل داشت - این خط رو اصلاح کردم
-        const oldElement = this.searchInput;
+        this.searchInput.replaceWith(newInput);
         this.searchInput = newInput;
-        oldElement.replaceWith(newInput);
         
         // پاک کردن مقادیر
         this.hiddenInput.value = '';
@@ -188,10 +162,9 @@ class PersonPicker {
 
     showLoading() {
         this.searchResults.innerHTML = `
-            <div class="p-3 text-center">
-                <div class="spinner-border spinner-border-sm text-primary" role="status">
-                    <span class="visually-hidden">در حال جستجو...</span>
-                </div>
+            <div class="loading-spinner">
+                <div class="spinner-border spinner-border-sm"></div>
+                در حال جستجو...
             </div>
         `;
         this.showResults();
@@ -199,21 +172,26 @@ class PersonPicker {
 
     renderError(message) {
         this.searchResults.innerHTML = `
-            <div class="p-2 text-center text-danger">
+            <div class="search-error">
                 <i class="fas fa-exclamation-circle me-1"></i>
                 ${message}
             </div>
         `;
+        this.showResults();
     }
 
     showResults() {
-        this.searchResults.style.display = 'block';
+        this.searchResults.classList.add('show');
     }
 
     hideResults() {
-        this.searchResults.style.display = 'none';
+        this.searchResults.classList.remove('show');
     }
 }
+
+
+
+
 
 // اضافه کردن helper function
 function debounce(func, wait) {
@@ -258,7 +236,6 @@ $(document).ready(function() {
 
         // راه‌اندازی جستجوی شخص
         new PersonPicker(clone.querySelector('.search-wrapper'));
-
         // فرمت‌بندی مبلغ
         setupAmountInput(clone.querySelector('.amount-input'));
 
