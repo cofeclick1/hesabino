@@ -37,12 +37,12 @@ if (!empty($filters['search'])) {
 }
 
 if (!empty($filters['from_date'])) {
-    $whereConditions[] = "p.date >= ?";
+    $whereConditions[] = "p.payment_date >= ?";
     $params[] = $filters['from_date'];
 }
 
 if (!empty($filters['to_date'])) {
-    $whereConditions[] = "p.date <= ?";
+    $whereConditions[] = "p.payment_date <= ?";
     $params[] = $filters['to_date'];
 }
 
@@ -65,8 +65,8 @@ if (!empty($filters['status'])) {
 $whereClause = 'WHERE ' . implode(' AND ', $whereConditions);
 
 // مرتب‌سازی
-$validSortColumns = ['date', 'document_number', 'total_amount', 'status'];
-$sort = in_array($filters['sort'], $validSortColumns) ? $filters['sort'] : 'date';
+$validSortColumns = ['payment_date', 'document_number', 'amount', 'status'];
+$sort = in_array($filters['sort'], $validSortColumns) ? $filters['sort'] : 'payment_date';
 $order = strtoupper($filters['order']) === 'ASC' ? 'ASC' : 'DESC';
 $orderClause = "ORDER BY p.{$sort} {$order}";
 
@@ -140,12 +140,14 @@ require_once '../includes/header.php';
                 <div class="d-flex align-items-center">
                     <h4 class="mb-0"><?php echo $pageTitle ?></h4>
                 </div>
+                <?php if ($auth->hasPermission('payments_add')): ?>
                 <div class="d-flex gap-2">
                     <a href="<?php echo BASE_PATH ?>/people/pay.php" class="btn btn-primary">
                         <i class="fas fa-plus me-1"></i>
                         پرداخت جدید
                     </a>
                 </div>
+                <?php endif; ?>
             </div>
 
             <!-- Filters -->
@@ -208,13 +210,13 @@ require_once '../includes/header.php';
                             <select name="status" class="form-select select2">
                                 <option value="">همه</option>
                                 <option value="pending" <?php echo $filters['status'] == 'pending' ? 'selected' : '' ?>>
-                                    در انتظار پرداخت
-                                </option>
-                                <option value="partial" <?php echo $filters['status'] == 'partial' ? 'selected' : '' ?>>
-                                    پرداخت ناقص
+                                    در انتظار
                                 </option>
                                 <option value="completed" <?php echo $filters['status'] == 'completed' ? 'selected' : '' ?>>
-                                    پرداخت کامل
+                                    تکمیل شده
+                                </option>
+                                <option value="canceled" <?php echo $filters['status'] == 'canceled' ? 'selected' : '' ?>>
+                                    لغو شده
                                 </option>
                             </select>
                         </div>
@@ -253,20 +255,20 @@ require_once '../includes/header.php';
                                             </a>
                                         </th>
                                         <th>
-                                            <a href="?<?php echo http_build_query(array_merge($filters, ['sort' => 'date', 'order' => $sort === 'date' && $order === 'ASC' ? 'DESC' : 'ASC'])) ?>" 
+                                            <a href="?<?php echo http_build_query(array_merge($filters, ['sort' => 'payment_date', 'order' => $sort === 'payment_date' && $order === 'ASC' ? 'DESC' : 'ASC'])) ?>" 
                                                class="text-decoration-none text-dark">
                                                 تاریخ
-                                                <?php if ($sort === 'date'): ?>
+                                                <?php if ($sort === 'payment_date'): ?>
                                                     <i class="fas fa-sort-<?php echo $order === 'ASC' ? 'up' : 'down' ?>"></i>
                                                 <?php endif; ?>
                                             </a>
                                         </th>
                                         <th>توضیحات</th>
                                         <th>
-                                            <a href="?<?php echo http_build_query(array_merge($filters, ['sort' => 'total_amount', 'order' => $sort === 'total_amount' && $order === 'ASC' ? 'DESC' : 'ASC'])) ?>" 
+                                            <a href="?<?php echo http_build_query(array_merge($filters, ['sort' => 'amount', 'order' => $sort === 'amount' && $order === 'ASC' ? 'DESC' : 'ASC'])) ?>" 
                                                class="text-decoration-none text-dark">
-                                                مبلغ کل
-                                                <?php if ($sort === 'total_amount'): ?>
+                                                مبلغ
+                                                <?php if ($sort === 'amount'): ?>
                                                     <i class="fas fa-sort-<?php echo $order === 'ASC' ? 'up' : 'down' ?>"></i>
                                                 <?php endif; ?>
                                             </a>
@@ -286,28 +288,28 @@ require_once '../includes/header.php';
                                 <tbody>
                                     <?php foreach ($payments as $payment): ?>
                                         <tr>
-                                            <td><?php echo htmlspecialchars($payment['document_number']) ?></td>
-                                            <td><?php echo formatJalaliDate($payment['date']) ?></td>
-                                            <td><?php echo htmlspecialchars($payment['description']) ?></td>
+                                            <td><?php echo htmlspecialchars($payment['document_number'] ?? '') ?></td>
+                                            <td><?php echo formatJalaliDate($payment['payment_date']) ?></td>
+                                            <td><?php echo htmlspecialchars($payment['description'] ?? '') ?></td>
                                             <td>
                                                 <span class="text-nowrap">
-                                                    <?php echo number_format($payment['total_amount']) ?>
-                                                    <?php echo $payment['currency_symbol'] ?>
+                                                    <?php echo number_format($payment['amount'] ?? 0) ?>
+                                                    <?php echo htmlspecialchars($payment['currency_symbol'] ?? '') ?>
                                                 </span>
                                             </td>
                                             <td>
                                                 <?php
                                                 $statusClass = [
                                                     'pending' => 'badge bg-warning',
-                                                    'partial' => 'badge bg-info',
-                                                    'completed' => 'badge bg-success'
-                                                ][$payment['status']] ?? 'badge bg-secondary';
+                                                    'completed' => 'badge bg-success',
+                                                    'canceled' => 'badge bg-danger'
+                                                ][$payment['status'] ?? 'pending'] ?? 'badge bg-secondary';
                                                 
                                                 $statusText = [
-                                                    'pending' => 'در انتظار پرداخت',
-                                                    'partial' => 'پرداخت ناقص',
-                                                    'completed' => 'پرداخت کامل'
-                                                ][$payment['status']] ?? 'نامشخص';
+                                                    'pending' => 'در انتظار',
+                                                    'completed' => 'تکمیل شده',
+                                                    'canceled' => 'لغو شده'
+                                                ][$payment['status'] ?? 'pending'] ?? 'نامشخص';
                                                 ?>
                                                 <span class="<?php echo $statusClass ?>">
                                                     <?php echo $statusText ?>
@@ -315,14 +317,18 @@ require_once '../includes/header.php';
                                             </td>
                                             <td>
                                                 <div class="btn-group">
+                                                    <?php if ($auth->hasPermission('payments_edit')): ?>
                                                     <a href="<?php echo BASE_PATH ?>/people/pay.php?id=<?php echo $payment['id'] ?>" 
                                                        class="btn btn-sm btn-outline-primary" title="ویرایش">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
+                                                    <?php endif; ?>
+                                                    <?php if ($auth->hasPermission('payments_delete')): ?>
                                                     <button type="button" class="btn btn-sm btn-outline-danger delete-payment" 
                                                             data-id="<?php echo $payment['id'] ?>" title="حذف">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
+                                                    <?php endif; ?>
                                                 </div>
                                             </td>
                                         </tr>

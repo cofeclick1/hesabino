@@ -136,6 +136,14 @@ function unformatMoney($amount) {
 }
 
 /**
+ * فرمت کردن تاریخ جلالی
+ */
+function formatJalaliDate($date) {
+    if (empty($date)) return '';
+    return toJalali($date);
+}
+
+/**
  * تبدیل عدد به حروف فارسی
  */
 function numberToWords($number) {

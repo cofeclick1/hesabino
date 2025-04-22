@@ -1953,3 +1953,113 @@ Stack trace:
 #1 {main}
   thrown in C:\xampp\htdocs\hesabino\config\database.php on line 45
 [22-Apr-2025 14:41:38 Europe/Berlin] PHP Parse error:  Unclosed '{' on line 123 in C:\xampp\htdocs\hesabino\people\pay_list.php on line 125
+[22-Apr-2025 16:14:50 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.date' in 'order clause' in C:\xampp\htdocs\hesabino\config\database.php:45
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\pay_list.php(102): Database->query('\r\n    SELECT \r\n...', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 45
+[22-Apr-2025 16:17:38 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 289
+[22-Apr-2025 16:17:38 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function formatJalaliDate() in C:\xampp\htdocs\hesabino\people\pay_list.php:290
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\pay_list.php on line 290
+[22-Apr-2025 16:18:23 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 289
+[22-Apr-2025 16:18:23 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function formatJalaliDate() in C:\xampp\htdocs\hesabino\people\pay_list.php:290
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\pay_list.php on line 290
+[22-Apr-2025 16:18:24 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 289
+[22-Apr-2025 16:18:24 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function formatJalaliDate() in C:\xampp\htdocs\hesabino\people\pay_list.php:290
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\hesabino\people\pay_list.php on line 290
+[22-Apr-2025 16:18:27 Asia/Tehran] PHP Fatal error:  Uncaught Exception: خطا در اجرای کوئری: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.status' in 'where clause' in C:\xampp\htdocs\hesabino\config\database.php:45
+Stack trace:
+#0 C:\xampp\htdocs\hesabino\people\pay_list.php(81): Database->query('\r\n    SELECT CO...', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\hesabino\config\database.php on line 45
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 291
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 291
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 291
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 291
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 291
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "total_amount" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\hesabino\people\pay_list.php on line 294
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 304
+[22-Apr-2025 16:19:44 Asia/Tehran] PHP Warning:  Undefined array key "status" in C:\xampp\htdocs\hesabino\people\pay_list.php on line 310
