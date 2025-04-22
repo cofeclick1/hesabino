@@ -212,161 +212,232 @@ $categories = $db->query("SELECT id, name FROM categories WHERE status = 'active
                     </div>
                 <?php endif; ?>
 
-                <form method="POST" enctype="multipart/form-data" class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">فرم افزودن محصول</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="name">نام محصول <span class="text-danger">*</span></label>
-                                    <input type="text" id="name" name="name" class="form-control" required>
-                                    <small class="hint-text">مثال: لپ‌تاپ</small>
-                                </div>
+                <div class="product-card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title">مشخصات محصول</h5>
+        <div>
+            <button type="button" class="btn btn-outline-secondary me-2" onclick="history.back()">
+                <i class="fas fa-arrow-right"></i>
+                بازگشت
+            </button>
+            <button type="submit" form="productForm" class="btn btn-primary">
+                <i class="fas fa-save"></i>
+                ذخیره
+            </button>
+        </div>
+    </div>
+    
+    <div class="card-body">
+        <form id="productForm" method="POST" enctype="multipart/form-data">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#basic-info">
+                        اطلاعات اصلی
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#technical-info">
+                        مشخصات فنی
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#pricing">
+                        قیمت‌گذاری
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#inventory">
+                        موجودی و انبار
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <!-- اطلاعات اصلی -->
+                <div class="tab-pane fade show active" id="basic-info">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">نام محصول <span class="text-danger">*</span></label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                                <small class="hint-text">نام کامل محصول را وارد کنید</small>
                             </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="code">کد محصول <span class="text-danger">*</span></label>
-                                    <div class="input-group">
-                                        <input type="text" id="code" name="code" class="form-control" required>
-                                        <button type="button" id="generate-code" class="btn btn-outline-secondary">تولید کد</button>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="code">کد محصول <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="text" id="code" name="code" class="form-control" required>
+                                    <button type="button" class="btn btn-outline-secondary" id="generateCode">
+                                        <i class="fas fa-random"></i>
+                                        تولید کد
+                                    </button>
+                                </div>
+                                <small class="hint-text">کد منحصر به فرد محصول</small>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="category">دسته‌بندی</label>
+                                <select id="category" name="category_id" class="form-control select2">
+                                    <option value="">انتخاب دسته‌بندی...</option>
+                                    <?php foreach($categories as $category): ?>
+                                    <option value="<?php echo $category['id']; ?>">
+                                        <?php echo htmlspecialchars($category['name']); ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="brand">برند</label>
+                                <input type="text" id="brand" name="brand" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="description">توضیحات</label>
+                                <textarea id="description" name="description" class="form-control" rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>تصویر محصول</label>
+                                <div class="image-upload-wrapper">
+                                    <input type="file" id="image" name="image" class="d-none" accept="image/*">
+                                    <div class="text-center">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p class="mb-0">برای آپلود تصویر کلیک کنید یا فایل را اینجا رها کنید</p>
+                                        <small class="text-muted">حداکثر حجم: 5MB | فرمت‌های مجاز: JPG, PNG</small>
                                     </div>
-                                    <small class="hint-text">مثال: 123456</small>
                                 </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="category_id">دسته‌بندی</label>
-                                    <select id="category_id" name="category_id" class="form-select search-category">
-                                        <option value="0">بدون دسته‌بندی</option>
-                                    </select>
-                                    <small class="hint-text">دسته‌بندی محصول را انتخاب کنید.</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="purchase_price">قیمت خرید</label>
-                                    <input type="text" id="purchase_price" name="purchase_price" class="form-control">
-                                    <small class="hint-text">مثال: 5000000</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="sale_price">قیمت فروش <span class="text-danger">*</span></label>
-                                    <input type="text" id="sale_price" name="sale_price" class="form-control" required>
-                                    <small class="hint-text">مثال: 6000000</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="quantity">موجودی</label>
-                                    <input type="text" id="quantity" name="quantity" class="form-control">
-                                    <small class="hint-text">مثال: 50</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="min_quantity">حداقل موجودی</label>
-                                    <input type="text" id="min_quantity" name="min_quantity" class="form-control">
-                                    <small class="hint-text">مثال: 10</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="description">توضیحات</label>
-                                    <textarea id="description" name="description" class="form-control" rows="4"></textarea>
-                                    <small class="hint-text">توضیحات تکمیلی درباره محصول.</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="image">تصویر محصول</label>
-                                    <input type="file" id="image" name="image" class="form-control">
-                                    <small class="hint-text">فرمت‌های مجاز: JPG, PNG</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="status">وضعیت</label>
-                                    <select id="status" name="status" class="form-select">
-                                        <option value="active">فعال</option>
-                                        <option value="inactive">غیرفعال</option>
-                                    </select>
-                                    <small class="hint-text">وضعیت محصول را انتخاب کنید.</small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="brand">برند</label>
-                                    <input type="text" id="brand" name="brand" class="form-control">
-                                    <small class="hint-text">مثال: Apple</small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="model">مدل</label>
-                                    <input type="text" id="model" name="model" class="form-control">
-                                    <small class="hint-text">مثال: MacBook Pro 2021</small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="technical_features">ویژگی‌های فنی</label>
-                                    <textarea id="technical_features" name="technical_features" class="form-control" rows="4"></textarea>
-                                    <small class="hint-text">ویژگی‌های فنی محصول را وارد کنید.</small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="customs_tariff_code">کد تعرفه گمرکی</label>
-                                    <input type="text" id="customs_tariff_code" name="customs_tariff_code" class="form-control">
-                                    <small class="hint-text">در صورت وارداتی بودن، کد تعرفه گمرکی محصول را وارد کنید.</small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="barcode">بارکد محصول</label>
-                                    <input type="text" id="barcode" name="barcode" class="form-control">
-                                    <button type="button" id="scan-barcode" class="btn btn-outline-secondary mt-2">اسکن بارکد</button>
-                                    <small class="hint-text">بارکد محصول را وارد کنید یا از بارکدخوان استفاده کنید.</small>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="store_barcode">بارکد فروشگاه</label>
-                                    <input type="text" id="store_barcode" name="store_barcode" class="form-control" readonly>
-                                    <button type="button" id="generate-store-barcode" class="btn btn-outline-secondary mt-2">تولید بارکد فروشگاه</button>
-                                    <small class="hint-text">بارکد فروشگاه برای چاپ روی محصول.</small>
+                                <div id="imagePreview" class="mt-2 text-center d-none">
+                                    <img src="" alt="preview" style="max-width: 200px;">
+                                    <button type="button" class="btn btn-sm btn-outline-danger mt-2" id="removeImage">
+                                        <i class="fas fa-trash"></i>
+                                        حذف تصویر
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer text-end">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save me-1"></i>
-                            ذخیره محصول
-                        </button>
+                </div>
+
+                <!-- مشخصات فنی -->
+                <div class="tab-pane fade" id="technical-info">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="model">مدل</label>
+                                <input type="text" id="model" name="model" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="customs_tariff_code">کد تعرفه گمرکی</label>
+                                <input type="text" id="customs_tariff_code" name="customs_tariff_code" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="technical_features">ویژگی‌های فنی</label>
+                                <textarea id="technical_features" name="technical_features" class="form-control" rows="4"></textarea>
+                                <small class="hint-text">هر ویژگی را در یک خط جداگانه وارد کنید</small>
+                            </div>
+                        </div>
                     </div>
-                </form>
+                </div>
+
+                <!-- قیمت‌گذاری -->
+                <div class="tab-pane fade" id="pricing">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="purchase_price">قیمت خرید</label>
+                                <div class="input-group">
+                                    <input type="text" id="purchase_price" name="purchase_price" class="form-control price-input">
+                                    <span class="input-group-text">ریال</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="sale_price">قیمت فروش <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="text" id="sale_price" name="sale_price" class="form-control price-input" required>
+                                    <span class="input-group-text">ریال</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                <strong>حاشیه سود: </strong>
+                                <span id="profitMargin">0</span>
+                                <span>درصد</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- موجودی و انبار -->
+                <div class="tab-pane fade" id="inventory">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="quantity">موجودی فعلی</label>
+                                <input type="number" id="quantity" name="quantity" class="form-control" min="0">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="min_quantity">حداقل موجودی</label>
+                                <input type="number" id="min_quantity" name="min_quantity" class="form-control" min="0">
+                                <small class="hint-text">هشدار کمبود موجودی در این مقدار نمایش داده می‌شود</small>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="barcode">بارکد محصول</label>
+                                <div class="input-group">
+                                    <input type="text" id="barcode" name="barcode" class="form-control">
+                                    <button type="button" class="btn btn-outline-secondary" id="scanBarcode">
+                                        <i class="fas fa-barcode"></i>
+                                        اسکن
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="store_barcode">بارکد فروشگاه</label>
+                                <div class="input-group">
+                                    <input type="text" id="store_barcode" name="store_barcode" class="form-control" readonly>
+                                    <button type="button" class="btn btn-outline-secondary" id="generateStoreBarcode">
+                                        <i class="fas fa-sync"></i>
+                                        تولید بارکد
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
+</div>
 
     <!-- اسکریپت‌ها -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
