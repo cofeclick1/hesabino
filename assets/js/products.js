@@ -1,50 +1,95 @@
+/**
+ * products.js
+ * کنترل‌کننده رابط کاربری صفحه محصولات
+ * نسخه: 1.0.0
+ */
+
 $(document).ready(function() {
+    'use strict';
+
+    // ==================== تنظیمات اولیه ====================
+    
     // تنظیمات Select2
-    $('.select2').select2({
+    $('.select2-category').select2({
         theme: 'bootstrap-5',
         language: 'fa',
-        dir: 'rtl'
+        dir: 'rtl',
+        placeholder: 'نام دسته‌بندی را وارد کنید...',
+        allowClear: true,
+        ajax: {
+            url: BASE_PATH + '/ajax/search-categories.php',
+            dataType: 'json',
+            delay: 250,
+            cache: true,
+            data: function(params) {
+                return {
+                    q: params.term || '',
+                    page: params.page || 1
+                };
+            },
+            processResults: function(data, params) {
+                params.page = params.page || 1;
+                return {
+                    results: data.items,
+                    pagination: {
+                        more: data.pagination.more
+                    }
+                };
+            }
+        },
+        minimumInputLength: 2,
+        templateResult: formatCategoryResult,
+        templateSelection: formatCategorySelection,
+        escapeMarkup: function(markup) {
+            return markup;
+        }
     });
 
-    // آپلود تصویر با drag & drop
+    // ==================== مدیریت تصویر ====================
+    
     const imageUpload = $('.image-upload-wrapper');
     const imageInput = $('#image');
     const imagePreview = $('#imagePreview');
     const defaultImage = BASE_PATH + '/assets/images/product-placeholder.png';
+    let isDragging = false;
 
+    // کلیک روی ناحیه آپلود
     imageUpload.on('click', function(e) {
-        if (e.target === this) {
+        if (e.target === this || $(e.target).hasClass('upload-content')) {
             imageInput.click();
         }
     });
 
     // Drag & Drop
-    imageUpload.on('dragover', function(e) {
+    imageUpload.on('dragenter dragover', function(e) {
         e.preventDefault();
-        $(this).addClass('drag-over');
+        if (!isDragging) {
+            isDragging = true;
+            $(this).addClass('drag-over');
+        }
     });
 
-    imageUpload.on('dragleave', function(e) {
+    imageUpload.on('dragleave drop', function(e) {
         e.preventDefault();
-        $(this).removeClass('drag-over');
-    });
-
-    imageUpload.on('drop', function(e) {
-        e.preventDefault();
+        isDragging = false;
         $(this).removeClass('drag-over');
         
-        const files = e.originalEvent.dataTransfer.files;
-        if (files.length > 0) {
-            handleImageUpload(files[0]);
+        if (e.type === 'drop') {
+            const files = e.originalEvent.dataTransfer.files;
+            if (files.length > 0) {
+                handleImageUpload(files[0]);
+            }
         }
     });
 
+    // تغییر فایل
     imageInput.on('change', function(e) {
-        if (e.target.files.length > 0) {
-            handleImageUpload(e.target.files[0]);
+        if (this.files.length > 0) {
+            handleImageUpload(this.files[0]);
         }
     });
 
+    // پردازش آپلود تصویر
     function handleImageUpload(file) {
         // بررسی نوع فایل
         if (!file.type.match('image.*')) {
@@ -61,11 +106,12 @@ $(document).ready(function() {
         const reader = new FileReader();
         reader.onload = function(e) {
             imagePreview.html(`
-                <img src="${e.target.result}" alt="preview" class="fade-in">
-                <button type="button" class="btn btn-sm btn-outline-danger mt-2" id="removeImage">
-                    <i class="fas fa-trash"></i>
-                    حذف تصویر
-                </button>
+                <div class="position-relative">
+                    <img src="${e.target.result}" alt="پیش‌نمایش تصویر" class="img-fluid rounded fade-in">
+                    <button type="button" class="btn btn-sm btn-outline-danger position-absolute top-0 end-0 m-2" id="removeImage">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             `).removeClass('d-none');
         };
         reader.readAsDataURL(file);
@@ -77,13 +123,16 @@ $(document).ready(function() {
         imagePreview.addClass('d-none').empty();
     });
 
+    // ==================== مدیریت قیمت‌ها ====================
+    
     // فرمت‌بندی قیمت‌ها
     $('.price-input').each(function() {
         new Cleave(this, {
             numeral: true,
             numeralThousandsGroupStyle: 'thousand',
             delimiter: ',',
-            numeralDecimalScale: 0
+            numeralDecimalScale: 0,
+            numeralPositiveOnly: true
         });
     });
 
@@ -98,9 +147,22 @@ $(document).ready(function() {
             
             $('#profitMargin').html(`
                 <div class="profit-display fade-in">
-                    <div class="profit-title">حاشیه سود</div>
-                    <div class="profit-amount">${profit}%</div>
-                    <small class="text-muted">${formatCurrency(profitAmount)} ریال</small>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="profit-title">حاشیه سود</div>
+                            <div class="profit-amount">
+                                ${profit}٪
+                                <small class="text-muted">
+                                    (${formatCurrency(profitAmount)} ریال)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="profit-chart">
+                                <div class="chart-bar" style="width: ${Math.min(profit, 100)}%"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `);
         } else {
@@ -108,33 +170,41 @@ $(document).ready(function() {
         }
     }
 
-    $('.price-input').on('input', function() {
-        calculateProfit();
-    });
+    $('.price-input').on('input', debounce(calculateProfit, 300));
 
+    // ==================== کد و بارکد ====================
+    
     // تولید کد محصول
     $('#generateCode').click(function() {
         const code = Math.floor(100000 + Math.random() * 900000);
-        $('#code').val(code);
-
-        // انیمیشن برای نمایش تغییر
-        $('#code').addClass('highlight');
-        setTimeout(() => {
-            $('#code').removeClass('highlight');
-        }, 500);
+        $('#code').val(code).addClass('highlight');
+        setTimeout(() => $('#code').removeClass('highlight'), 500);
     });
 
-    // بارکد خوان
+    // اسکن بارکد
     $('#scanBarcode').click(function() {
-        // در صورت وجود کتابخانه بارکدخوان
         if (typeof Html5QrcodeScanner !== 'undefined') {
-            $('#barcodeModal').modal('show');
+            const modal = new bootstrap.Modal('#barcodeModal');
+            modal.show();
+
             const html5QrcodeScanner = new Html5QrcodeScanner(
-                "reader", { fps: 10, qrbox: 250 });
+                "reader", 
+                { 
+                    fps: 10, 
+                    qrbox: 250,
+                    rememberLastUsedCamera: true,
+                    aspectRatio: 1
+                }
+            );
             
             html5QrcodeScanner.render((decodedText) => {
                 $('#barcode').val(decodedText);
-                $('#barcodeModal').modal('hide');
+                modal.hide();
+                html5QrcodeScanner.clear();
+                showSuccess('بارکد با موفقیت خوانده شد');
+            });
+
+            $('#barcodeModal').on('hidden.bs.modal', function() {
                 html5QrcodeScanner.clear();
             });
         } else {
@@ -142,26 +212,56 @@ $(document).ready(function() {
         }
     });
 
-    // ذخیره فرم
+    // تولید بارکد فروشگاه
+    $('#generateStoreBarcode').click(function() {
+        const category = $('#category_id').val();
+        if (!category) {
+            showError('لطفاً ابتدا دسته‌بندی را انتخاب کنید');
+            return;
+        }
+
+        $.ajax({
+            url: BASE_PATH + '/ajax/generate-store-barcode.php',
+            method: 'POST',
+            data: { category_id: category },
+            success: function(response) {
+                if (response.success) {
+                    $('#store_barcode').val(response.barcode);
+                    showSuccess('بارکد فروشگاه با موفقیت تولید شد');
+                } else {
+                    showError(response.message || 'خطا در تولید بارکد فروشگاه');
+                }
+            },
+            error: function() {
+                showError('خطا در ارتباط با سرور');
+            }
+        });
+    });
+
+    // ==================== اعتبارسنجی و ارسال فرم ====================
+    
+    // اعتبارسنجی فرم
+    const form = document.getElementById('productForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            if (!this.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            $(this).addClass('was-validated');
+        });
+    }
+
+    // ارسال فرم با Ajax
     $('#productForm').on('submit', function(e) {
         e.preventDefault();
 
-        // بررسی فیلدهای اجباری
-        const requiredFields = ['name', 'code', 'sale_price'];
-        let isValid = true;
-
-        requiredFields.forEach(field => {
-            const value = $(`#${field}`).val();
-            if (!value || value.trim() === '') {
-                showError(`لطفاً ${$(`label[for="${field}"]`).text()} را وارد کنید`);
-                $(`#${field}`).addClass('is-invalid');
-                isValid = false;
-            } else {
-                $(`#${field}`).removeClass('is-invalid');
-            }
-        });
-
-        if (!isValid) return;
+        // بررسی اعتبارسنجی
+        if (!this.checkValidity()) {
+            $(this).addClass('was-validated');
+            showError('لطفاً تمام فیلدهای ضروری را پر کنید');
+            return;
+        }
 
         // نمایش لودینگ
         const submitBtn = $(this).find('button[type="submit"]');
@@ -185,7 +285,11 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.success) {
                     showSuccess('محصول با موفقیت ذخیره شد', function() {
-                        window.location.href = 'list.php';
+                        if (formData.get('redirect_to_list')) {
+                            window.location.href = 'list.php';
+                        } else {
+                            window.location.reload();
+                        }
                     });
                 } else {
                     showError(response.message || 'خطا در ذخیره محصول');
@@ -204,15 +308,61 @@ $(document).ready(function() {
         });
     });
 
-    // توابع کمکی
+    // ==================== توابع کمکی ====================
+    
+    // فرمت نتایج جستجوی دسته‌بندی
+    function formatCategoryResult(category) {
+        if (category.loading) {
+            return $('<div class="select2-result-loading">در حال جستجو...</div>');
+        }
+
+        const $container = $(
+            '<div class="select2-result-category">' +
+                '<div class="select2-result-category__title"></div>' +
+                '<div class="select2-result-category__description text-muted small"></div>' +
+            '</div>'
+        );
+
+        $container.find('.select2-result-category__title').text(category.text);
+        
+        if (category.description) {
+            $container.find('.select2-result-category__description').text(category.description);
+        } else {
+            $container.find('.select2-result-category__description').remove();
+        }
+
+        return $container;
+    }
+
+    // فرمت نمایش دسته‌بندی انتخاب شده
+    function formatCategorySelection(category) {
+        return category.text || 'انتخاب دسته‌بندی';
+    }
+
+    // تبدیل قیمت به عدد
     function parseCurrency(value) {
         return parseInt(value.replace(/[^\d]/g, '')) || 0;
     }
 
+    // فرمت‌بندی قیمت
     function formatCurrency(value) {
         return new Intl.NumberFormat('fa-IR').format(value);
     }
 
+    // تاخیر در اجرای تابع
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // نمایش پیام موفقیت
     function showSuccess(message, callback) {
         Swal.fire({
             icon: 'success',
@@ -229,6 +379,7 @@ $(document).ready(function() {
         });
     }
 
+    // نمایش پیام خطا
     function showError(message) {
         Swal.fire({
             icon: 'error',
@@ -241,12 +392,8 @@ $(document).ready(function() {
         });
     }
 
-    // مدیریت تب‌ها
-    $('.nav-tabs .nav-link').on('click', function(e) {
-        e.preventDefault();
-        $(this).tab('show');
-    });
-
+    // ==================== مدیریت تب‌ها ====================
+    
     // ذخیره و بازیابی تب فعال
     const activeTab = localStorage.getItem('activeProductTab');
     if (activeTab) {
@@ -256,4 +403,12 @@ $(document).ready(function() {
     $('.nav-tabs .nav-link').on('shown.bs.tab', function(e) {
         localStorage.setItem('activeProductTab', $(e.target).attr('href'));
     });
+
+    // ==================== راه‌اندازی ابزارها ====================
+    
+    // فعال‌سازی تولتیپ‌ها
+    $('[data-bs-toggle="tooltip"]').tooltip();
+
+    // فعال‌سازی پاپ‌اورها
+    $('[data-bs-toggle="popover"]').popover();
 });
