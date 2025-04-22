@@ -16,7 +16,7 @@ $filters = [
     'project_id' => $_GET['project_id'] ?? '',
     'currency_code' => $_GET['currency_code'] ?? '',
     'status' => $_GET['status'] ?? '',
-    'sort' => $_GET['sort'] ?? 'date',
+    'sort' => $_GET['sort'] ?? 'payment_date', // تغییر از 'date' به 'payment_date'
     'order' => $_GET['order'] ?? 'desc',
     'page' => max(1, intval($_GET['page'] ?? 1)),
     'per_page' => 20
@@ -57,7 +57,7 @@ if (!empty($filters['currency_code'])) {
 }
 
 if (!empty($filters['status'])) {
-    $whereConditions[] = "p.status = ?";
+    $whereConditions[] = "COALESCE(p.status, 'pending') = ?";
     $params[] = $filters['status'];
 }
 
@@ -65,7 +65,7 @@ if (!empty($filters['status'])) {
 $whereClause = 'WHERE ' . implode(' AND ', $whereConditions);
 
 // مرتب‌سازی
-$validSortColumns = ['payment_date', 'document_number', 'amount', 'status'];
+$validSortColumns = ['payment_date', 'document_number', 'amount', 'status']; // تغییر 'date' به 'payment_date'
 $sort = in_array($filters['sort'], $validSortColumns) ? $filters['sort'] : 'payment_date';
 $order = strtoupper($filters['order']) === 'ASC' ? 'ASC' : 'DESC';
 $orderClause = "ORDER BY p.{$sort} {$order}";
