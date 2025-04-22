@@ -32,7 +32,18 @@ function sanitize($input) {
     }
     return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
 }
-
+/**
+ * دریافت مقدار قبلی فیلد فرم
+ */
+function old($key, $default = '') {
+    if (isset($_POST[$key])) {
+        return htmlspecialchars($_POST[$key]);
+    }
+    if (isset($_GET[$key])) {
+        return htmlspecialchars($_GET[$key]);
+    }
+    return $default;
+}
 /**
  * انتقال به صفحه دیگر
  */
