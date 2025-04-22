@@ -480,7 +480,8 @@ $customJs = [
     'https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js',
     BASE_PATH . '/assets/js/payments.js',
     BASE_PATH . '/assets/js/search-people.js',
-    BASE_PATH . '/assets/js/recurring-descriptions.js'
+    BASE_PATH . '/assets/js/recurring-descriptions.js',
+     BASE_PATH . '/assets/js/person-picker.js'
 ];
 
 require_once '../includes/footer.php';
