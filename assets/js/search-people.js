@@ -1,239 +1,255 @@
-// جستجوی افراد با استفاده از API
-class PersonSearch {
-    constructor(wrapper) {
-        this.wrapper = wrapper;
-        this.searchInput = wrapper.querySelector('.search-input');
-        this.resultsContainer = wrapper.querySelector('.search-results');
-        this.hiddenInput = wrapper.querySelector('input[type="hidden"]');
-        this.avatarContainer = wrapper.closest('.payment-item').querySelector('.avatar-wrapper img');
-        this.searchTimeout = null;
-
+class ContactPicker {
+    constructor(options = {}) {
+        this.container = null;
+        this.options = {
+            onSelect: () => {},
+            selectedId: null,
+            zIndex: 1050,
+            width: null,
+            ...options
+        };
+        
+        this.currentPage = 1;
+        this.hasMore = true;
+        this.isLoading = false;
+        this.selectedItem = null;
+        
+        this.init();
+    }
+    
+    init() {
+        // ایجاد modal
+        this.createModal();
+        
+        // اضافه کردن event listener ها
         this.setupEventListeners();
-    }
-
-    setupEventListeners() {
-        // رویداد تایپ در فیلد جستجو
-        this.searchInput.addEventListener('input', () => this.handleSearch());
-
-        // رویداد فوکوس
-        this.searchInput.addEventListener('focus', () => {
-            const query = this.searchInput.value.trim();
-            if (query.length >= 2) {
-                this.showResults();
-            }
-        });
-
-        // رویداد کلیک خارج از باکس جستجو
-        document.addEventListener('click', (e) => {
-            if (!this.wrapper.contains(e.target)) {
-                this.hideResults();
-            }
-        });
-
-        // رویداد انتخاب نتیجه
-        this.resultsContainer.addEventListener('click', (e) => {
-            const item = e.target.closest('.search-result-item');
-            if (item) {
-                this.selectPerson(item);
-            }
-        });
-    }
-
-    handleSearch() {
-        const query = this.searchInput.value.trim();
         
-        clearTimeout(this.searchTimeout);
+        // لود اولین صفحه
+        this.loadContacts();
+    }
+    
+    createModal() {
+        const modal = document.createElement('div');
+        modal.className = 'dx-overlay-wrapper dx-dropdowneditor-overlay dx-popup-wrapper dx-dropdownlist-popup-wrapper dx-selectbox-popup-wrapper';
+        modal.style.zIndex = this.options.zIndex;
         
-        if (query.length < 2) {
-            this.hideResults();
-            return;
+        let width = this.options.width || '300px';
+        if (window.innerWidth <= 576) {
+            width = '100%';
         }
         
-        // تاخیر برای جلوگیری از درخواست‌های مکرر
-        this.searchTimeout = setTimeout(() => {
-            this.performSearch(query);
-        }, 300);
-    }
-
-    async performSearch(query) {
-        try {
-            this.showLoading();
-            
-            const response = await fetch(`${BASE_PATH}/api/search-people.php?q=${encodeURIComponent(query)}`);
-            const data = await response.json();
-            
-            this.renderResults(data);
-        } catch (error) {
-            console.error('Error searching people:', error);
-            this.showError('خطا در جستجو، لطفا مجدداً تلاش کنید');
-        } finally {
-            this.hideLoading();
-        }
-    }
-
-    renderResults(data) {
-        if (!Array.isArray(data.items) || data.items.length === 0) {
-            this.showNoResults();
-            return;
-        }
-
-        const html = data.items.map(person => this.createResultItem(person)).join('');
-        this.resultsContainer.innerHTML = html;
-        this.showResults();
-    }
-
-    createResultItem(person) {
-        const avatar = person.avatar_path || `${BASE_PATH}/assets/images/avatar.png`;
-        const mobile = person.mobile ? `<i class="fas fa-phone"></i> ${person.mobile}` : '';
-        const nationalCode = person.national_code ? 
-            `<span class="mx-2">|</span><i class="fas fa-id-card"></i> ${person.national_code}` : '';
-        
-        return `
-            <div class="search-result-item" 
-                 data-id="${person.id}" 
-                 data-name="${person.text}"
-                 data-mobile="${person.mobile || ''}"
-                 data-avatar="${avatar}">
-                <div class="d-flex align-items-center">
-                    <img src="${avatar}" alt="" class="result-avatar">
-                    <div class="result-info">
-                        <div class="result-name">${person.text}</div>
-                        <div class="result-details">
-                            ${mobile}
-                            ${nationalCode}
+        modal.innerHTML = `
+            <div class="dx-overlay-content dx-rtl dx-popup-normal dx-resizable" 
+                 style="max-height: 407.5px; width: ${width}; visibility: visible;">
+                <div class="dx-popup-content">
+                    <div class="dx-scrollable dx-scrollview dx-rtl dx-visibility-change-handler dx-scrollable-vertical dx-scrollable-simulated dx-list dx-widget dx-collection" role="listbox">
+                        <div class="dx-scrollable-wrapper">
+                            <div class="dx-scrollable-container">
+                                <div class="dx-scrollable-content">
+                                    <!-- Pull to refresh -->
+                                    <div class="dx-scrollview-top-pocket">
+                                        <div class="dx-scrollview-pull-down dx-state-invisible">
+                                            <div class="dx-scrollview-pull-down-text">
+                                                <div>برای بازیابی به پایین بکشید...</div>
+                                                <div>برای بازیابی رها کنید...</div>
+                                                <div>درحال بازیابی...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Search box -->
+                                    <div class="search-box p-2">
+                                        <input type="text" class="form-control" placeholder="جستجو...">
+                                    </div>
+                                    
+                                    <!-- Contact list -->
+                                    <div class="contacts-list"></div>
+                                    
+                                    <!-- Loading -->
+                                    <div class="loading-indicator text-center p-3 d-none">
+                                        <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                            <span class="visually-hidden">در حال بارگذاری...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         `;
+        
+        document.body.appendChild(modal);
+        this.container = modal;
     }
-
-    selectPerson(item) {
-        const { id, name, mobile, avatar } = item.dataset;
+    
+    setupEventListeners() {
+        // جستجو
+        const searchInput = this.container.querySelector('.search-box input');
+        searchInput.addEventListener('input', debounce(() => {
+            this.currentPage = 1;
+            this.hasMore = true;
+            this.loadContacts(true);
+        }, 300));
         
-        // ذخیره مقادیر
-        this.hiddenInput.value = id;
+        // اسکرول
+        const scrollContainer = this.container.querySelector('.dx-scrollable-container');
+        scrollContainer.addEventListener('scroll', () => {
+            if (this.hasMore && !this.isLoading) {
+                const {scrollTop, scrollHeight, clientHeight} = scrollContainer;
+                if (scrollTop + clientHeight >= scrollHeight - 50) {
+                    this.currentPage++;
+                    this.loadContacts();
+                }
+            }
+        });
         
-        // نمایش اطلاعات انتخاب شده
-        this.wrapper.innerHTML = `
-            <div class="selected-person">
-                <img src="${avatar}" alt="">
-                <div class="selected-person-info">
-                    <div class="selected-person-name">${name}</div>
-                    ${mobile ? `<div class="selected-person-details">${mobile}</div>` : ''}
+        // کلیک روی آیتم‌ها
+        const contactsList = this.container.querySelector('.contacts-list');
+        contactsList.addEventListener('click', (e) => {
+            const item = e.target.closest('.contact-item');
+            if (item) {
+                const data = {
+                    id: item.dataset.id,
+                    name: item.dataset.name,
+                    code: item.dataset.code,
+                    avatar: item.querySelector('img').src,
+                    mobile: item.dataset.mobile,
+                    phone: item.dataset.phone,
+                    email: item.dataset.email,
+                    categories: item.dataset.categories
+                };
+                
+                this.selectContact(data);
+            }
+        });
+    }
+    
+    async loadContacts(clear = false) {
+        if (this.isLoading || !this.hasMore) return;
+        
+        this.isLoading = true;
+        this.toggleLoading(true);
+        
+        try {
+            const searchValue = this.container.querySelector('.search-box input').value;
+            const response = await fetch(`${BASE_PATH}/ajax/search_people.php?page=${this.currentPage}&search=${searchValue}`);
+            const data = await response.json();
+            
+            if (data.error) {
+                throw new Error(data.message);
+            }
+            
+            this.hasMore = data.has_more;
+            
+            const contactsList = this.container.querySelector('.contacts-list');
+            if (clear) {
+                contactsList.innerHTML = '';
+            }
+            
+            this.renderContacts(data.items);
+            
+        } catch (error) {
+            console.error('Error loading contacts:', error);
+            // نمایش خطا
+        } finally {
+            this.isLoading = false;
+            this.toggleLoading(false);
+        }
+    }
+    
+    renderContacts(contacts) {
+        const contactsList = this.container.querySelector('.contacts-list');
+        
+        contacts.forEach(contact => {
+            const item = document.createElement('div');
+            item.className = 'contact-item p-2 hover-bg';
+            item.dataset.id = contact.id;
+            item.dataset.name = contact.name;
+            item.dataset.code = contact.code;
+            item.dataset.mobile = contact.mobile;
+            item.dataset.phone = contact.phone;
+            item.dataset.email = contact.email;
+            item.dataset.categories = contact.categories;
+            
+            item.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <img src="${contact.avatar}" class="rounded-circle me-2" 
+                         style="width: 40px; height: 40px; object-fit: cover;">
+                    <div class="flex-grow-1">
+                        <div>
+                            <span class="text-muted">${contact.code}</span> - 
+                            <b>${contact.name}</b>
+                        </div>
+                        ${contact.categories ? 
+                            `<span class="cat-path">${contact.categories}</span>` : ''}
+                        <div class="d-flex flex-wrap gap-2 mt-1">
+                            ${contact.mobile ? 
+                                `<div><span class="icon icon-mobile cl-orange"></span> ${contact.mobile}</div>` : ''}
+                            ${contact.phone ? 
+                                `<div><span class="icon icon-phone cl-light-blue"></span> ${contact.phone}</div>` : ''}
+                            ${contact.email ? 
+                                `<div><span class="icon icon-email cl-green"></span> ${contact.email}</div>` : ''}
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn-close clear-selection" aria-label="Clear"></button>
-            </div>
-        `;
-
-        // به‌روزرسانی آواتار در کارت پرداخت
-        if (this.avatarContainer) {
-            this.avatarContainer.src = avatar;
-        }
-
-        // اضافه کردن رویداد حذف
-        const clearBtn = this.wrapper.querySelector('.clear-selection');
-        if (clearBtn) {
-            clearBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.resetSelection();
-            });
-        }
-
-        this.hideResults();
+            `;
+            
+            if (contact.id === this.options.selectedId) {
+                item.classList.add('selected');
+                this.selectedItem = item;
+            }
+            
+            contactsList.appendChild(item);
+        });
     }
-
-    resetSelection() {
-        // بازگرداندن به حالت اولیه
-        this.wrapper.innerHTML = `
-            <input type="text" class="search-input form-control" placeholder="نام، موبایل یا کد ملی را وارد کنید...">
-            <div class="search-results"></div>
-        `;
+    
+    selectContact(data) {
+        if (this.selectedItem) {
+            this.selectedItem.classList.remove('selected');
+        }
         
-        // پاک کردن مقدار ذخیره شده
-        this.hiddenInput.value = '';
-        
-        // بازنشانی آواتار
-        if (this.avatarContainer) {
-            this.avatarContainer.src = `${BASE_PATH}/assets/images/avatar.png`;
+        const item = this.container.querySelector(`.contact-item[data-id="${data.id}"]`);
+        if (item) {
+            item.classList.add('selected');
+            this.selectedItem = item;
         }
-
-        // بازنشانی متغیرهای کلاس
-        this.searchInput = this.wrapper.querySelector('.search-input');
-        this.resultsContainer = this.wrapper.querySelector('.search-results');
         
-        // راه‌اندازی مجدد رویدادها
-        this.setupEventListeners();
+        this.options.onSelect(data);
     }
-
-    showResults() {
-        this.resultsContainer.style.display = 'block';
+    
+    toggleLoading(show) {
+        const loader = this.container.querySelector('.loading-indicator');
+        loader.classList.toggle('d-none', !show);
     }
-
-    hideResults() {
-        this.resultsContainer.style.display = 'none';
+    
+    show() {
+        this.container.style.display = 'block';
     }
-
-    showLoading() {
-        this.resultsContainer.innerHTML = `
-            <div class="search-loading">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">در حال جستجو...</span>
-                </div>
-            </div>
-        `;
-        this.showResults();
+    
+    hide() {
+        this.container.style.display = 'none';
     }
-
-    hideLoading() {
-        const loading = this.resultsContainer.querySelector('.search-loading');
-        if (loading) {
-            loading.remove();
+    
+    destroy() {
+        if (this.container) {
+            this.container.remove();
         }
-    }
-
-    showError(message) {
-        this.resultsContainer.innerHTML = `
-            <div class="search-error">
-                <i class="fas fa-exclamation-circle me-2"></i>
-                ${message}
-            </div>
-        `;
-        this.showResults();
-    }
-
-    showNoResults() {
-        this.resultsContainer.innerHTML = `
-            <div class="no-results">
-                <i class="fas fa-search me-2"></i>
-                موردی یافت نشد
-            </div>
-        `;
-        this.showResults();
     }
 }
 
-// راه‌اندازی جستجو برای همه المان‌های موجود
-document.addEventListener('DOMContentLoaded', () => {
-    // راه‌اندازی برای المان‌های موجود
-    document.querySelectorAll('.search-wrapper').forEach(wrapper => {
-        new PersonSearch(wrapper);
-    });
+// Helper function
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
-    // راه‌اندازی برای المان‌های جدید (مثلاً در آیتم‌های پرداخت جدید)
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            mutation.addedNodes.forEach(node => {
-                if (node.nodeType === 1) { // المان DOM
-                    const searchWrappers = node.querySelectorAll('.search-wrapper');
-                    searchWrappers.forEach(wrapper => new PersonSearch(wrapper));
-                }
-            });
-        });
-    });
-
-    observer.observe(document.getElementById('paymentItems'), {
-        childList: true,
-        subtree: true
-    });
-});
+// اضافه کردن به window برای استفاده در کد‌های دیگر
+window.ContactPicker = ContactPicker;

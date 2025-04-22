@@ -1,0 +1,44 @@
+.scrollable-container {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.person-item {
+    transition: background-color 0.2s ease;
+}
+
+.person-item:hover {
+    background-color: rgba(0,0,0,0.02);
+}
+
+.hover-bg:hover {
+    background-color: rgba(0,123,255,0.1);
+}
+
+.loading-indicator {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* استایل‌های آیکون‌ها */
+.text-primary {
+    color: #007bff !important;
+}
+
+.text-success {
+    color: #28a745 !important;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .scrollable-container {
+        height: calc(100vh - 150px);
+    }
+}
