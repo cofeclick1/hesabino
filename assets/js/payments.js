@@ -264,7 +264,7 @@ function initializePersonSearch() {
     // تنظیم رویدادها
     function setupEventListeners() {
 
-        // جستجوی افراد
+// جستجوی افراد
     $(document).on('input', '.person-search-input', debounce(function() {
         const searchWrapper = $(this).closest('.search-wrapper');
         const resultsContainer = searchWrapper.find('.search-results');
@@ -287,18 +287,18 @@ function initializePersonSearch() {
         // درخواست AJAX
         $.ajax({
             url: BASE_PATH + '/ajax/search_people.php',
-            data: { q: query },
+            data: { search: query }, // اینجا از search استفاده می‌کنیم نه q
             method: 'GET',
             success: function(response) {
-                if (response.success && response.results.length > 0) {
-                    const resultsHtml = response.results.map(person => `
+                if (response.items && response.items.length > 0) {
+                    const resultsHtml = response.items.map(person => `
                         <div class="search-result-item p-2 hover-bg" 
                              data-id="${person.id}" 
                              data-name="${person.text}"
                              data-mobile="${person.mobile || ''}"
                              data-type="${person.type || 'real'}">
                             <div class="d-flex align-items-center">
-                                <img src="${person.avatar_path}" class="rounded-circle me-2" 
+                                <img src="${person.avatar}" class="rounded-circle me-2" 
                                      style="width: 40px; height: 40px; object-fit: cover;"
                                      onerror="this.src='${BASE_PATH}/assets/images/avatar.png'">
                                 <div class="flex-grow-1">
@@ -323,15 +323,11 @@ function initializePersonSearch() {
                     `);
                 }
             },
-            error: function(xhr) {
-                let errorMessage = 'خطا در جستجو';
-                if (xhr.responseJSON && xhr.responseJSON.message) {
-                    errorMessage = xhr.responseJSON.message;
-                }
+            error: function() {
                 resultsContainer.html(`
                     <div class="p-2 text-center text-danger">
                         <i class="fas fa-exclamation-circle me-1"></i>
-                        ${errorMessage}
+                        خطا در جستجو
                     </div>
                 `);
             }
