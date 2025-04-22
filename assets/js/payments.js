@@ -264,6 +264,79 @@ function initializePersonSearch() {
     // تنظیم رویدادها
     function setupEventListeners() {
 
+        // جستجوی افراد
+    $(document).on('input', '.person-search-input', debounce(function() {
+        const searchWrapper = $(this).closest('.search-wrapper');
+        const resultsContainer = searchWrapper.find('.search-results');
+        const query = $(this).val().trim();
+        
+        if (query.length < 2) {
+            resultsContainer.hide();
+            return;
+        }
+        
+        // نمایش loading
+        resultsContainer.html(`
+            <div class="p-3 text-center">
+                <div class="spinner-border spinner-border-sm text-primary" role="status">
+                    <span class="visually-hidden">در حال جستجو...</span>
+                </div>
+            </div>
+        `).show();
+        
+        // درخواست AJAX
+        $.ajax({
+            url: BASE_PATH + '/ajax/search_people.php',
+            data: { q: query },
+            method: 'GET',
+            success: function(response) {
+                if (response.success && response.results.length > 0) {
+                    const resultsHtml = response.results.map(person => `
+                        <div class="search-result-item p-2 hover-bg" 
+                             data-id="${person.id}" 
+                             data-name="${person.text}"
+                             data-mobile="${person.mobile || ''}"
+                             data-type="${person.type || 'real'}">
+                            <div class="d-flex align-items-center">
+                                <img src="${person.avatar_path}" class="rounded-circle me-2" 
+                                     style="width: 40px; height: 40px; object-fit: cover;"
+                                     onerror="this.src='${BASE_PATH}/assets/images/avatar.png'">
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold">${person.text}</div>
+                                    <div class="small text-muted">
+                                        ${person.mobile ? `<i class="fas fa-phone me-1"></i>${person.mobile}` : ''}
+                                        ${person.type === 'legal' ? 
+                                            '<span class="badge bg-warning ms-2">حقوقی</span>' : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    resultsContainer.html(resultsHtml);
+                } else {
+                    resultsContainer.html(`
+                        <div class="p-2 text-center text-muted">
+                            <i class="fas fa-search me-1"></i>
+                            نتیجه‌ای یافت نشد
+                        </div>
+                    `);
+                }
+            },
+            error: function(xhr) {
+                let errorMessage = 'خطا در جستجو';
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                }
+                resultsContainer.html(`
+                    <div class="p-2 text-center text-danger">
+                        <i class="fas fa-exclamation-circle me-1"></i>
+                        ${errorMessage}
+                    </div>
+                `);
+            }
+        });
+    }, 300));
         
         // دکمه‌های اصلی
         $('#btnAddItem').on('click', addPaymentItem);
@@ -850,76 +923,76 @@ function initializeDatePickers() {
         }, 300));
 
         // انتخاب شخص از نتایج
-        $(document).on('click', '.search-result-item', function() {
-            const item = $(this);
-            const searchWrapper = item.closest('.search-wrapper');
-            const paymentItem = searchWrapper.closest('.payment-item');
-            
-            // ذخیره اطلاعات شخص
-            searchWrapper.find('.person-id').val(item.data('id'));
-            
-            // نمایش اطلاعات انتخاب شده
-            searchWrapper.find('.person-search-input').replaceWith(`
-                <div class="selected-person d-flex align-items-center p-2">
-                    <img src="${item.find('img').attr('src')}" class="rounded-circle me-2" 
-                         style="width: 24px; height: 24px; object-fit: cover;">
-                    <div class="flex-grow-1">
-                        <div class="fw-bold">${item.data('name')}</div>
-                        ${item.data('mobile') ? 
-                            `<small class="text-muted">${item.data('mobile')}</small>` : ''}
-                    </div>
-                    <button type="button" class="btn-close clear-person ms-2" 
-                            aria-label="Clear"></button>
+    $(document).on('click', '.search-result-item', function() {
+        const item = $(this);
+        const searchWrapper = item.closest('.search-wrapper');
+        const paymentItem = searchWrapper.closest('.payment-item');
+        
+        // ذخیره اطلاعات شخص
+        searchWrapper.find('.person-id').val(item.data('id'));
+        
+        // نمایش اطلاعات انتخاب شده
+        searchWrapper.find('.person-search-input').replaceWith(`
+            <div class="selected-person d-flex align-items-center p-2">
+                <img src="${item.find('img').attr('src')}" class="rounded-circle me-2" 
+                     style="width: 24px; height: 24px; object-fit: cover;">
+                <div class="flex-grow-1">
+                    <div class="fw-bold">${item.data('name')}</div>
+                    ${item.data('mobile') ? 
+                        `<small class="text-muted">${item.data('mobile')}</small>` : ''}
                 </div>
-            `);
+                <button type="button" class="btn-close clear-person ms-2" 
+                        aria-label="Clear"></button>
+            </div>
+        `);
 
-            // آپدیت آواتار در کارت پرداخت
-            paymentItem.find('.person-avatar').attr('src', item.find('img').attr('src'));
-            
-            // مخفی کردن نتایج
-            searchWrapper.find('.search-results').hide();
-        });
+        // آپدیت آواتار در کارت پرداخت
+        paymentItem.find('.person-avatar').attr('src', item.find('img').attr('src'));
+        
+        // مخفی کردن نتایج
+        searchWrapper.find('.search-results').hide();
+    });
 
         // پاک کردن شخص انتخاب شده
-        $(document).on('click', '.clear-person', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const searchWrapper = $(this).closest('.search-wrapper');
-            const paymentItem = searchWrapper.closest('.payment-item');
-            
-            // بازگشت به حالت جستجو
-            $(this).closest('.selected-person').replaceWith(`
-                <input type="text" class="form-control person-search-input" 
-                       placeholder="نام، موبایل یا کد ملی را وارد کنید...">
-            `);
-            
-            // پاک کردن مقادیر
-            searchWrapper.find('.person-id').val('');
-            paymentItem.find('.person-avatar')
-                .attr('src', BASE_PATH + '/assets/images/avatar.png');
-        });
+    $(document).on('click', '.clear-person', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const searchWrapper = $(this).closest('.search-wrapper');
+        const paymentItem = searchWrapper.closest('.payment-item');
+        
+        // بازگشت به حالت جستجو
+        $(this).closest('.selected-person').replaceWith(`
+            <input type="text" class="form-control person-search-input" 
+                   placeholder="نام، موبایل یا کد ملی را وارد کنید...">
+        `);
+        
+        // پاک کردن مقادیر
+        searchWrapper.find('.person-id').val('');
+        paymentItem.find('.person-avatar')
+            .attr('src', BASE_PATH + '/assets/images/avatar.png');
+    });
 
         // مخفی کردن نتایج با کلیک خارج از باکس
-        $(document).on('click', function(e) {
-            if (!$(e.target).closest('.search-wrapper').length) {
-                $('.search-results').hide();
-            }
-        });
+           $(document).on('click', function(e) {
+        if (!$(e.target).closest('.search-wrapper').length) {
+            $('.search-results').hide();
+        }
+    });
 }
     
     // تابع تاخیر در جستجو
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
             clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
+            func(...args);
         };
-    }
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 // فراخوانی تابع در initializePage
 function initializePage() {
     initializeDatePickers();

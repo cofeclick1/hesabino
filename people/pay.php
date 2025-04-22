@@ -226,18 +226,19 @@ require_once '../includes/header.php';
                 <div class="col">
                     <div class="row">
                         <div class="col-md-4 mb-3">
-                            <label class="form-label required">شخص</label>
-                            <div class="input-group">
-                                <div class="search-wrapper position-relative flex-grow-1">
-                                    <input type="text" class="form-control person-search-input" placeholder="نام، موبایل یا کد ملی را وارد کنید...">
-                                    <div class="search-results position-absolute w-100 bg-white border rounded-bottom shadow-sm" style="display: none; z-index: 1050;"></div>
-                                    <input type="hidden" name="person_id[]" class="person-id" required>
-                                </div>
-                                <button type="button" class="btn btn-outline-secondary btn-add-person">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
+    <label class="form-label required">شخص</label>
+    <div class="input-group">
+        <div class="search-wrapper position-relative flex-grow-1">
+            <input type="text" class="form-control person-search-input" 
+                   placeholder="نام، موبایل یا کد ملی را وارد کنید...">
+            <div class="search-results"></div>
+            <input type="hidden" name="person_id[]" class="person-id" required>
+        </div>
+        <button type="button" class="btn btn-outline-secondary btn-add-person">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+</div>
                         <div class="col-md-3 mb-3">
                             <label class="form-label required">مبلغ</label>
                             <div class="input-group">
